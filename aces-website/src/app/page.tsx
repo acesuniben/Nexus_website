@@ -55,7 +55,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold">Hardware and <span className="text-[#0FACAC]">Software Club</span></h2>
               <p className="w-1/2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
             </div>
-            <div className="flex gap-20 w-full justify-center">
+            <div className="flex gap-15 w-full justify-center">
               <div className="relative">
                 <Image src="/hardware.png" alt='Printed Circuit Board' height={267} width={476} />
                 <div className="absolute left-[12.5%] top-[25%] flex flex-col items-center justify-evenly h-1/2 w-3/4">
@@ -68,6 +68,19 @@ export default function Home() {
                 <div className="absolute left-[12.5%] top-[25%] flex flex-col items-center justify-evenly h-1/2 w-3/4">
                   <p className="text-white text-2xl">Interested in Software?</p>
                   <div className="text-[#166D86] border-2 border-[#166D86] bg-white rounded-4xl px-8 py-4 text-xl"><Link key='about' href='/about'>Software Club </Link></div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="flex flex-col items-center w-full">
+            <div className="bg-[#98FF98] w-3/4 flex">
+              <div className="w-3/5"></div>
+              <div className="flex flex-col gap-4 py-10">
+                <h3 className="text-3xl font-bold">Download the <span className="text-[#0FACAC]">ACES</span> Mobile App</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                <div className="flex gap-4 items-center">
+                  <div className="bg-[#166D86] text-white rounded-4xl px-6 py-3 text-xl"><Link key='download' href='/download'>Download</Link></div>
+                  <Image src='/Arrow.png' alt="Arrow Icon" width={84} height={87} />
                 </div>
               </div>
             </div>
