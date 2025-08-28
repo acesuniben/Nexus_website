@@ -44,7 +44,7 @@ export default function Home() {
       </header>
       <main className="flex flex-col gap-25 items-center mb-20">
           <section className="w-1/2 text-center flex flex-col gap-3 mt-20">
-            <h1 className="text-5xl font-bold">Association of <span className="text-[#0FACAC] ">Computer <br/>Engineering</span> Students</h1>
+            <h1 className="text-4xl text-[#2F327D] font-bold">Association of <span className="text-[#0FACAC] ">Computer <br/>Engineering</span> Students</h1>
             <p className="">Making a difference and inspiring new wave of tech</p>
           </section>
           <section className="w-full flex flex-col items-center text-center">
