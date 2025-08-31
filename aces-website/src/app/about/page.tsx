@@ -110,8 +110,8 @@ export default function About() {
                 <Link
                   href={link.href}
                   className={clsx(
-                    "text-sm font-medium hover:text-[#0FACAC] transition-colors",
-                    pathname === link.href ? "text-[#0FACAC]" : "text-black"
+                    "text-sm font-medium hover:text-blue-500 transition-colors",
+                    pathname === link.href ? "text-blue-500" : "text-black"
                   )}
                 >
                   {link.name}
@@ -122,43 +122,36 @@ export default function About() {
         </nav>
       </header>
 
-      <main className="flex flex-col">
-        {/* Hero Section */}
-        <section className="w-full flex flex-col items-center text-center bg-white py-10">
-          <div className="w-full max-w-4xl mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#2E4A7B]">
-              Know more <span className="text-[#0FACAC]">about us</span> the
-              Association
-              <br />
-              of Computer Engineering Students
-            </h1>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Know more about us and the achievements, activities that we have
-              done and the impact we have made in the lives of students.
-            </p>
-          </div>
-
-          <div className="relative w-full max-w-4xl">
-            <div className="flex gap-3 px-5 w-fit absolute left-1/2 transform -translate-x-1/2 top-4 z-10">
-              <Link
-                href="/software"
-                className="bg-[#0FACAC] text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#166D86] transition-colors"
-              >
-                Software Club
-              </Link>
-              <Link
-                href="/hardware"
-                className="text-[#0FACAC] border-2 border-[#0FACAC] bg-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#0FACAC] hover:text-white transition-colors"
-              >
-                Hardware Club
-              </Link>
+      <main className="flex flex-col gap-25 items-center mb-20">
+        {/* Hero Text Section */}
+        <section className="w-1/2 text-center flex flex-col gap-3 mt-20">
+          <h1 className="text-4xl text-[#2F327D] font-bold">
+            Know more <span className="text-[#0FACAC]">about us</span> the Association
+            <br />
+            of Computer Engineering Students
+          </h1>
+          <p className="">
+            Know more about us and the achievements, activities that we have
+            done and the impact we have made in the lives of students.
+          </p>
+        </section>
+        
+        {/* Hero Image Section */}
+        <section className="w-full flex flex-col items-center text-center">
+          <div className="relative">
+            <div className="flex gap-3 px-5 w-1/2 absolute left-[30%]">
+              <div className="bg-[#166D86] text-white w-2/5 rounded-4xl px-10 py-4 text-xl font-bold">
+                <Link href="/software">Software Club</Link>
+              </div>
+              <div className="text-[#166D86] border-2 w-2/5 border-[#166D86] bg-white rounded-4xl px-10 py-4 text-xl font-bold">
+                <Link href="/hardware">Hardware Club</Link>
+              </div>
             </div>
             <Image
               src="/Subtract-about.svg"
               alt="ACES Students in classroom"
               width={1088}
               height={549}
-              className="w-full h-auto rounded-lg"
             />
           </div>
         </section>
@@ -167,7 +160,7 @@ export default function About() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-3xl font-bold mb-4 text-[#2F327D]">
                 Over The <span className="text-[#0FACAC]">Years</span>
               </h2>
               <p className="text-gray-600">
@@ -179,7 +172,7 @@ export default function About() {
             <div className="flex justify-center items-center gap-16">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-4xl font-bold text-[#166D86] mb-2">
+                  <div className="text-4xl font-bold text-[#2F327D] mb-2">
                     {stat.number}
                   </div>
                   <div className="text-gray-600">{stat.label}</div>
@@ -199,13 +192,13 @@ export default function About() {
                   alt="Students in classroom"
                   width={500}
                   height={400}
-                  className="rounded-lg"
+                  className="w-full h-auto rounded-lg"
                 />
               </div>
               <div className="w-1/2">
                 <div className="flex items-center gap-2 mb-6">
                   <div className="w-3 h-3 bg-[#98FF98] rounded-full"></div>
-                  <h2 className="text-3xl font-bold text-[#2E4A7B]">
+                  <h2 className="text-3xl font-bold text-[#2F327D]">
                     About The <span className="text-[#0FACAC]">Department</span>
                   </h2>
                 </div>
@@ -244,6 +237,83 @@ export default function About() {
           </div>
         </section>
 
+        {/* Aims and Objectives Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4 text-[#2F327D]">
+                Aims and <span className="text-[#0FACAC]">Objectives</span>
+              </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                These are the aims and objectives of this amazing Association. Read 
+                carefully and take note of them and be part of this movement.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+              {/* Objective 1 */}
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#0FACAC] to-[#166D86] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <span className="text-4xl font-bold text-white">1</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
+                  To Promote academic excellence through peer support, seminars and mentoring programs.
+                </h3>
+              </div>
+
+              {/* Objective 2 */}
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#0FACAC] to-[#166D86] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <span className="text-4xl font-bold text-white">2</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
+                  To Encourage innovation, critical thinking and creative problem-solving
+                </h3>
+              </div>
+
+              {/* Objective 3 */}
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#0FACAC] to-[#166D86] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <span className="text-4xl font-bold text-white">3</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
+                  To build leadership capacity among members through organized responsibilities and projects.
+                </h3>
+              </div>
+
+              {/* Objective 4 */}
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#0FACAC] to-[#166D86] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <span className="text-4xl font-bold text-white">4</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
+                  To foster a strong sense of unity, collaboration, teamwork within the student body.
+                </h3>
+              </div>
+
+              {/* Objective 5 */}
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#0FACAC] to-[#166D86] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <span className="text-4xl font-bold text-white">5</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
+                  To build the gap between students and faculty through regular engagement and dialogue.
+                </h3>
+              </div>
+
+              {/* Objective 6 */}
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#0FACAC] to-[#166D86] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <span className="text-4xl font-bold text-white">6</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
+                  To initiate and participate in community service and social impact projects.
+                </h3>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Mission & Vision Section */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
@@ -251,7 +321,7 @@ export default function About() {
               <div className="w-1/2">
                 <div className="flex items-center gap-2 mb-6">
                   <div className="w-3 h-3 bg-[#98FF98] rounded-full"></div>
-                  <h2 className="text-3xl font-bold text-[#2E4A7B]">
+                  <h2 className="text-3xl font-bold text-[#2F327D]">
                     Our <span className="text-[#0FACAC]">Mission & Vision</span>
                   </h2>
                 </div>
@@ -286,7 +356,7 @@ export default function About() {
                   alt="Mission and Vision"
                   width={500}
                   height={400}
-                  className="rounded-lg"
+                  className="w-full h-auto rounded-lg"
                 />
               </div>
             </div>
@@ -296,13 +366,13 @@ export default function About() {
         {/* Services Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-16 text-[#2E4A7B]">
+            <h2 className="text-3xl font-bold text-center mb-16 text-[#2F327D]">
               Our <span className="text-[#0FACAC]">Services</span>
             </h2>
             <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
               {/* Past Questions Service */}
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#0FACAC] rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-[#166D86] rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg
                     className="w-8 h-8 text-white"
                     fill="currentColor"
@@ -311,7 +381,7 @@ export default function About() {
                     <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-[#2E4A7B]">
+                <h3 className="text-xl font-semibold mb-4 text-[#2F327D]">
                   Past Questions
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -323,7 +393,7 @@ export default function About() {
 
               {/* Software Club Service */}
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#0FACAC] rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-[#166D86] rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg
                     className="w-8 h-8 text-white"
                     fill="currentColor"
@@ -332,7 +402,7 @@ export default function About() {
                     <path d="M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H0V20H24V18H20Z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-[#2E4A7B]">
+                <h3 className="text-xl font-semibold mb-4 text-[#2F327D]">
                   Software Club
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -344,7 +414,7 @@ export default function About() {
 
               {/* Hardware Club Service */}
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#0FACAC] rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-[#166D86] rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg
                     className="w-8 h-8 text-white"
                     fill="currentColor"
@@ -353,7 +423,7 @@ export default function About() {
                     <path d="M17,17H7V7H17M21,11V9H19V7C19,5.89 18.1,5 17,5H15V3H13V5H11V3H9V5H7C5.89,5 5,5.89 5,7V9H3V11H5V13H3V15H5V17C5,18.1 5.89,19 7,19H9V21H11V19H13V21H15V19H17C18.1,19 19,18.1 19,17V15H21V13H19V11M13,13H11V11H13V13Z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-[#2E4A7B]">
+                <h3 className="text-xl font-semibold mb-4 text-[#2F327D]">
                   Hardware Club
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -369,7 +439,7 @@ export default function About() {
         {/* Know Your Lecturers Section */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-16 text-[#2E4A7B]">
+            <h2 className="text-3xl font-bold text-center mb-16 text-[#2F327D]">
               Know Your <span className="text-[#0FACAC]">Lecturers</span>
             </h2>
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -380,7 +450,7 @@ export default function About() {
                     <span className="text-gray-400">Engr. Dr. Isi Photo</span>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl p-6">
-                    <h3 className="text-xl font-bold mb-1 text-[#2E4A7B]">
+                    <h3 className="text-xl font-bold mb-1 text-[#2F327D]">
                       Engr. Dr. Isi
                     </h3>
                     <p className="text-[#0FACAC] font-semibold text-sm mb-2">
@@ -528,7 +598,7 @@ export default function About() {
           <div className="container mx-auto px-4">
             <div className="flex items-center gap-12">
               <div className="w-1/2">
-                <h2 className="text-3xl font-bold mb-6 text-[#2E4A7B]">
+                <h2 className="text-3xl font-bold mb-6 text-[#2F327D]">
                   Pay attention to your <br />
                   <span className="text-[#0FACAC]">Mental Health</span>
                 </h2>
@@ -543,7 +613,7 @@ export default function About() {
                     to you.
                   </p>
                 </div>
-                <button className="bg-[#0FACAC] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#166D86] transition-colors">
+                <button className="bg-[#166D86] text-white px-8 py-3 rounded-4xl font-bold hover:bg-[#0FACAC] transition-colors">
                   Explore
                 </button>
               </div>
@@ -575,7 +645,7 @@ export default function About() {
         {/* Meet the Next Wave Executives */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-16 text-[#2E4A7B]">
+            <h2 className="text-3xl font-bold text-center mb-16 text-[#2F327D]">
               Meet the{" "}
               <span className="text-[#0FACAC]">Next Wave Executives</span>
             </h2>
@@ -587,7 +657,7 @@ export default function About() {
                     <span className="text-gray-400">Zack Jennifer Photo</span>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl p-6">
-                    <h3 className="text-xl font-bold mb-1 text-[#2E4A7B]">
+                    <h3 className="text-xl font-bold mb-1 text-[#2F327D]">
                       Zack Jennifer
                     </h3>
                     <p className="text-[#0FACAC] font-semibold text-sm mb-4">
@@ -726,7 +796,7 @@ export default function About() {
           <div className="container mx-auto px-4">
             <div className="relative bg-gradient-to-r from-[#A8E6CF] to-[#B8E6D6] rounded-3xl overflow-hidden min-h-[400px] flex items-center">
               {/* Paper plane icon */}
-              <div className="absolute top-8 left-8 w-12 h-12 bg-[#0FACAC] rounded-full flex items-center justify-center">
+              <div className="absolute top-8 left-8 w-12 h-12 bg-[#166D86] rounded-full flex items-center justify-center">
                 <svg
                   className="w-6 h-6 text-white"
                   fill="currentColor"
@@ -739,13 +809,13 @@ export default function About() {
               {/* Content */}
               <div className="relative z-10 flex items-center justify-between w-full px-12">
                 <div className="flex-1 max-w-md">
-                  <h2 className="text-3xl font-bold mb-6 text-[#2E4A7B] leading-tight">
+                  <h2 className="text-3xl font-bold mb-6 text-[#2F327D] leading-tight">
                     Get <span className="text-[#0FACAC]">Past Questions</span>{" "}
                     with ease <br />
                     and ensure you use them <br />
                     efficiently and consistently
                   </h2>
-                  <button className="bg-[#0FACAC] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#166D86] transition-colors">
+                  <button className="bg-[#166D86] text-white px-8 py-3 rounded-4xl font-bold hover:bg-[#0FACAC] transition-colors">
                     Get Past Questions
                   </button>
                 </div>
@@ -793,7 +863,7 @@ export default function About() {
                 </div>
               </div>
               <div className="w-1/2">
-                <h2 className="text-3xl font-bold mb-6 text-[#2E4A7B]">
+                <h2 className="text-3xl font-bold mb-6 text-[#2F327D]">
                   <span className="text-[#0FACAC]">ACES SECRETARIAT</span>
                 </h2>
                 <p className="text-gray-600 mb-8 leading-relaxed">
@@ -804,7 +874,7 @@ export default function About() {
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#0FACAC] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-12 h-12 bg-[#166D86] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <svg
                         className="w-6 h-6 text-white"
                         fill="currentColor"
@@ -815,7 +885,7 @@ export default function About() {
                     </div>
                     <div>
                       <p className="text-gray-600 leading-relaxed">
-                        <span className="font-semibold text-[#2E4A7B]">
+                        <span className="font-semibold text-[#2F327D]">
                           Before the Electrical Engineering Building,
                         </span>
                         <br />
@@ -826,7 +896,7 @@ export default function About() {
 
                   <div className="flex gap-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-[#0FACAC] rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-[#166D86] rounded-full flex items-center justify-center">
                         <svg
                           className="w-6 h-6 text-white"
                           fill="currentColor"
@@ -835,13 +905,13 @@ export default function About() {
                           <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                         </svg>
                       </div>
-                      <span className="text-[#2E4A7B] font-semibold">
+                      <span className="text-[#2F327D] font-semibold">
                         08054287652
                       </span>
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-[#0FACAC] rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-[#166D86] rounded-full flex items-center justify-center">
                         <svg
                           className="w-6 h-6 text-white"
                           fill="currentColor"
@@ -850,7 +920,7 @@ export default function About() {
                           <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                         </svg>
                       </div>
-                      <span className="text-[#2E4A7B] font-semibold">
+                      <span className="text-[#2F327D] font-semibold">
                         08054287652
                       </span>
                     </div>
