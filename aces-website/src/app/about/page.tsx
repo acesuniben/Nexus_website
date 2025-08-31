@@ -183,12 +183,12 @@ export default function About() {
         </section>
 
         {/* About Department Section */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="flex items-center gap-12">
               <div className="w-1/2">
                 <Image
-                  src="/Group 17.svg"
+                  src="/Group 17-About.png"
                   alt="Students in classroom"
                   width={500}
                   height={400}
@@ -196,11 +196,21 @@ export default function About() {
                 />
               </div>
               <div className="w-1/2">
-                <div className="flex items-center gap-2 mb-6">
-                  <div className="w-3 h-3 bg-[#98FF98] rounded-full"></div>
-                  <h2 className="text-3xl font-bold text-[#2F327D]">
-                    About The <span className="text-[#0FACAC]">Department</span>
-                  </h2>
+                <div className="relative mb-6">
+                  {/* Background image */}
+                  <Image
+                    src="/about-header.png"
+                    alt="About Department Header Background"
+                    width={400}
+                    height={120}
+                    className="w-full h-auto"
+                  />
+                  {/* Header content overlay */}
+                  <div className="absolute inset-0 flex items-start pt-4 gap-2 px-4">
+                    <h2 className="text-5xl md:text-6xl font-bold text-[#2F327D]">
+                      About The <span className="text-[#0FACAC]">Department</span>
+                    </h2>
+                  </div>
                 </div>
                 <p className="text-gray-600 mb-4 leading-relaxed">
                   Computer Engineering is a department in the faculty of
