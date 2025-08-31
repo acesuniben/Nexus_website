@@ -148,7 +148,7 @@ export default function About() {
               </div>
             </div>
             <Image
-              src="/Subtract-about.svg"
+              src="/Subtract-About.png"
               alt="ACES Students in classroom"
               width={1088}
               height={549}
