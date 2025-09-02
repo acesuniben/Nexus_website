@@ -25,12 +25,12 @@ export default function About() {
   ];
 
   const achievements = [
-    "First Position in National Competition",
-    "Best Engineering Department Award",
-    "Innovation in Technology Award",
-    "Community Service Excellence",
-    "Outstanding Academic Performance",
-    "Research Excellence Award",
+    "Introduction of the Mental Health Scheme",
+    "Winners of University based Hackathon and other prizes given",
+    "Collaboration with NVIDIA for ACES Week",
+    "Collaboration with WAW Detergent for ACES Mental Health Scheme Program",
+    "Introduction of the ACES Software and Hardware Club",
+    "Collaboration with Google Developers on Campus Uniben Chapter",
   ];
 
   const services = [
@@ -230,18 +230,47 @@ export default function About() {
 
         {/* Achievements Section */}
         <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-12">
-              What We Have <span className="text-[#0FACAC]">Achieved</span>
-            </h2>
-            <div className="flex justify-center">
-              <div className="space-y-4">
-                {achievements.map((achievement, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-[#0FACAC] rounded-full"></div>
-                    <span className="text-gray-700">{achievement}</span>
-                  </div>
-                ))}
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4 text-[#2F327D]">
+                What We Have <span className="text-[#0FACAC]">Achieved</span>
+              </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                The department of Computer Engineering has achieved a lot over the 
+                coming years and that is just the tip of the iceberg. More to come !
+              </p>
+            </div>
+            
+            <div className="flex items-center gap-12 max-w-6xl mx-auto">
+              {/* Left side - Image */}
+              <div className="w-1/2">
+                <Image
+                  src="/what-we-have-achieved.png"
+                  alt="What we have achieved - students working and collaborating"
+                  width={500}
+                  height={400}
+                  className="w-full h-auto"
+                />
+              </div>
+              
+              {/* Right side - Achievements List */}
+              <div className="w-1/2">
+                <div className="space-y-6">
+                  {achievements.map((achievement, index) => (
+                    <div key={index} className="flex items-start gap-4">
+                      <div className="w-8 h-8 bg-[#166D86] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                        <svg
+                          className="w-4 h-4 text-white"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                        </svg>
+                      </div>
+                      <span className="text-gray-700 text-lg leading-relaxed">{achievement}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
