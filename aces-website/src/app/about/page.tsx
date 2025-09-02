@@ -277,7 +277,7 @@ export default function About() {
         </section>
 
         {/* Aims and Objectives Section */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-[#2F327D]">
@@ -291,9 +291,15 @@ export default function About() {
             
             <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
               {/* Objective 1 */}
-              <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#0FACAC] to-[#166D86] rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <span className="text-4xl font-bold text-white">1</span>
+              <div className="text-center p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                <div className="flex justify-center mb-6 -mt-10">
+                  <Image
+                    src="/number-one.png"
+                    alt="Number 1"
+                    width={80}
+                    height={80}
+                    className="w-20 h-20"
+                  />
                 </div>
                 <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
                   To Promote academic excellence through peer support, seminars and mentoring programs.
@@ -301,9 +307,15 @@ export default function About() {
               </div>
 
               {/* Objective 2 */}
-              <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#0FACAC] to-[#166D86] rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <span className="text-4xl font-bold text-white">2</span>
+              <div className="text-center p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                <div className="flex justify-center mb-6 -mt-10">
+                  <Image
+                    src="/number-two.png"
+                    alt="Number 2"
+                    width={80}
+                    height={80}
+                    className="w-20 h-20"
+                  />
                 </div>
                 <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
                   To Encourage innovation, critical thinking and creative problem-solving
@@ -311,9 +323,15 @@ export default function About() {
               </div>
 
               {/* Objective 3 */}
-              <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#0FACAC] to-[#166D86] rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <span className="text-4xl font-bold text-white">3</span>
+              <div className="text-center p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                <div className="flex justify-center mb-6 -mt-10">
+                  <Image
+                    src="/number-three.png"
+                    alt="Number 3"
+                    width={80}
+                    height={80}
+                    className="w-20 h-20"
+                  />
                 </div>
                 <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
                   To build leadership capacity among members through organized responsibilities and projects.
@@ -321,9 +339,15 @@ export default function About() {
               </div>
 
               {/* Objective 4 */}
-              <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#0FACAC] to-[#166D86] rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <span className="text-4xl font-bold text-white">4</span>
+              <div className="text-center p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                <div className="flex justify-center mb-6 -mt-10">
+                  <Image
+                    src="/number-four.png"
+                    alt="Number 4"
+                    width={80}
+                    height={80}
+                    className="w-20 h-20"
+                  />
                 </div>
                 <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
                   To foster a strong sense of unity, collaboration, teamwork within the student body.
@@ -331,9 +355,15 @@ export default function About() {
               </div>
 
               {/* Objective 5 */}
-              <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#0FACAC] to-[#166D86] rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <span className="text-4xl font-bold text-white">5</span>
+              <div className="text-center p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                <div className="flex justify-center mb-6 -mt-10">
+                  <Image
+                    src="/number-five.png"
+                    alt="Number 5"
+                    width={80}
+                    height={80}
+                    className="w-20 h-20"
+                  />
                 </div>
                 <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
                   To build the gap between students and faculty through regular engagement and dialogue.
@@ -341,9 +371,15 @@ export default function About() {
               </div>
 
               {/* Objective 6 */}
-              <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#0FACAC] to-[#166D86] rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <span className="text-4xl font-bold text-white">6</span>
+              <div className="text-center p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                <div className="flex justify-center mb-6 -mt-10">
+                  <Image
+                    src="/number-six.png"
+                    alt="Number 6"
+                    width={80}
+                    height={80}
+                    className="w-20 h-20"
+                  />
                 </div>
                 <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
                   To initiate and participate in community service and social impact projects.
