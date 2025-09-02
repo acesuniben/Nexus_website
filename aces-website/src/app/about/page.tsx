@@ -133,7 +133,7 @@ export default function About() {
             <div className="flex items-center gap-12 max-w-6xl mx-auto">
               <div className="w-1/2">
                 <Image
-                  src="/Group 17-About.png"
+                  src="/classroom.png"
                   alt="Students in classroom"
                   width={500}
                   height={400}
@@ -1107,57 +1107,25 @@ export default function About() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-white">
+         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <div className="relative bg-gradient-to-r from-[#A8E6CF] to-[#B8E6D6] rounded-3xl overflow-hidden min-h-[400px] flex items-center max-w-6xl mx-auto">
-              {/* Paper plane icon */}
-              <div className="absolute top-8 left-8 w-12 h-12 bg-[#166D86] rounded-full flex items-center justify-center">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-                </svg>
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10 flex items-center justify-between w-full px-12">
-                <div className="flex-1 max-w-md">
-                  <h2 className="text-3xl font-bold mb-6 text-[#2F327D] leading-tight">
-                    Get <span className="text-[#0FACAC]">Past Questions</span>{" "}
-                    with ease <br />
-                    and ensure you use them <br />
-                    efficiently and consistently
-                  </h2>
-                  <button className="bg-[#166D86] text-white px-8 py-3 rounded-4xl font-bold hover:bg-[#0FACAC] transition-colors">
-                    Get Past Questions
-                  </button>
-                </div>
-
-                {/* Girl sitting image */}
-                <div className="flex-1 flex justify-end">
-                  <Image
-                    src="/girl-sitting.png"
-                    alt="Girl sitting and studying"
-                    width={400}
-                    height={300}
-                    className="max-w-full h-auto"
-                  />
-                </div>
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute bottom-8 right-8 opacity-20">
-                <div className="flex gap-2">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-              </div>
-            </div>
+                    <div className="relative max-w-6xl mx-auto">
+                      <Image src="/GirlSittingWithPen.png" height={234.135} width={1016.67} alt="Newsletter sign-up background" className="w-full"/>
+                      <div className="absolute top-[25%] left-[20%] flex flex-col gap-6 items-left w-[60%]">
+                        <h2 className="text-[#2F327D] font-bold text-3xl text-left w-[75%]">Get <span className=" text-[#0FACAC]">Past Questions</span> with ease and ensure you use them efficiently and consistently</h2>          
+                        <div>
+                          <button 
+                              type="submit"
+                              className="bg-[#166D86] text-white rounded-4xl py-2 px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium"
+                            >
+                              Get Past Questions
+                            </button>
+                        </div>
+                      </div>
+                      
+                    </div>
           </div>
-        </section>
+                  </section>
 
         {/* ACES Secretariat Section */}
         <section className="py-16 bg-white">
