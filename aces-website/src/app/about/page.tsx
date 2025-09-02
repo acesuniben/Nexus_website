@@ -59,47 +59,6 @@ export default function About() {
     },
   ];
 
-  const lecturers = [
-    {
-      name: "Prof. Dr. John",
-      title: "Head of Department",
-      image: "/lecturer1.jpg",
-      qualification: "PhD in Computer Engineering",
-    },
-    {
-      name: "Dr. Jane Smith",
-      title: "Senior Lecturer",
-      image: "/lecturer2.jpg",
-      qualification: "PhD in Software Engineering",
-    },
-    {
-      name: "Dr. Mike Johnson",
-      title: "Associate Professor",
-      image: "/lecturer3.jpg",
-      qualification: "PhD in Hardware Engineering",
-    },
-  ];
-
-  const executives = [
-    {
-      name: "Prof. Dr. John",
-      title: "Head of Department",
-      image: "/exec1.jpg",
-      qualification: "PhD in Computer Engineering",
-    },
-    {
-      name: "Dr. Jane Smith",
-      title: "Senior Lecturer",
-      image: "/exec2.jpg",
-      qualification: "PhD in Software Engineering",
-    },
-    {
-      name: "Dr. Mike Johnson",
-      title: "Associate Professor",
-      image: "/exec3.jpg",
-      qualification: "PhD in Hardware Engineering",
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -174,7 +133,7 @@ export default function About() {
                 making waves in the tech industry.
               </p>
             </div>
-            <div className="flex justify-center items-center gap-16">
+            <div className="flex justify-center items-center gap-16 max-w-6xl mx-auto">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-4xl font-bold text-[#2F327D] mb-2">
@@ -190,7 +149,7 @@ export default function About() {
         {/* About Department Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <div className="flex items-center gap-12">
+            <div className="flex items-center gap-12 max-w-6xl mx-auto">
               <div className="w-1/2">
                 <Image
                   src="/Group 17-About.png"
@@ -212,7 +171,7 @@ export default function About() {
                   />
                   {/* Header content overlay */}
                   <div className="absolute inset-0 flex items-start pt-4 gap-2 px-4">
-                    <h2 className="text-5xl md:text-6xl font-bold text-[#2F327D]">
+                    <h2 className="text-5xl md:text-4xl font-bold text-[#2F327D]">
                       About The <span className="text-[#0FACAC]">Department</span>
                     </h2>
                   </div>
@@ -1169,7 +1128,7 @@ export default function About() {
         {/* CTA Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <div className="relative bg-gradient-to-r from-[#A8E6CF] to-[#B8E6D6] rounded-3xl overflow-hidden min-h-[400px] flex items-center">
+            <div className="relative bg-gradient-to-r from-[#A8E6CF] to-[#B8E6D6] rounded-3xl overflow-hidden min-h-[400px] flex items-center max-w-6xl mx-auto">
               {/* Paper plane icon */}
               <div className="absolute top-8 left-8 w-12 h-12 bg-[#166D86] rounded-full flex items-center justify-center">
                 <svg
