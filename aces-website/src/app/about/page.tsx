@@ -680,9 +680,9 @@ export default function About() {
         </section>
 
         {/* Mental Health Section */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <div className="flex items-center gap-12">
+            <div className="flex items-center gap-12 max-w-6xl mx-auto">
               <div className="w-1/2">
                 <h2 className="text-3xl font-bold mb-6 text-[#2F327D]">
                   Pay attention to your <br />
@@ -690,25 +690,23 @@ export default function About() {
                 </h2>
                 <div className="space-y-4 mb-8">
                   <p className="text-gray-600 leading-relaxed">
-                    To improve the department and to ensure activities like
-                    fresher's welcome, HOD's Cup and others are able to be
-                    achieved.
+                    To improve the department and to ensure activities like 
+                    fresher's welcome, HOD's Cup and others are able to be achieved.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                    paying your ELA Dues shows how important this department is
-                    to you.
+                    paying your ELA Dues shows how important this department is to you.
                   </p>
                 </div>
-                <button className="bg-[#166D86] text-white px-8 py-3 rounded-4xl font-bold hover:bg-[#0FACAC] transition-colors">
+                <button className="bg-[#166D86] text-white px-8 py-3 rounded-full font-medium hover:bg-[#0FACAC] transition-colors">
                   Explore
                 </button>
               </div>
-              <div className="w-1/2 relative">
-                <div className="relative">
+              <div className="w-1/2 flex justify-center">
+                <div className="relative max-w-md">
                   {/* Light bulb icon */}
-                  <div className="absolute top-4 right-8 w-16 h-16 bg-[#98FF98] rounded-full flex items-center justify-center z-10">
+                  <div className="absolute -top-2 -right-4 w-12 h-12 bg-[#98FF98] rounded-full flex items-center justify-center z-10">
                     <svg
-                      className="w-8 h-8 text-[#0FACAC]"
+                      className="w-6 h-6 text-[#0FACAC]"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -718,8 +716,8 @@ export default function About() {
                   <Image
                     src="/people-walking.png"
                     alt="People walking together for mental health"
-                    width={500}
-                    height={400}
+                    width={350}
+                    height={280}
                     className="w-full h-auto"
                   />
                 </div>
