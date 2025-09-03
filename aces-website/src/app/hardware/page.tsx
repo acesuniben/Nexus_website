@@ -46,6 +46,7 @@ export default function Software() {
               <Image src="/softGroup.png" height={359.33} width={498.67} alt="Picture of students listening to their teacher in their classroom"/>
             </div>
           </section>
+          {/* Explore Areas */}
           <section className="text-center flex flex-col items-center gap-20 w-full">
             <div className="w-full flex flex-col gap-5 items-center">
               <h2 className="text-3xl font-bold text-[#2F327D]">Explore our Different <span className="text-[#0FACAC]">Niches</span></h2>
@@ -65,13 +66,92 @@ export default function Software() {
             </div>
           </section>
 
+          {/* Time and Location Section */}
+          <section className="flex items-center gap-12 w-full max-w-6xl mx-auto">
+            <div className="w-1/2 flex flex-col gap-6">
+              <h2 className="text-3xl font-bold text-[#2F327D]">
+                Worried about <span className="text-[#0FACAC]">time and location?</span>
+              </h2>
+              <p className="text-gray-600 leading-relaxed">
+                Don't worry no need to panic and be worried about where the classes are held and the time these classes are held. The details are below.
+              </p>
+              
+              <div className="space-y-4">
+                {/* Location */}
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-[#0FACAC] rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[#2F327D] font-semibold">
+                      400L CPE Class, Faculty of Engineering, University of Benin, Ugbowo.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Schedule and Time - Side by Side */}
+                <div className="flex items-center gap-8">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-[#0FACAC] rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                      </svg>
+                    </div>
+                    <p className="text-[#2F327D] font-semibold">Every Saturday</p>
+                  </div>
+
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-[#0FACAC] rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/>
+                      </svg>
+                    </div>
+                    <p className="text-[#2F327D] font-semibold">9am - 12pm</p>
+                  </div>
+                </div>
+
+                {/* Contact Numbers */}
+                <div className="flex gap-8 mt-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-[#0FACAC] rounded-full flex items-center justify-center">
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                      </svg>
+                    </div>
+                    <span className="text-[#2F327D] font-medium">08024568653</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-[#0FACAC] rounded-full flex items-center justify-center">
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                      </svg>
+                    </div>
+                    <span className="text-[#2F327D] font-medium">08024568653</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="w-1/2 flex justify-end">
+              <Image
+                src="/location-hardware.png"
+                alt="Student with curly hair and glasses"
+                width={400}
+                height={400}
+                className="max-w-full h-auto"
+              />
+            </div>
+          </section>
+
           <section className="flex items-center w-[100%] mt-10">
               <div className="w-2/5">
                 <Image src="/softapp.png" alt="ACES Mobile app Mockup" height={931.93} width={851.64}/>
               </div>
               <div className="flex flex-col gap-6 py-15 px-20 w-3/5">
                 <h3 className="text-3xl font-bold text-[#2F327D]">Learn More with the <span className="text-[#0FACAC]">ACES Mobile App</span> Mobile <br/>App</h3>
-                <p>Login to the mobile app and have access to more resources that will help in your software journey. It is important so that grow in knowledge based on your niche.</p>
+                <p>Login to the mobile app and have access to more resources that will help in your <span className="text-[#0FACAC]">hardware</span> journey. It is important so that grow in knowledge based on your niche.</p>
                 <p>Download now and enjoy the benefits that come with it.</p>
                 <div className="flex gap-8 items-center">
                   <div className="bg-[#166D86] text-white rounded-4xl px-8 py-3 text-xl"><Link key='download' href='/download'>Download Now</Link></div>
@@ -110,7 +190,7 @@ export default function Software() {
           <section className="flex flex-col gap-20 items-center w-[100%]">
            <div className="w-full flex flex-col gap-8 items-center">
               <h2 className="text-3xl font-bold text-[#2F327D]">Club <span className="text-[#0FACAC]">Activities</span></h2>
-              <p className="w-1/2 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+              <p className="w-1/2 text-center">These are the few activities that are done in the hardware club. Ensure you participate.</p>
             </div>
             <div className="grid grid-cols-3 gap-15 w-[80%]">
               {activities.map(activity => (
