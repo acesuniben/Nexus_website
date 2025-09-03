@@ -16,8 +16,8 @@ export default function Software() {
     {name: "Efeteyan E. Miracle", role: "Deputy Governor", description: "300L Student of CPE. A growing tech lover with interest in electronics and Embedded Systems", picture: "/david.png", facebook: "#", github: "#", linkedIn: "#"},
   ]
   const activities = [
-    {picture: "/hackathon.svg", title: "Hackathons", paragraph: "The club engage in different hackathons and also organise in house hackathons so that members of the club can compete as well to improve their skills"},
-    {picture: "/webinar.svg", title: "Webinars", paragraph: "The club organises webinars on twitter, zoom, Twitter (X) so enlighten and to educate the members on different niches "},
+    {picture: "/research-icon.png", title: "Research", paragraph: "The club engage in different Classwork and assignment to research on different components and projects that develop them individually and also work and learn with each other."},
+    {picture: "/pcb-icon.png", title: "Building Projects", paragraph: "The club works on a lot of projects and also ensure that the members of the club participate so that they can be increase their knowlegde and skills in different areas."},
     {picture: "/mentorship.svg", title: "Mentorships", paragraph: "The Governors mentor the members of the club and direct them on the way to go and also to ensure that they are consistent and improve individually"},
   ]
   return ( 
@@ -261,11 +261,11 @@ export default function Software() {
 
           <section className="w-full flex justify-center items-center">
             <div className="relative w-[90%]">
-              <Image src="/subscribe.svg" height={234.135} width={1016.67} alt="Newsletter sign-up background" className="w-full"/>
+              <Image src="/cta-software.png" height={234.135} width={1016.67} alt="Newsletter sign-up background" className="w-full"/>
               <div className="absolute top-[30%] left-[20%] m-auto flex gap-20 items-start w-[60%] h-full">
                   <div className="w-2/3 flex flex-col gap-10 items-start">
-                    <p className="text-[#2F327D] text-3xl font-bold ">Interested in <span className="text-[#0FACAC]">Hardware?</span> The Hardware Club is Available for you. Check it out.</p>
-                    <div className="text-white  bg-[#166D86] px-6 py-2 rounded-3xl"><Link href="/hardware">Hardware Club</Link></div>
+                    <p className="text-[#2F327D] text-3xl font-bold ">Interested in <span className="text-[#0FACAC]">Software?</span> The Software Club is Available for you. Check it out.</p>
+                    <div className="text-white  bg-[#166D86] px-6 py-2 rounded-3xl"><Link href="/software">Software Club</Link></div>
                   </div>
                   <div>
                     <Image src="/board.svg" width={174.31} height={227.61} alt=""/>
