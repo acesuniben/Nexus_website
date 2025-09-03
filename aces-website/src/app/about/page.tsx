@@ -128,13 +128,13 @@ export default function About() {
                 making waves in the tech industry.
               </p>
             </div>
-            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-16 max-w-6xl mx-auto">
+            <div className="flex justify-center items-center gap-3 md:gap-16 max-w-6xl mx-auto overflow-x-auto">
               {stats.map((stat, index) => (
-                <div key={index} className="text-center min-w-[80px]">
-                  <div className="text-2xl md:text-4xl font-bold text-[#2F327D] mb-1 md:mb-2">
+                <div key={index} className="text-center min-w-[60px] md:min-w-[80px] flex-shrink-0">
+                  <div className="text-lg md:text-4xl font-bold text-[#2F327D] mb-1 md:mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-gray-600 text-xs md:text-base">{stat.label}</div>
+                  <div className="text-gray-600 text-[10px] md:text-base">{stat.label}</div>
                 </div>
               ))}
             </div>
