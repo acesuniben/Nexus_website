@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="bg-[#1A4B5C] text-white py-12 rounded-t-3xl w-[90%] mx-auto">
+        <footer className="bg-[#1A4B5C] text-white py-12 rounded-t-3xl w-full md:w-[90%] mx-auto">
             <div className="container mx-auto px-8">
             <div className="grid md:grid-cols-4 gap-8">
                 {/* ACES Uniben Section */}

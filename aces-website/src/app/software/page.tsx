@@ -101,7 +101,7 @@ export default function Software() {
                     <div className="flex gap-4">
                       <a href={governor.facebook}><Image src="/facebook.svg" width={20} height={20} alt="Facebook Icon"/></a>
                       <a href={governor.github}><Image src="/github.svg" width={20} height={20} alt="Github Icon"/></a>
-                      <a href={governor.linkedin}><Image src="/linkedin.svg" width={20} height={20} alt="LinkedIn Icon"/></a>
+                      <a href={governor.linkedIn}><Image src="/linkedin.svg" width={20} height={20} alt="LinkedIn Icon"/></a>
                     </div>
                   </div>
                 </div>
