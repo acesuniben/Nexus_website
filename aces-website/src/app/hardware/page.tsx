@@ -5,12 +5,10 @@ import Footer from "@/components/footer";
 
 export default function Software() {
   const niches = [
-    {title: "App", name: "Development", link: "#", src: "/app.svg"},
-    {title: "Web", name: "Development", link: "#", src: "/web.svg"},
-    {title: "Cyber", name: "Security", link: "#", src: "/cyber.svg"},
-    {title: "Product", name: "Design", link: "#", src: "/product.svg"},
-    {title: "Artificial", name: "Intelligence", link: "#", src: "/artificial.svg"},
-    {title: "Data", name: "Science", link: "", src: "/data.svg"},
+    {title: "PCB Design and", name: "Development", link: "#", src: "/pcb-design.png"},
+    {title: "Circuit Design &", name: "Prototyping", link: "#", src: "/circuit-design.png"},
+    {title: "Soldering &", name: "Assembling", link: "#", src: "/soldering.png"},
+    {title: "Smart Design", name: "Implementation", link: "#", src: "/smart-design.png"},
   ]
   const governors = [
     {name: "Ogbaudu Oghenemaro", role: "Technical Governor", description: "Software Engineer, Front-end Developer and Cyber-Security Expert", picture: "/maro.png", facebook: "#", github: "#", linkedIn: "#"},
@@ -26,8 +24,8 @@ export default function Software() {
         <Header/>
         <main className="flex flex-col gap-25 items-center mb-20">
           <section className="w-2/3 text-center flex flex-col gap-3 mt-20">
-            <h1 className="text-4xl text-[#2F327D] font-bold">Association of Computer Engineering <br/>Students <span className="text-[#0FACAC] ">Software Club</span></h1>
-            <p className="">Making a difference and inspiring new wave of tech</p>
+            <h1 className="text-4xl text-[#2F327D] font-bold">Association of Computer Engineering <br/>Students <span className="text-[#0FACAC] ">Hardware Club</span></h1>
+            <p className="">Making a difference and inspiring new wave of hardware engineers</p>
           </section>
           <section className="w-full flex flex-col items-center text-center">
             <div className="relative">
@@ -35,7 +33,7 @@ export default function Software() {
                 <div className="bg-[#166D86] text-white w-2/5 rounded-4xl px-10 py-4 text-xl font-bold"><Link key='about' href='/about'>About Us </Link></div>
                 <div className="text-[#166D86] border-2  w-2/5 border-[#166D86] bg-white rounded-4xl px-10 py-4 text-xl font-bold"><Link key='contact' href='/contact'>Contact Us </Link></div>
               </div>
-              <Image src="/Add.png" alt="ACES Students" width={1088} height={549} />
+              <Image src="/Subtract-Hardware.png" alt="ACES Students" width={1088} height={549} />
             </div>
           </section>
           <section className="flex justify-evenly">
@@ -51,14 +49,13 @@ export default function Software() {
           <section className="text-center flex flex-col items-center gap-20 w-full">
             <div className="w-full flex flex-col gap-5 items-center">
               <h2 className="text-3xl font-bold text-[#2F327D]">Explore our Different <span className="text-[#0FACAC]">Niches</span></h2>
-              <p className="w-1/2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+              <p className="w-1/2">There are different areas in hardware that one can venture into. These are the ones the hardware club are working on. Choose what suits you best.</p>
             </div>
             <div className="grid grid-cols-2 gap-10">
               {niches.map(niche => (
                 <div key={niche.title} className="flex justify-between gap-2 bg-white rounded-4xl shadow-xl p-10 w-100 h-50">
                   <div className="flex flex-col justify-between">
                     <h4 className="text-[#2F327D] text-xl text-left font-medium">{niche.title} <br/> {niche.name}</h4>
-                    <div ><a className="flex gap-2 items-center text-sm font-semibold" href={niche.link}><Image src="Icon.svg" alt="navigation arrow" width={30} height={30}/> <p>Join Now</p></a></div>
                   </div>
                   <div className="self-center">
                     <Image src={niche.src} alt={niche.title + " icon"} width={113.5} height={83.5}/>
