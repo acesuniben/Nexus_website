@@ -1123,32 +1123,72 @@ export default function About() {
         </section>
 
         {/* CTA Section */}
-         <section className="py-16 bg-white">
+         <section className="py-8 md:py-16 bg-white">
           <div className="container mx-auto px-4">
                     <div className="relative max-w-6xl mx-auto">
-                      <Image src="/GirlSittingWithPen.png" height={234.135} width={1016.67} alt="Newsletter sign-up background" className="w-full"/>
-                      <div className="absolute top-[25%] left-[20%] flex flex-col gap-6 items-left w-[60%]">
-                        <h2 className="text-[#2F327D] font-bold text-3xl text-left w-[75%]">Get <span className=" text-[#0FACAC]">Past Questions</span> with ease and ensure you use them efficiently and consistently</h2>          
-                        <div>
-                          <button 
-                              type="submit"
-                              className="bg-[#166D86] text-white rounded-4xl py-2 px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium"
-                            >
-                              Get Past Questions
-                            </button>
+                      {/* Desktop Layout - Original design */}
+                      <div className="hidden md:block">
+                        <Image src="/GirlSittingWithPen.png" height={234.135} width={1016.67} alt="Newsletter sign-up background" className="w-full"/>
+                        <div className="absolute top-[25%] left-[20%] flex flex-col gap-6 items-left w-[60%]">
+                          <h2 className="text-[#2F327D] font-bold text-3xl text-left w-[75%]">Get <span className=" text-[#0FACAC]">Past Questions</span> with ease and ensure you use them efficiently and consistently</h2>          
+                          <div>
+                            <button 
+                                type="submit"
+                                className="bg-[#166D86] text-white rounded-4xl py-2 px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium"
+                              >
+                                Get Past Questions
+                              </button>
+                          </div>
                         </div>
                       </div>
                       
+                      {/* Mobile Layout - Image background like desktop */}
+                      <div className="md:hidden">
+                        <div className="relative rounded-2xl overflow-hidden">
+                          {/* Background Image */}
+                          <Image 
+                            src="/GirlSittingWithPen.png" 
+                            alt="Newsletter sign-up background" 
+                            width={1000} 
+                            height={234}
+                            className="w-full h-full object-cover"
+                          />
+                          
+                          {/* Content Overlay */}
+                          <div className="absolute inset-0 p-6 flex flex-col justify-center">
+                            <div className="max-w-[60%]">
+                              <h2 className="text-[#2F327D] font-bold text-sm leading-tight mb-4">
+                                Get <span className="text-[#0FACAC]">Past Questions</span> with ease and ensure you use them efficiently and consistently
+                              </h2>
+                              <button 
+                                type="submit"
+                                className="bg-[#166D86] text-white rounded-full py-3 px-6 hover:bg-[#0FACAC] transition-colors duration-200 font-medium text-sm whitespace-nowrap"
+                              >
+                                Get Past Questions
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
           </div>
                   </section>
 
         {/* ACES Secretariat Section */}
-        <section className="py-16 bg-white">
+        <section className="py-8 md:py-16 bg-white">
           <div className="container mx-auto px-4">
-            <div className="flex gap-12 items-center max-w-6xl mx-auto">
-              <div className="w-1/2">
-                <div className="bg-gray-100 h-80 rounded-lg overflow-hidden">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center max-w-6xl mx-auto">
+              
+              {/* Mobile Title - Show at top on mobile */}
+              <div className="md:hidden w-full text-center mb-4">
+                <h2 className="text-2xl font-bold text-[#2F327D]">
+                  <span className="text-[#0FACAC]">ACES SECRETARIAT</span>
+                </h2>
+              </div>
+
+              {/* Map Section */}
+              <div className="w-full md:w-1/2 order-2 md:order-1">
+                <div className="bg-gray-100 h-60 md:h-80 rounded-lg overflow-hidden">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.7857842896586!2d5.626827814683795!3d6.399267925756586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1040d7dabf8a4ca1%3A0x6d9b2d4c4b4b4b4b!2sFaculty%20of%20Engineering%2C%20University%20of%20Benin!5e0!3m2!1sen!2sng!4v1640000000000!5m2!1sen!2sng"
                     width="100%"
@@ -1161,29 +1201,34 @@ export default function About() {
                   ></iframe>
                 </div>
               </div>
-              <div className="w-1/2">
-                <h2 className="text-3xl font-bold mb-6 text-[#2F327D]">
+
+              {/* Content Section */}
+              <div className="w-full md:w-1/2 order-1 md:order-2">
+                {/* Desktop Title */}
+                <h2 className="hidden md:block text-3xl font-bold mb-6 text-[#2F327D]">
                   <span className="text-[#0FACAC]">ACES SECRETARIAT</span>
                 </h2>
-                <p className="text-gray-600 mb-8 leading-relaxed">
+                
+                <p className="text-gray-600 mb-6 md:mb-8 leading-relaxed text-sm md:text-base text-center md:text-left">
                   To improve the department and to ensure activities like
                   fresher's welcome, HOD's Cup and others are able to be
                   achieved.
                 </p>
 
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#166D86] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <div className="space-y-4 md:space-y-6">
+                  {/* Location */}
+                  <div className="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-4">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-[#166D86] rounded-full flex items-center justify-center flex-shrink-0">
                       <svg
-                        className="w-6 h-6 text-white"
+                        className="w-5 h-5 md:w-6 md:h-6 text-white"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                       </svg>
                     </div>
-                    <div>
-                      <p className="text-gray-600 leading-relaxed">
+                    <div className="text-center md:text-left">
+                      <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                         <span className="font-semibold text-[#2F327D]">
                           Before the Electrical Engineering Building,
                         </span>
@@ -1193,33 +1238,34 @@ export default function About() {
                     </div>
                   </div>
 
-                  <div className="flex gap-6">
+                  {/* Phone Numbers */}
+                  <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-[#166D86] rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 md:w-12 md:h-12 bg-[#166D86] rounded-full flex items-center justify-center">
                         <svg
-                          className="w-6 h-6 text-white"
+                          className="w-5 h-5 md:w-6 md:h-6 text-white"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
                           <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                         </svg>
                       </div>
-                      <span className="text-[#2F327D] font-semibold">
+                      <span className="text-[#2F327D] font-semibold text-sm md:text-base">
                         08054287652
                       </span>
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-[#166D86] rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 md:w-12 md:h-12 bg-[#166D86] rounded-full flex items-center justify-center">
                         <svg
-                          className="w-6 h-6 text-white"
+                          className="w-5 h-5 md:w-6 md:h-6 text-white"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
                           <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                         </svg>
                       </div>
-                      <span className="text-[#2F327D] font-semibold">
+                      <span className="text-[#2F327D] font-semibold text-sm md:text-base">
                         08054287652
                       </span>
                     </div>
