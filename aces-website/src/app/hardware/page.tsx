@@ -11,8 +11,9 @@ export default function Software() {
     {title: "Smart Design", name: "Implementation", link: "#", src: "/smart-design.png"},
   ]
   const governors = [
-    {name: "Ogbaudu Oghenemaro", role: "Technical Governor", description: "Software Engineer, Front-end Developer and Cyber-Security Expert", picture: "/maro.png", facebook: "#", github: "#", linkedIn: "#"},
-    {name: "Onwuka David", role: "Administrative Governor", description: "Software Engineer, Blockchain Developer and Technical Writer", picture: "/david.png", facebook: "#", github: "#", linkedIn: "#"},
+    {name: "Bassey Favour", role: "Hardware Governor", description: "400L CPE Student. A hardware Enthusiast and Robotics lover. Builds, designs and create innovative tech solutions", picture: "/maro.png", facebook: "#", github: "#", linkedIn: "#"},
+    {name: "Oghosa Derick Osarobo", role: "Deputy Governor", description: "300L CPE Student. Passionate about Electronics, IOT, hardware design and programming. Enjoys building practical solutions.", picture: "/OghosaDerick.png", facebook: "#", github: "#", linkedIn: "#"},
+    {name: "Efeteyan E. Miracle", role: "Deputy Governor", description: "300L Student of CPE. A growing tech lover with interest in electronics and Embedded Systems", picture: "/david.png", facebook: "#", github: "#", linkedIn: "#"},
   ]
   const activities = [
     {picture: "/hackathon.svg", title: "Hackathons", paragraph: "The club engage in different hackathons and also organise in house hackathons so that members of the club can compete as well to improve their skills"},
@@ -192,13 +193,36 @@ export default function Software() {
               </div>
           </section>
 
+{/* Governors Section */}
           <section className="text-center flex flex-col items-center gap-20 w-full">
             <div className="w-full flex flex-col gap-8 items-center">
-              <h2 className="text-3xl font-bold text-[#2F327D]">ACES Software Club <span className="text-[#0FACAC]">Governors</span></h2>
-              <p className="w-1/2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+              <h2 className="text-3xl font-bold text-[#2F327D]">ACES Hardware Club <span className="text-[#0FACAC]">Governors</span></h2>
+              <p className="w-1/2">These are the people that are in charge and also run the activities of the hardware club. Curious? Look below.</p>
             </div>
-            <div className="grid grid-cols-2 gap-10 w-[80%]">
-              {governors.map(governor => (
+            <div className="w-[80%] flex flex-col items-center gap-10">
+              {/* First two governors in a row */}
+              <div className="flex gap-10 justify-center w-full">
+                {governors.slice(0, 2).map(governor => (
+                  <div key={governor.name} className="flex text-left px-4 py-1 shadow-lg rounded-xl">
+                    <div><Image src={governor.picture} width={331.72} height={331.72} alt={"Picture of the " + governor.role + " " + governor.name}/></div>
+                    <div className="flex flex-col justify-around px-2">
+                      <div>
+                        <h3 className="text-md font-semibold text-[#2F327D]">{governor.name}</h3>
+                        <h4 className="text-sm font-semibold text-[#0FACAC]">{governor.role}</h4>
+                      </div>
+                      <p className="text-xs w-[90%]">{governor.description}</p>
+                      <div className="flex gap-4">
+                        <a href={governor.facebook}><Image src="/facebook.svg" width={20} height={20} alt="Facebook Icon"/></a>
+                        <a href={governor.github}><Image src="/github.svg" width={20} height={20} alt="Github Icon"/></a>
+                        {/* <a href={governor.linkedin}><Image src="/linkedin.svg" width={20} height={20} alt="LinkedIn Icon"/></a> */}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Third governor centered */}
+              {governors.slice(2, 3).map(governor => (
                 <div key={governor.name} className="flex text-left px-4 py-1 shadow-lg rounded-xl">
                   <div><Image src={governor.picture} width={331.72} height={331.72} alt={"Picture of the " + governor.role + " " + governor.name}/></div>
                   <div className="flex flex-col justify-around px-2">
@@ -214,8 +238,7 @@ export default function Software() {
                     </div>
                   </div>
                 </div>
-              )
-              )}
+              ))}
             </div>
           </section>
 
