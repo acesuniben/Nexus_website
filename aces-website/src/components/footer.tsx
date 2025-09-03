@@ -175,7 +175,7 @@ export default function Footer() {
                 <h3 className="text-lg font-semibold mb-6">Contact us</h3>
                 <div className="space-y-4 text-sm">
                     <div>
-                    <p className="text-gray-300">Email : acesuniben@gmail.com</p>
+                    <p className="text-gray-300">Email : acesuniben2425@gmail.com</p>
                     </div>
                     <div>
                     <p className="text-gray-300">Phone no : 08026255242</p>
