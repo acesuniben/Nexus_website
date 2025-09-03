@@ -139,9 +139,41 @@ export default function Software() {
                 src="/location-hardware.png"
                 alt="Student with curly hair and glasses"
                 width={400}
-                height={400}
+                height={300}
                 className="max-w-full h-auto"
               />
+            </div>
+          </section>
+
+          {/* Network with ACES Hardware Community Section */}
+          <section className="flex items-center gap-12 w-full max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="flex items-center gap-12">
+                <div className="w-1/2">
+                  <Image
+                    src="/network-hardware.png"
+                    alt="Network with ACES Hardware Community"
+                    width={500}
+                    height={400}
+                    className="max-w-full h-auto rounded-lg"
+                  />
+                </div>
+                
+                <div className="w-1/2 space-y-6">
+                  <h2 className="text-4xl font-bold text-[#2F327D]">
+                    Network with ACES<br />
+                    Hardware Community
+                  </h2>
+                  
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    Communicate with like-minds. Associate with other people that are willing to grow and to also make impact in the department of Computer Engineering and the world at large. Join the Group chat and enjoy all these benefits.
+                  </p>
+                  
+                  <button className="bg-[#166D86] hover:bg-[#0e9999] text-white font-semibold px-8 py-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                    Join the Group Chat
+                  </button>
+                </div>
+              </div>
             </div>
           </section>
 
