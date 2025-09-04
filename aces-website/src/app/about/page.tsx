@@ -67,60 +67,74 @@ export default function About() {
       {/* Header */}
       <Header />
 
-      <main className="flex flex-col gap-25 items-center mb-20">
-        {/* Hero Text Section */}
-        <section className="w-1/2 text-center flex flex-col gap-3 mt-20">
-          <h1 className="text-4xl text-[#2F327D] font-bold">
+      <main className="flex flex-col gap-8 md:gap-25 items-center mb-20">
+         {/* Hero Text Section */}
+        <section className="w-full px-4 md:w-1/2 text-center flex flex-col gap-3 mt-10 md:mt-20">
+          <h1 className="text-2xl md:text-4xl text-[#2F327D] font-bold leading-tight">
             Know more <span className="text-[#0FACAC]">about us</span> the Association
-            <br />
-            of Computer Engineering Students
+            <br className="hidden md:block" />
+            <span className="md:hidden"> </span>of Computer Engineering Students
           </h1>
-          <p className="">
+          <p className="text-sm md:text-base text-gray-600 px-4 md:px-0">
             Know more about us and the achievements, activities that we have
             done and the impact we have made in the lives of students.
           </p>
         </section>
         
         {/* Hero Image Section */}
-        <section className="w-full flex flex-col items-center text-center">
-          <div className="relative">
-            <div className="flex gap-3 px-5 w-1/2 absolute left-[30%]">
-              <div className="bg-[#166D86] text-white w-2/5 rounded-4xl px-10 py-4 text-xl font-bold">
-                <Link href="/software">Software Club</Link>
+        <section className="w-full flex flex-col items-center text-center px-4 md:px-0">
+          <div className="relative w-full max-w-6xl">
+            {/* Desktop buttons - positioned absolutely over image */}
+            <div className="hidden md:flex gap-3 px-5 w-1/2 absolute left-[30%] z-10">
+              <div className="bg-[#166D86] text-white w-2/5 rounded-4xl px-12 py-4 text-2xl font-bold hover:bg-[#1a7a96] transition-colors flex items-center justify-center">
+                <Link href="/software" className="text-center whitespace-nowrap">Software Club</Link>
               </div>
-              <div className="text-[#166D86] border-2 w-2/5 border-[#166D86] bg-white rounded-4xl px-10 py-4 text-xl font-bold">
-                <Link href="/hardware">Hardware Club</Link>
+              <div className="text-[#166D86] border-2 w-2/5 border-[#166D86] bg-white rounded-4xl px-12 py-4 text-2xl font-bold hover:bg-gray-50 transition-colors flex items-center justify-center">
+                <Link href="/hardware" className="text-center whitespace-nowrap">Hardware Club</Link>
               </div>
             </div>
+            
+            {/* Mobile buttons - positioned at top of image */}
+            <div className="flex md:hidden gap-1 absolute top-0.8 left-1/2 transform -translate-x-1/2 z-10">
+              <div className="bg-[#166D86] text-white rounded-full px-1 py-1 text-[8px] font-semibold hover:bg-[#1a7a96] transition-colors shadow-lg flex items-center justify-center">
+                <Link href="/software" className="block text-center whitespace-nowrap">Software Club</Link>
+              </div>
+              <div className="text-[#166D86] border-2 border-[#166D86] bg-white rounded-full px-1 py-1.5 text-[8px] font-semibold hover:bg-gray-50 transition-colors shadow-lg flex items-center justify-center">
+                <Link href="/hardware" className="block text-center whitespace-nowrap">Hardware Club</Link>
+              </div>
+            </div>
+            
+            {/* Hero Image */}
             <Image
               src="/Subtract-About.png"
               alt="ACES Students in classroom"
               width={1088}
               height={549}
+              className="w-full h-auto"
             />
           </div>
         </section>
 
         {/* Stats Section */}
-        <section className="py-16 bg-white">
+        <section className="py-8 md:py-16 bg-white">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-[#2F327D]">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#2F327D]">
                 Over The <span className="text-[#0FACAC]">Years</span>
               </h2>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm md:text-base px-4 md:px-0 max-w-3xl mx-auto">
                 The department of Computer Engineering has grown tremendously
                 over the years and has produced outstanding graduates who are
                 making waves in the tech industry.
               </p>
             </div>
-            <div className="flex justify-center items-center gap-16 max-w-6xl mx-auto">
+            <div className="flex justify-center items-center gap-3 md:gap-16 max-w-6xl mx-auto overflow-x-auto">
               {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl font-bold text-[#2F327D] mb-2">
+                <div key={index} className="text-center min-w-[60px] md:min-w-[80px] flex-shrink-0">
+                  <div className="text-lg md:text-4xl font-bold text-[#2F327D] mb-1 md:mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-gray-600">{stat.label}</div>
+                  <div className="text-gray-600 text-[10px] md:text-base">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -128,10 +142,10 @@ export default function About() {
         </section>
 
         {/* About Department Section */}
-        <section className="py-16 bg-white">
+        <section className="py-8 md:py-16 bg-white w-full">
           <div className="container mx-auto px-4">
-            <div className="flex items-center gap-12 max-w-6xl mx-auto">
-              <div className="w-1/2">
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 max-w-6xl mx-auto">
+              <div className="w-full md:w-1/2">
                 <Image
                   src="/classroom.png"
                   alt="Students in classroom"
@@ -140,7 +154,7 @@ export default function About() {
                   className="w-full h-auto rounded-lg"
                 />
               </div>
-              <div className="w-1/2">
+              <div className="w-full md:w-1/2">
                 <div className="relative mb-6">
                   {/* Background image */}
                   <Image
@@ -151,18 +165,18 @@ export default function About() {
                     className="w-full h-auto"
                   />
                   {/* Header content overlay */}
-                  <div className="absolute inset-0 flex items-start pt-4 gap-2 px-4">
-                    <h2 className="text-5xl md:text-4xl font-bold text-[#2F327D]">
+                  <div className="absolute inset-0 flex items-start pt-2 md:pt-4 gap-2 px-2 md:px-4">
+                    <h2 className="text-xl md:text-4xl font-bold text-[#2F327D]">
                       About The <span className="text-[#0FACAC]">Department</span>
                     </h2>
                   </div>
                 </div>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
                   Computer Engineering is a department in the faculty of
                   Engineering, university of Benin, It consists of five (5)
                   levels from 100L - 500L.
                 </p>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
                   Recently the department had a new HOD and consists of amazing
                   lecturers. The department has a set of executives that govern
                   the affairs of the students and also ensures that things go
@@ -174,45 +188,45 @@ export default function About() {
         </section>
 
         {/* Achievements Section */}
-        <section className="py-16 bg-white">
+        <section className="py-8 md:py-16 bg-white w-full">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-[#2F327D]">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#2F327D]">
                 What We Have <span className="text-[#0FACAC]">Achieved</span>
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base px-2 md:px-0">
                 The department of Computer Engineering has achieved a lot over the 
                 coming years and that is just the tip of the iceberg. More to come !
               </p>
             </div>
             
-            <div className="flex items-center gap-12 max-w-6xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 max-w-6xl mx-auto">
               {/* Left side - Image */}
-              <div className="w-1/2">
+              <div className="w-full md:w-1/2">
                 <Image
                   src="/what-we-have-achieved.png"
                   alt="What we have achieved - students working and collaborating"
                   width={500}
                   height={400}
-                  className="w-full h-auto"
+                  className="w-full h-auto rounded-lg"
                 />
               </div>
               
               {/* Right side - Achievements List */}
-              <div className="w-1/2">
-                <div className="space-y-6">
+              <div className="w-full md:w-1/2">
+                <div className="space-y-4 md:space-y-6">
                   {achievements.map((achievement, index) => (
-                    <div key={index} className="flex items-start gap-4">
-                      <div className="w-8 h-8 bg-[#166D86] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div key={index} className="flex items-start gap-3 md:gap-4">
+                      <div className="w-6 h-6 md:w-8 md:h-8 bg-[#166D86] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                         <svg
-                          className="w-4 h-4 text-white"
+                          className="w-3 h-3 md:w-4 md:h-4 text-white"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
                           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg leading-relaxed">{achievement}</span>
+                      <span className="text-gray-700 text-sm md:text-lg leading-relaxed">{achievement}</span>
                     </div>
                   ))}
                 </div>
@@ -222,111 +236,111 @@ export default function About() {
         </section>
 
         {/* Aims and Objectives Section */}
-        <section className="py-16 bg-white">
+        <section className="py-8 md:py-16 bg-white w-full">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-[#2F327D]">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#2F327D]">
                 Aims and <span className="text-[#0FACAC]">Objectives</span>
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base px-2 md:px-0">
                 These are the aims and objectives of this amazing Association. Read 
                 carefully and take note of them and be part of this movement.
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 max-w-6xl mx-auto">
               {/* Objective 1 */}
-              <div className="text-center p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
-                <div className="flex justify-center mb-6 -mt-10">
+              <div className="text-center p-4 md:p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                <div className="flex justify-center mb-4 md:mb-6 -mt-6 md:-mt-10">
                   <Image
                     src="/number-one.png"
                     alt="Number 1"
                     width={80}
                     height={80}
-                    className="w-20 h-20"
+                    className="w-16 h-16 md:w-20 md:h-20"
                   />
                 </div>
-                <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
+                <h3 className="text-base md:text-lg font-semibold mb-4 text-[#2F327D]">
                   To Promote academic excellence through peer support, seminars and mentoring programs.
                 </h3>
               </div>
 
               {/* Objective 2 */}
-              <div className="text-center p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
-                <div className="flex justify-center mb-6 -mt-10">
+              <div className="text-center p-4 md:p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                <div className="flex justify-center mb-4 md:mb-6 -mt-6 md:-mt-10">
                   <Image
                     src="/number-two.png"
                     alt="Number 2"
                     width={80}
                     height={80}
-                    className="w-20 h-20"
+                    className="w-16 h-16 md:w-20 md:h-20"
                   />
                 </div>
-                <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
+                <h3 className="text-base md:text-lg font-semibold mb-4 text-[#2F327D]">
                   To Encourage innovation, critical thinking and creative problem-solving
                 </h3>
               </div>
 
               {/* Objective 3 */}
-              <div className="text-center p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
-                <div className="flex justify-center mb-6 -mt-10">
+              <div className="text-center p-4 md:p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                <div className="flex justify-center mb-4 md:mb-6 -mt-6 md:-mt-10">
                   <Image
                     src="/number-three.png"
                     alt="Number 3"
                     width={80}
                     height={80}
-                    className="w-20 h-20"
+                    className="w-16 h-16 md:w-20 md:h-20"
                   />
                 </div>
-                <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
+                <h3 className="text-base md:text-lg font-semibold mb-4 text-[#2F327D]">
                   To build leadership capacity among members through organized responsibilities and projects.
                 </h3>
               </div>
 
               {/* Objective 4 */}
-              <div className="text-center p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
-                <div className="flex justify-center mb-6 -mt-10">
+              <div className="text-center p-4 md:p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                <div className="flex justify-center mb-4 md:mb-6 -mt-6 md:-mt-10">
                   <Image
                     src="/number-four.png"
                     alt="Number 4"
                     width={80}
                     height={80}
-                    className="w-20 h-20"
+                    className="w-16 h-16 md:w-20 md:h-20"
                   />
                 </div>
-                <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
+                <h3 className="text-base md:text-lg font-semibold mb-4 text-[#2F327D]">
                   To foster a strong sense of unity, collaboration, teamwork within the student body.
                 </h3>
               </div>
 
               {/* Objective 5 */}
-              <div className="text-center p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
-                <div className="flex justify-center mb-6 -mt-10">
+              <div className="text-center p-4 md:p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                <div className="flex justify-center mb-4 md:mb-6 -mt-6 md:-mt-10">
                   <Image
                     src="/number-five.png"
                     alt="Number 5"
                     width={80}
                     height={80}
-                    className="w-20 h-20"
+                    className="w-16 h-16 md:w-20 md:h-20"
                   />
                 </div>
-                <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
+                <h3 className="text-base md:text-lg font-semibold mb-4 text-[#2F327D]">
                   To build the gap between students and faculty through regular engagement and dialogue.
                 </h3>
               </div>
 
               {/* Objective 6 */}
-              <div className="text-center p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
-                <div className="flex justify-center mb-6 -mt-10">
+              <div className="text-center p-4 md:p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                <div className="flex justify-center mb-4 md:mb-6 -mt-6 md:-mt-10">
                   <Image
                     src="/number-six.png"
                     alt="Number 6"
                     width={80}
                     height={80}
-                    className="w-20 h-20"
+                    className="w-16 h-16 md:w-20 md:h-20"
                   />
                 </div>
-                <h3 className="text-lg font-semibold mb-4 text-[#2F327D]">
+                <h3 className="text-base md:text-lg font-semibold mb-4 text-[#2F327D]">
                   To initiate and participate in community service and social impact projects.
                 </h3>
               </div>
@@ -335,13 +349,13 @@ export default function About() {
         </section>
 
         {/* Meet the Next Wave Executives */}
-        <section className="py-16 bg-white">
+        <section className="py-8 md:py-16 bg-white w-full">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-[#2F327D]">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#2F327D]">
                 Meet the <span className="text-[#0FACAC]">Next Wave Executives</span>
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base px-2 md:px-0">
                 Get to know the people that have taken the responsibility of being leaders and also to serve the great students of this department
               </p>
             </div>
@@ -771,30 +785,30 @@ export default function About() {
         </section>
 
         {/* Services Section */}
-        <section className="py-16 bg-white">
+        <section className="py-8 md:py-16 bg-white w-full">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-8 text-[#2F327D]">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8 text-[#2F327D]">
               Our <span className="text-[#0FACAC]">Services</span>
             </h2>
-            <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto text-lg">
+            <p className="text-center text-gray-600 mb-8 md:mb-16 max-w-2xl mx-auto text-sm md:text-lg px-2 md:px-0">
               Get to know what ACES and the Department of Computer Engineering offers to the students of this great department
             </p>
-            <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 max-w-5xl mx-auto">
               {/* Past Questions Service */}
-              <div className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow text-center">
-                <div className="w-16 h-16 bg-[#166D86] rounded-full flex items-center justify-center mx-auto mb-6 -mt-8">
+              <div className="relative bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow text-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-[#166D86] rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 -mt-6 md:-mt-8">
                   <svg
-                    className="w-8 h-8 text-white"
+                    className="w-6 h-6 md:w-8 md:h-8 text-white"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
                     <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-[#2F327D]">
+                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-[#2F327D]">
                   Past Questions
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                   There are different categories of past questions in different
                   courses from 100L to 500L that you can study from and prepare
                   for exams
@@ -802,20 +816,20 @@ export default function About() {
               </div>
 
               {/* Software Club Service */}
-              <div className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow text-center">
-                <div className="w-16 h-16 bg-[#166D86] rounded-full flex items-center justify-center mx-auto mb-6 -mt-8">
+              <div className="relative bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow text-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-[#166D86] rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 -mt-6 md:-mt-8">
                   <svg
-                    className="w-8 h-8 text-white"
+                    className="w-6 h-6 md:w-8 md:h-8 text-white"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
                     <path d="M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H0V20H24V18H20Z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-[#2F327D]">
+                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-[#2F327D]">
                   Software Club
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                   There are different categories of past questions in different
                   courses from 100L to 500L that you can study from and prepare
                   for exams
@@ -823,20 +837,20 @@ export default function About() {
               </div>
 
               {/* Hardware Club Service */}
-              <div className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow text-center">
-                <div className="w-16 h-16 bg-[#166D86] rounded-full flex items-center justify-center mx-auto mb-6 -mt-8">
+              <div className="relative bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow text-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-[#166D86] rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 -mt-6 md:-mt-8">
                   <svg
-                    className="w-8 h-8 text-white"
+                    className="w-6 h-6 md:w-8 md:h-8 text-white"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
                     <path d="M17,17H7V7H17M21,11V9H19V7C19,5.89 18.1,5 17,5H15V3H13V5H11V3H9V5H7C5.89,5 5,5.89 5,7V9H3V11H5V13H3V15H5V17C5,18.1 5.89,19 7,19H9V21H11V19H13V21H15V19H17C18.1,19 19,18.1 19,17V15H21V13H19V11M13,13H11V11H13V13Z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-[#2F327D]">
+                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-[#2F327D]">
                   Hardware Club
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                   There are different categories of past questions in different
                   courses from 100L to 500L that you can study from and prepare
                   for exams
@@ -847,33 +861,35 @@ export default function About() {
         </section>
 
         {/* Mental Health Section */}
-        <section className="py-16 bg-white">
+        <section className="py-8 md:py-16 bg-white w-full">
           <div className="container mx-auto px-4">
-            <div className="flex items-center gap-12 max-w-6xl mx-auto">
-              <div className="w-1/2">
-                <h2 className="text-3xl font-bold mb-6 text-[#2F327D]">
-                  Pay attention to your <br />
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 max-w-6xl mx-auto">
+              <div className="w-full md:w-1/2">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-[#2F327D] text-center md:text-left">
+                  Pay attention to your <br className="hidden md:block" />
                   <span className="text-[#0FACAC]">Mental Health</span>
                 </h2>
-                <div className="space-y-4 mb-8">
-                  <p className="text-gray-600 leading-relaxed">
+                <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
+                  <p className="text-gray-600 leading-relaxed text-sm md:text-base text-center md:text-left">
                     To improve the department and to ensure activities like 
                     fresher's welcome, HOD's Cup and others are able to be achieved.
                   </p>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed text-sm md:text-base text-center md:text-left">
                     paying your ELA Dues shows how important this department is to you.
                   </p>
                 </div>
-                <button className="bg-[#166D86] text-white px-8 py-3 rounded-full font-medium hover:bg-[#0FACAC] transition-colors">
-                  Explore
-                </button>
+                <div className="text-center md:text-left">
+                  <button className="bg-[#166D86] text-white px-6 md:px-8 py-2 md:py-3 rounded-full font-medium hover:bg-[#0FACAC] transition-colors text-sm md:text-base">
+                    Explore
+                  </button>
+                </div>
               </div>
-              <div className="w-1/2 flex justify-center">
+              <div className="w-full md:w-1/2 flex justify-center">
                 <div className="relative max-w-md">
                   {/* Light bulb icon */}
-                  <div className="absolute -top-2 -right-4 w-12 h-12 bg-[#98FF98] rounded-full flex items-center justify-center z-10">
+                  <div className="absolute -top-2 -right-4 w-10 h-10 md:w-12 md:h-12 bg-[#98FF98] rounded-full flex items-center justify-center z-10">
                     <svg
-                      className="w-6 h-6 text-[#0FACAC]"
+                      className="w-5 h-5 md:w-6 md:h-6 text-[#0FACAC]"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -885,7 +901,7 @@ export default function About() {
                     alt="People walking together for mental health"
                     width={350}
                     height={280}
-                    className="w-full h-auto"
+                    className="w-full h-auto rounded-lg"
                   />
                 </div>
               </div>
@@ -894,13 +910,13 @@ export default function About() {
         </section>
 
         {/* Meet the Developers */}
-          <section className="py-16 bg-white">
+          <section className="py-8 md:py-16 bg-white w-full">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-[#2F327D]">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#2F327D]">
                 Meet the <span className="text-[#0FACAC]">Developers</span>
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base px-2 md:px-0">
                 Get to know the people responsible for creating and developing both the mobile app and website
               </p>
             </div>
@@ -1107,32 +1123,72 @@ export default function About() {
         </section>
 
         {/* CTA Section */}
-         <section className="py-16 bg-white">
+         <section className="py-8 md:py-16 bg-white">
           <div className="container mx-auto px-4">
                     <div className="relative max-w-6xl mx-auto">
-                      <Image src="/GirlSittingWithPen.png" height={234.135} width={1016.67} alt="Newsletter sign-up background" className="w-full"/>
-                      <div className="absolute top-[25%] left-[20%] flex flex-col gap-6 items-left w-[60%]">
-                        <h2 className="text-[#2F327D] font-bold text-3xl text-left w-[75%]">Get <span className=" text-[#0FACAC]">Past Questions</span> with ease and ensure you use them efficiently and consistently</h2>          
-                        <div>
-                          <button 
-                              type="submit"
-                              className="bg-[#166D86] text-white rounded-4xl py-2 px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium"
-                            >
-                              Get Past Questions
-                            </button>
+                      {/* Desktop Layout - Original design */}
+                      <div className="hidden md:block">
+                        <Image src="/GirlSittingWithPen.png" height={234.135} width={1016.67} alt="Newsletter sign-up background" className="w-full"/>
+                        <div className="absolute top-[25%] left-[20%] flex flex-col gap-6 items-left w-[60%]">
+                          <h2 className="text-[#2F327D] font-bold text-3xl text-left w-[75%]">Get <span className=" text-[#0FACAC]">Past Questions</span> with ease and ensure you use them efficiently and consistently</h2>          
+                          <div>
+                            <button 
+                                type="submit"
+                                className="bg-[#166D86] text-white rounded-4xl py-2 px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium"
+                              >
+                                Get Past Questions
+                              </button>
+                          </div>
                         </div>
                       </div>
                       
+                      {/* Mobile Layout - Image background like desktop */}
+                      <div className="md:hidden">
+                        <div className="relative rounded-2xl overflow-hidden">
+                          {/* Background Image */}
+                          <Image 
+                            src="/GirlSittingWithPen.png" 
+                            alt="Newsletter sign-up background" 
+                            width={1000} 
+                            height={234}
+                            className="w-full h-full object-cover"
+                          />
+                          
+                          {/* Content Overlay */}
+                          <div className="absolute inset-0 p-6 flex flex-col justify-center">
+                            <div className="max-w-[60%]">
+                              <h2 className="text-[#2F327D] font-bold text-sm leading-tight mb-4">
+                                Get <span className="text-[#0FACAC]">Past Questions</span> with ease and ensure you use them efficiently and consistently
+                              </h2>
+                              <button 
+                                type="submit"
+                                className="bg-[#166D86] text-white rounded-full py-3 px-6 hover:bg-[#0FACAC] transition-colors duration-200 font-medium text-sm whitespace-nowrap"
+                              >
+                                Get Past Questions
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
           </div>
                   </section>
 
         {/* ACES Secretariat Section */}
-        <section className="py-16 bg-white">
+        <section className="py-8 md:py-16 bg-white">
           <div className="container mx-auto px-4">
-            <div className="flex gap-12 items-center max-w-6xl mx-auto">
-              <div className="w-1/2">
-                <div className="bg-gray-100 h-80 rounded-lg overflow-hidden">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center max-w-6xl mx-auto">
+              
+              {/* Mobile Title - Show at top on mobile */}
+              <div className="md:hidden w-full text-center mb-4">
+                <h2 className="text-2xl font-bold text-[#2F327D]">
+                  <span className="text-[#0FACAC]">ACES SECRETARIAT</span>
+                </h2>
+              </div>
+
+              {/* Map Section */}
+              <div className="w-full md:w-1/2 order-2 md:order-1">
+                <div className="bg-gray-100 h-60 md:h-80 rounded-lg overflow-hidden">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.7857842896586!2d5.626827814683795!3d6.399267925756586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1040d7dabf8a4ca1%3A0x6d9b2d4c4b4b4b4b!2sFaculty%20of%20Engineering%2C%20University%20of%20Benin!5e0!3m2!1sen!2sng!4v1640000000000!5m2!1sen!2sng"
                     width="100%"
@@ -1145,29 +1201,34 @@ export default function About() {
                   ></iframe>
                 </div>
               </div>
-              <div className="w-1/2">
-                <h2 className="text-3xl font-bold mb-6 text-[#2F327D]">
+
+              {/* Content Section */}
+              <div className="w-full md:w-1/2 order-1 md:order-2">
+                {/* Desktop Title */}
+                <h2 className="hidden md:block text-3xl font-bold mb-6 text-[#2F327D]">
                   <span className="text-[#0FACAC]">ACES SECRETARIAT</span>
                 </h2>
-                <p className="text-gray-600 mb-8 leading-relaxed">
+                
+                <p className="text-gray-600 mb-6 md:mb-8 leading-relaxed text-sm md:text-base text-center md:text-left">
                   To improve the department and to ensure activities like
                   fresher's welcome, HOD's Cup and others are able to be
                   achieved.
                 </p>
 
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#166D86] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <div className="space-y-4 md:space-y-6">
+                  {/* Location */}
+                  <div className="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-4">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-[#166D86] rounded-full flex items-center justify-center flex-shrink-0">
                       <svg
-                        className="w-6 h-6 text-white"
+                        className="w-5 h-5 md:w-6 md:h-6 text-white"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                       </svg>
                     </div>
-                    <div>
-                      <p className="text-gray-600 leading-relaxed">
+                    <div className="text-center md:text-left">
+                      <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                         <span className="font-semibold text-[#2F327D]">
                           Before the Electrical Engineering Building,
                         </span>
@@ -1177,33 +1238,34 @@ export default function About() {
                     </div>
                   </div>
 
-                  <div className="flex gap-6">
+                  {/* Phone Numbers */}
+                  <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-[#166D86] rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 md:w-12 md:h-12 bg-[#166D86] rounded-full flex items-center justify-center">
                         <svg
-                          className="w-6 h-6 text-white"
+                          className="w-5 h-5 md:w-6 md:h-6 text-white"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
                           <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                         </svg>
                       </div>
-                      <span className="text-[#2F327D] font-semibold">
+                      <span className="text-[#2F327D] font-semibold text-sm md:text-base">
                         08054287652
                       </span>
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-[#166D86] rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 md:w-12 md:h-12 bg-[#166D86] rounded-full flex items-center justify-center">
                         <svg
-                          className="w-6 h-6 text-white"
+                          className="w-5 h-5 md:w-6 md:h-6 text-white"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
                           <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                         </svg>
                       </div>
-                      <span className="text-[#2F327D] font-semibold">
+                      <span className="text-[#2F327D] font-semibold text-sm md:text-base">
                         08054287652
                       </span>
                     </div>
