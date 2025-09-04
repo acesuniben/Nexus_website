@@ -1,18 +1,20 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-interface SidebarProps {
-  activeItem?: string;
-}
-
-export default function Sidebar({ activeItem = "Dashboard" }: SidebarProps) {
+export default function Sidebar() {
+  const pathname = usePathname();
+  
   const menuItems = [
-    { name: "Dashboard", icon: "🏠", href: "/" },
-    { name: "Registration", icon: "📝", href: "/registration" },
-    { name: "MHS", icon: "🧠", href: "/mhs" },
-    { name: "Forum", icon: "💬", href: "/forum" },
-    { name: "Timetable", icon: "📅", href: "/timetable" },
-    { name: "Blog", icon: "📰", href: "/blog" },
-    { name: "Students", icon: "👨‍🎓", href: "/students" },
+    { name: "Dashboard", icon: "🏠", href: "/dashboard" },
+    { name: "Registration", icon: "📝", href: "/dashboard/registration" },
+    { name: "MHS", icon: "🧠", href: "/dashboard/mhs" },
+    { name: "Forum", icon: "💬", href: "/dashboard/forum" },
+    { name: "Timetable", icon: "📅", href: "/dashboard/timetable" },
+    { name: "Blog", icon: "📰", href: "/dashboard/blog" },
+    { name: "Students", icon: "👨‍🎓", href: "/dashboard/students" },
   ];
 
   return (
@@ -23,25 +25,28 @@ export default function Sidebar({ activeItem = "Dashboard" }: SidebarProps) {
       </div>
       <nav className="flex-1">
         <ul className="space-y-4 text-gray-500">
-          {menuItems.map((item) => (
-            <li key={item.name}>
-              <a
-                href={item.href}
-                className={`flex items-center gap-2 px-2 py-1 rounded-lg transition-colors ${
-                  activeItem === item.name
-                    ? "font-semibold"
-                    : "hover:bg-gray-50"
-                }`}
-                style={{
-                  color: activeItem === item.name ? '#166D86' : '#6B7280',
-                  backgroundColor: activeItem === item.name ? '#F0F9FF' : 'transparent'
-                }}
-              >
-                <span>{item.icon}</span>
-                {item.name}
-              </a>
-            </li>
-          ))}
+          {menuItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  className={`flex items-center gap-2 px-2 py-1 rounded-lg transition-colors ${
+                    isActive
+                      ? "font-semibold"
+                      : "hover:bg-gray-50"
+                  }`}
+                  style={{
+                    color: isActive ? '#166D86' : '#6B7280',
+                    backgroundColor: isActive ? '#F0F9FF' : 'transparent'
+                  }}
+                >
+                  <span>{item.icon}</span>
+                  {item.name}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </aside>

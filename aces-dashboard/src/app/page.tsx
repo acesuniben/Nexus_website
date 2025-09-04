@@ -1,8 +1,22 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Home() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    
+    // Simulate login process
+    setTimeout(() => {
+      router.push('/dashboard');
+    }, 1000);
+  };
   return (
     <div className="min-h-screen flex items-center justify-center relative">
       {/* Background Image */}
@@ -38,7 +52,7 @@ export default function Home() {
         </div>
 
         {/* Form */}
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
           {/* Email Field */}
           <div>
             <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -99,13 +113,14 @@ export default function Home() {
           {/* Sign In Button */}
           <button
             type="submit"
-            className="w-full text-white py-3 px-4 rounded-lg font-semibold hover:opacity-90 transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-lg"
+            disabled={isLoading}
+            className="w-full text-white py-3 px-4 rounded-lg font-semibold hover:opacity-90 transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-lg disabled:opacity-50"
             style={{ 
               backgroundColor: '#166D86',
               '--tw-ring-color': '#166D86'
             } as React.CSSProperties}
           >
-            Sign in
+            {isLoading ? 'Signing in...' : 'Sign in'}
           </button>
         </form>
       </div>
