@@ -58,7 +58,7 @@ export default function Software() {
             </div>
             <div className="w-[90%] grid grid-cols-1 md:grid-cols-2 gap-10 mx-auto md:mx-none">
               {niches.map(niche => (
-                <div key={niche.title} className="self-center flex justify-between gap-2 bg-white rounded-4xl shadow-xl p-10 mx-auto w-[90%] md:w-100 h-50">
+                <div key={niche.title} className="self-center flex justify-between gap-2 bg-white rounded-4xl shadow-xl p-10 mx-auto w-[100%] md:w-100 h-50">
                   <div className="flex flex-col justify-between">
                     <h4 className="text-[#2F327D] text-xl text-left font-medium">{niche.title} <br/> {niche.name}</h4>
                     <div ><a className="flex gap-2 items-center text-sm font-semibold" href={niche.link}><Image src="Icon.svg" alt="navigation arrow" width={30} height={30}/> <p>Join Now</p></a></div>
@@ -133,7 +133,7 @@ export default function Software() {
           <section className="w-full flex justify-center items-center">
             <div className="relative w-[90%]">
               <Image src="/subscribe.svg" height={600} width={1525} alt="Newsletter sign-up background" className="w-full"/>
-              <div className="px-4 py-2 md:p-0 absolute top-0 md:top-[30%] md:left-[20%] m-auto flex gap-5 md:gap-20 items-start w-[100%] md:w-[60%] h-full">
+              <div className="px-5 py-2 md:p-0 absolute top-0 md:top-[30%] md:left-[20%] m-auto flex gap-5 md:gap-20 items-start w-[100%] md:w-[60%] h-full">
                   <div className="w-auto md:w-2/3 flex flex-col gap-2 md:gap-10 items-start">
                     <p className="text-[#2F327D] text-sm md:text-3xl font-bold ">Interested in <span className="text-[#0FACAC]">Hardware?</span> The Hardware Club is Available for you. Check it out.</p>
                     <div className="text-white  bg-[#166D86] text-xs md:text-lg px-2 py-1 md:px-6 md:py-2 rounded-3xl"><Link href="/hardware">Hardware Club</Link></div>
