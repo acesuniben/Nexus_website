@@ -28,13 +28,18 @@ export default function ForumPage() {
       <main className="flex-1 p-10">
         {/* Top Bar */}
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-xl font-semibold text-teal-700">Forum</h2>
+          <h2 className="text-xl font-semibold" style={{ color: '#166D86' }}>Forum</h2>
           <div className="flex items-center gap-4">
             <div className="relative">
-              <input type="text" placeholder="Search" className="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500" />
+              <input 
+                type="text" 
+                placeholder="Search" 
+                className="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:border-opacity-50"
+                style={{ '--tw-ring-color': '#0E4A5B' } as React.CSSProperties}
+              />
               <span className="absolute left-3 top-2 text-gray-400">🔍</span>
             </div>
-            <button className="bg-teal-700 text-white px-6 py-2 rounded-full shadow-md hover:bg-teal-800 transition font-semibold">+ Add New</button>
+            <button className="text-white px-6 py-2 rounded-full shadow-md hover:opacity-90 transition font-semibold" style={{ backgroundColor: '#166D86' }}>+ Add New</button>
           </div>
         </div>
 
@@ -59,9 +64,9 @@ export default function ForumPage() {
                   <td className="py-4 px-2 text-gray-700">{item.id}</td>
                   <td className="py-4 px-2 text-gray-700">{item.title}</td>
                   <td className="py-4 px-2 text-gray-700">{item.description}</td>
-                  <td className="py-4 px-2 text-gray-700 flex items-center gap-2"><span className="text-teal-500">📅</span> {item.date}</td>
+                  <td className="py-4 px-2 text-gray-700 flex items-center gap-2"><span style={{ color: '#166D86' }}>📅</span> {item.date}</td>
                   <td className="py-4 px-2">
-                    <span className="bg-teal-50 text-teal-700 px-6 py-2 rounded-full font-semibold text-sm">{item.status}</span>
+                    <span className="px-6 py-2 rounded-full font-semibold text-sm" style={{ backgroundColor: '#F0F9FF', color: '#166D86' }}>{item.status}</span>
                   </td>
                   <td className="py-4 px-2 text-right"><button className="text-red-400 hover:text-red-600">🗑️</button></td>
                 </tr>

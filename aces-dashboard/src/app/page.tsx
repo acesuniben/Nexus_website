@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 export default function Home() {
@@ -46,7 +48,18 @@ export default function Home() {
               type="email"
               id="email"
               name="email"
-              className="w-full px-4 py-3 border-2 border-teal-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200"
+              className="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:ring-2 transition-all duration-200"
+              style={{ 
+                borderColor: '#D1D5DB', 
+                '--tw-ring-color': '#166D86',
+                '--tw-border-opacity': '1'
+              } as React.CSSProperties}
+              onFocus={(e) => {
+                e.target.style.borderColor = '#166D86';
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = '#D1D5DB';
+              }}
               placeholder=""
             />
           </div>
@@ -60,14 +73,25 @@ export default function Home() {
               type="password"
               id="password"
               name="password"
-              className="w-full px-4 py-3 border-2 border-teal-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200"
+              className="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:ring-2 transition-all duration-200"
+              style={{ 
+                borderColor: '#D1D5DB', 
+                '--tw-ring-color': '#166D86',
+                '--tw-border-opacity': '1'
+              } as React.CSSProperties}
+              onFocus={(e) => {
+                e.target.style.borderColor = '#166D86';
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = '#D1D5DB';
+              }}
               placeholder=""
             />
           </div>
 
           {/* Forgot Password Link */}
           <div className="text-right mb-6">
-            <a href="#" className="text-sm text-teal-600 hover:text-teal-700 underline">
+            <a href="#" className="text-sm underline hover:opacity-80" style={{ color: '#166D86' }}>
               Forgot Password?
             </a>
           </div>
@@ -75,7 +99,11 @@ export default function Home() {
           {/* Sign In Button */}
           <button
             type="submit"
-            className="w-full bg-teal-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 shadow-lg"
+            className="w-full text-white py-3 px-4 rounded-lg font-semibold hover:opacity-90 transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-lg"
+            style={{ 
+              backgroundColor: '#166D86',
+              '--tw-ring-color': '#166D86'
+            } as React.CSSProperties}
           >
             Sign in
           </button>

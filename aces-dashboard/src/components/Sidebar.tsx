@@ -19,7 +19,7 @@ export default function Sidebar({ activeItem = "Dashboard" }: SidebarProps) {
     <aside className="w-64 bg-white border-r flex flex-col py-8 px-6">
       <div className="flex items-center mb-10">
         <Image src="/logo.png" alt="ACES Logo" width={40} height={40} className="mr-2" />
-        <span className="font-bold text-lg text-teal-700">ACES</span>
+        <span className="font-bold text-lg" style={{ color: '#166D86' }}>ACES</span>
       </div>
       <nav className="flex-1">
         <ul className="space-y-4 text-gray-500">
@@ -29,9 +29,13 @@ export default function Sidebar({ activeItem = "Dashboard" }: SidebarProps) {
                 href={item.href}
                 className={`flex items-center gap-2 px-2 py-1 rounded-lg transition-colors ${
                   activeItem === item.name
-                    ? "text-teal-600 font-semibold bg-teal-50"
-                    : "hover:text-teal-600 hover:bg-teal-50"
+                    ? "font-semibold"
+                    : "hover:bg-gray-50"
                 }`}
+                style={{
+                  color: activeItem === item.name ? '#166D86' : '#6B7280',
+                  backgroundColor: activeItem === item.name ? '#F0F9FF' : 'transparent'
+                }}
               >
                 <span>{item.icon}</span>
                 {item.name}
