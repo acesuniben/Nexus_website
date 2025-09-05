@@ -109,7 +109,9 @@ export default function Home() {
               <p className="text-md">paying your ELA Dues shows how important this department is to you.</p>
             </div>
             <div className="w-[90%] md:w-1/3 relative">
-              <Image src="/wallet.svg" height={466.67} width={550.07} alt="Wallet Icon"/>
+              <Link href="/dues">
+                <Image src="/wallet.svg" height={466.67} width={550.07} alt="Wallet Icon"/>
+              </Link>
               <div className="flex flex-col gap-5 bg-white border-l-8 border-[#0FACAC] px-6 py-8  absolute top-[70%] left-[10%] md:left-[20%] w-[90%] md:w-[100%] rounded-xl shadow-xl">
                 <div className="flex gap-2 items-center text-sm">
                   <Image src="/contact.svg" width={40} height={40} alt="Contact Icon"/>
