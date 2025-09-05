@@ -30,7 +30,7 @@ export default function Software() {
             <p className="w-[80%] mx-auto">Making a difference and inspiring new wave of tech</p>
           </section>
           
-          <section className="w-full flex flex-col items-center text-center">
+          <section className="w-[90%] flex flex-col items-center text-center">
             <div className="relative">
               <div className="flex gap-1 md:gap-3 px-2 md:py-0 md:px-5 w-1/2 absolute left-[30%] top-[0%]">
                 <div className="bg-[#166D86] text-white w-2/5 rounded-4xl md:px-10 md:py-4 text-xs md:text-xl font-bold p-0.5"><Link key='about' href='/about'>About Us </Link></div>
@@ -56,9 +56,9 @@ export default function Software() {
               <h2 className="text-3xl font-bold text-[#2F327D]">Explore our Different <span className="text-[#0FACAC]">Niches</span></h2>
               <p className="w-[90%] md:w-1/2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
             </div>
-            <div className="w-[90%] grid grid-cols-1 md:grid-cols-2 gap-10 mx-auto md:mx-none">
+            <div className="w-[90%] md:w-[80%] grid grid-cols-1 md:grid-cols-2 gap-15 mx-auto md:mx-none">
               {niches.map(niche => (
-                <div key={niche.title} className="self-center flex justify-between gap-2 bg-white rounded-4xl shadow-xl p-10 mx-auto w-[100%] md:w-100 h-50">
+                <div key={niche.title} className="self-center flex justify-between gap-2 bg-white rounded-4xl shadow-xl p-10 mx-auto w-[100%] h-50">
                   <div className="flex flex-col justify-between">
                     <h4 className="text-[#2F327D] text-xl text-left font-medium">{niche.title} <br/> {niche.name}</h4>
                     <div ><a className="flex gap-2 items-center text-sm font-semibold" href={niche.link}><Image src="Icon.svg" alt="navigation arrow" width={30} height={30}/> <p>Join Now</p></a></div>
