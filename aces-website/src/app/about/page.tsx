@@ -363,6 +363,7 @@ export default function About() {
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={30}
                 slidesPerView={3}
+                loop={true}
                 navigation={{
                   prevEl: '.swiper-button-prev-custom',
                   nextEl: '.swiper-button-next-custom',
@@ -374,6 +375,7 @@ export default function About() {
                 autoplay={{
                   delay: 3000,
                   disableOnInteraction: false,
+                  reverseDirection: false,
                 }}
                 breakpoints={{
                   320: {
@@ -941,6 +943,7 @@ export default function About() {
             <div className="relative max-w-6xl mx-auto">
               {/* Swiper Carousel */}
               <Swiper
+              loop={true}
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={30}
                 slidesPerView={3}
@@ -970,6 +973,7 @@ export default function About() {
                     spaceBetween: 30,
                   },
                 }}
+                direction="horizontal"
                 className="developer-carousel"
               >
                 {/* Developer 1 - Obuh Daniel */}
