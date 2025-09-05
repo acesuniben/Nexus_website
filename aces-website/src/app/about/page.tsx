@@ -1157,7 +1157,7 @@ export default function About() {
                           {/* Content Overlay */}
                           <div className="absolute inset-0 p-6 flex flex-col justify-center">
                             <div className="max-w-[60%]">
-                              <h2 className="text-[#2F327D] font-bold text-sm leading-tight mb-4">
+                              <h2 className="text-[#2F327D] font-bold text-xs leading-tight mb-4">
                                 Get <span className="text-[#0FACAC]">Past Questions</span> with ease and ensure you use them efficiently and consistently
                               </h2>
                               <button 
