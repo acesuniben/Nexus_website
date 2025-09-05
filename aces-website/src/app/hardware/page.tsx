@@ -24,10 +24,13 @@ export default function Software() {
     <div className="">
         <Header/>
         <main className="flex flex-col gap-25 items-center mb-20">
+          {/* Hero Section */}
           <section className="w-2/3 text-center flex flex-col gap-3 mt-20">
             <h1 className="text-4xl text-[#2F327D] font-bold">Association of Computer Engineering <br/>Students <span className="text-[#0FACAC] ">Hardware Club</span></h1>
             <p className="">Making a difference and inspiring new wave of hardware engineers</p>
           </section>
+
+          {/* Hero Image with Navigation Buttons */}
           <section className="w-full flex flex-col items-center text-center">
             <div className="relative">
               <div className="flex gap-3 px-5 w-1/2 absolute left-[30%]">
@@ -37,6 +40,8 @@ export default function Software() {
               <Image src="/Subtract-Hardware.png" alt="ACES Students" width={1088} height={549} />
             </div>
           </section>
+
+          {/* About the Club Section */}
           <section className="flex justify-evenly">
             <div className="flex flex-col gap-2 relative w-2/5 items-start justify-evenly">
               <Image src="/pointers.svg" width={474.67} height={64.99} alt="pointers illustration" className="absolute -top-8 -left-2 -z-0"/>
@@ -47,7 +52,8 @@ export default function Software() {
               <Image src="/softGroup.png" height={359.33} width={498.67} alt="Picture of students listening to their teacher in their classroom"/>
             </div>
           </section>
-          {/* Explore Areas */}
+
+          {/* Hardware Niches/Areas Section */}
           <section className="text-center flex flex-col items-center gap-20 w-full">
             <div className="w-full flex flex-col gap-5 items-center">
               <h2 className="text-3xl font-bold text-[#2F327D]">Explore our Different <span className="text-[#0FACAC]">Niches</span></h2>
@@ -67,7 +73,7 @@ export default function Software() {
             </div>
           </section>
 
-          {/* Time and Location Section */}
+          {/* Time and Location Information Section */}
           <section className="flex items-center gap-12 w-full max-w-6xl mx-auto">
             <div className="w-1/2 flex flex-col gap-6">
               <h2 className="text-3xl font-bold text-[#2F327D]">
@@ -178,6 +184,7 @@ export default function Software() {
             </div>
           </section>
 
+          {/* Mobile App Promotion Section */}
           <section className="flex items-center w-[100%] mt-10">
               <div className="w-2/5">
                 <Image src="/softapp.png" alt="ACES Mobile app Mockup" height={931.93} width={851.64}/>
@@ -193,9 +200,9 @@ export default function Software() {
               </div>
           </section>
 
-{/* Governors Section */}
+          {/* Hardware Club Governors Section */}
           <section className="text-center flex flex-col items-center gap-20 w-full">
-            <div className="w-full flex flex-col gap-8 items-center">
+            <div className="w-full flex flex-col gap-5 items-center">
               <h2 className="text-3xl font-bold text-[#2F327D]">ACES Hardware Club <span className="text-[#0FACAC]">Governors</span></h2>
               <p className="w-1/2">These are the people that are in charge and also run the activities of the hardware club. Curious? Look below.</p>
             </div>
@@ -203,14 +210,14 @@ export default function Software() {
               {/* First two governors in a row */}
               <div className="flex gap-10 justify-center w-full">
                 {governors.slice(0, 2).map(governor => (
-                  <div key={governor.name} className="flex text-left px-4 py-1 shadow-lg rounded-xl">
+                  <div key={governor.name} className="flex text-left px-6 py-4 shadow-lg rounded-xl w-full max-w-lg">
                     <div><Image src={governor.picture} width={331.72} height={331.72} alt={"Picture of the " + governor.role + " " + governor.name}/></div>
-                    <div className="flex flex-col justify-around px-2">
-                      <div>
-                        <h3 className="text-md font-semibold text-[#2F327D]">{governor.name}</h3>
-                        <h4 className="text-sm font-semibold text-[#0FACAC]">{governor.role}</h4>
+                    <div className="flex flex-col justify-between px-4 min-h-full">
+                      <div className="mb-4">
+                        <h3 className="text-lg font-semibold text-[#2F327D] mb-1">{governor.name}</h3>
+                        <h4 className="text-base font-semibold text-[#0FACAC]">{governor.role}</h4>
                       </div>
-                      <p className="text-xs w-[90%]">{governor.description}</p>
+                      <p className="text-sm w-[90%] mb-4 flex-1">{governor.description}</p>
                       <div className="flex gap-4">
                         <a href={governor.facebook}><Image src="/facebook.svg" width={20} height={20} alt="Facebook Icon"/></a>
                         <a href={governor.github}><Image src="/github.svg" width={20} height={20} alt="Github Icon"/></a>
@@ -222,26 +229,29 @@ export default function Software() {
               </div>
               
               {/* Third governor centered */}
-              {governors.slice(2, 3).map(governor => (
-                <div key={governor.name} className="flex text-left px-4 py-1 shadow-lg rounded-xl">
-                  <div><Image src={governor.picture} width={331.72} height={331.72} alt={"Picture of the " + governor.role + " " + governor.name}/></div>
-                  <div className="flex flex-col justify-around px-2">
-                    <div>
-                      <h3 className="text-md font-semibold text-[#2F327D]">{governor.name}</h3>
-                      <h4 className="text-sm font-semibold text-[#0FACAC]">{governor.role}</h4>
-                    </div>
-                    <p className="text-xs w-[90%]">{governor.description}</p>
-                    <div className="flex gap-4">
-                      <a href={governor.facebook}><Image src="/facebook.svg" width={20} height={20} alt="Facebook Icon"/></a>
-                      <a href={governor.github}><Image src="/github.svg" width={20} height={20} alt="Github Icon"/></a>
-                      {/* <a href={governor.linkedin}><Image src="/linkedin.svg" width={20} height={20} alt="LinkedIn Icon"/></a> */}
+              <div className="flex justify-center w-full">
+                {governors.slice(2, 3).map(governor => (
+                  <div key={governor.name} className="flex text-left px-6 py-4 shadow-lg rounded-xl w-full max-w-lg">
+                    <div><Image src={governor.picture} width={331.72} height={331.72} alt={"Picture of the " + governor.role + " " + governor.name}/></div>
+                    <div className="flex flex-col justify-between px-4 min-h-full">
+                      <div className="mb-4">
+                        <h3 className="text-lg font-semibold text-[#2F327D] mb-1">{governor.name}</h3>
+                        <h4 className="text-base font-semibold text-[#0FACAC]">{governor.role}</h4>
+                      </div>
+                      <p className="text-sm w-[90%] mb-4 flex-1">{governor.description}</p>
+                      <div className="flex gap-4">
+                        <a href={governor.facebook}><Image src="/facebook.svg" width={20} height={20} alt="Facebook Icon"/></a>
+                        <a href={governor.github}><Image src="/github.svg" width={20} height={20} alt="Github Icon"/></a>
+                        {/* <a href={governor.linkedin}><Image src="/linkedin.svg" width={20} height={20} alt="LinkedIn Icon"/></a> */}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </section>
 
+          {/* Club Activities Section */}
           <section className="flex flex-col gap-20 items-center w-[100%]">
            <div className="w-full flex flex-col gap-8 items-center">
               <h2 className="text-3xl font-bold text-[#2F327D]">Club <span className="text-[#0FACAC]">Activities</span></h2>
@@ -259,6 +269,7 @@ export default function Software() {
             </div>
           </section>
 
+          {/* Software Club CTA Section */}
           <section className="w-full flex justify-center items-center">
             <div className="relative w-[90%]">
               <Image src="/cta-software.png" height={234.135} width={1016.67} alt="Newsletter sign-up background" className="w-full"/>
