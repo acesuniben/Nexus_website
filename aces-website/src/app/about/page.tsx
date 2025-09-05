@@ -863,22 +863,22 @@ export default function About() {
         {/* Mental Health Section */}
         <section className="py-8 md:py-16 bg-white w-full">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 max-w-6xl mx-auto">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 max-w-6xl mx-auto">
               <div className="w-full md:w-1/2">
-                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-[#2F327D] text-center md:text-left">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-[#2F327D] text-left">
                   Pay attention to your <br className="hidden md:block" />
                   <span className="text-[#0FACAC]">Mental Health</span>
                 </h2>
                 <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
-                  <p className="text-gray-600 leading-relaxed text-sm md:text-base text-center md:text-left">
+                  <p className="text-gray-600 leading-relaxed text-sm md:text-base text-left">
                     To improve the department and to ensure activities like 
                     fresher's welcome, HOD's Cup and others are able to be achieved.
                   </p>
-                  <p className="text-gray-600 leading-relaxed text-sm md:text-base text-center md:text-left">
+                  <p className="text-gray-600 leading-relaxed text-sm md:text-base text-left">
                     paying your ELA Dues shows how important this department is to you.
                   </p>
                 </div>
-                <div className="text-center md:text-left">
+                <div className="text-left">
                   <button className="bg-[#166D86] text-white px-6 md:px-8 py-2 md:py-3 rounded-full font-medium hover:bg-[#0FACAC] transition-colors text-sm md:text-base">
                     Explore
                   </button>
