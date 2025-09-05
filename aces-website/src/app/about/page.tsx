@@ -171,16 +171,13 @@ export default function About() {
                     </h2>
                   </div>
                 </div>
-                <p className="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
+                <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                   Computer Engineering is a department in the faculty of
                   Engineering, university of Benin, It consists of five (5)
-                  levels from 100L - 500L.
-                </p>
-                <p className="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
-                  Recently the department had a new HOD and consists of amazing
+                  levels from 100L - 500L. <br /> Recently the department had a new HOD and consists of amazing
                   lecturers. The department has a set of executives that govern
                   the affairs of the students and also ensures that things go
-                  smoothly and are coordinated
+                  smoothly and are coordinated.
                 </p>
               </div>
             </div>
@@ -396,17 +393,19 @@ export default function About() {
               >
                 {/* President */}
                 <SwiperSlide>
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/ZackJennifer.png"
-                        alt="Zack Jennifer"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/ZackJennifer.png"
+                          alt="Zack Jennifer"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                       {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Zack Jennifer</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES President</p>
                         <div className="flex justify-center gap-3">
@@ -433,17 +432,19 @@ export default function About() {
 
                 {/* Vice President */}
                 <SwiperSlide>
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/AigbedeWisdom.png"
-                        alt="Aigbede E. Wisdom"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/AigbedeWisdom.png"
+                          alt="Aigbede E. Wisdom"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                       {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Aigbede E. Wisdom</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Vice President</p>
                         <div className="flex justify-center gap-3">
@@ -470,17 +471,19 @@ export default function About() {
 
                 {/* Sec. Gen. */}
                 <SwiperSlide>
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/IloSylvia.png"
-                        alt="Ilo Sylvia"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/IloSylvia.png"
+                          alt="Ilo Sylvia"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                       {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Ilo C. Sylvia</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Secretary General</p>
                         <div className="flex justify-center gap-3">
@@ -507,17 +510,19 @@ export default function About() {
 
                 {/* Asst. Sec. Gen */}
                 <SwiperSlide>
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/OkerekeAnn.png"
-                        alt="Okereke Chidalu Maryann"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/OkerekeAnn.png"
+                          alt="Okereke Chidalu Maryann"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                       {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Okereke Chidalu Maryann</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Assistant Secretary General</p>
                         <div className="flex justify-center gap-3">
@@ -544,17 +549,19 @@ export default function About() {
 
               {/* Fin. Sec. */}
                 <SwiperSlide>
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/AisekhameDivine.png"
-                        alt="Aisekhame T. Divine"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/AisekhameDivine.png"
+                          alt="Aisekhame T. Divine"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                       {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Aisekhame T. Divine</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Financial Secretary</p>
                         <div className="flex justify-center gap-3">
@@ -581,17 +588,19 @@ export default function About() {
 
                 {/* PRO */}
                 <SwiperSlide>
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/OsamedeAyela.png"
-                        alt="Osamede Ayela-Uwague"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/OsamedeAyela.png"
+                          alt="Osamede Ayela-Uwague"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                       {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Osamede Ayela-Uwague</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Public Relations Officer</p>
                         <div className="flex justify-center gap-3">
@@ -618,17 +627,19 @@ export default function About() {
 
                 {/* Dir. of Welfare */}
                 <SwiperSlide>
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/ObeiraOsa.png"
-                        alt="Obeira Osamudiamen"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/ObeiraOsa.png"
+                          alt="Obeira Osamudiamen"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                       {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Obeira Osamudiamen</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Director of Welfare</p>
                         <div className="flex justify-center gap-3">
@@ -655,17 +666,19 @@ export default function About() {
 
                 {/* Dir. of Sports */}
                 <SwiperSlide>
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/JoshuaCharles.png"
-                        alt="Joshua Charles"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/JoshuaCharles.png"
+                          alt="Joshua Charles"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                       {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Joshua Charles</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Director of Sports</p>
                         <div className="flex justify-center gap-3">
@@ -692,17 +705,19 @@ export default function About() {
 
                 {/* Dir. of Socials */}
                 <SwiperSlide>
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/GloryOmage.png"
-                        alt="Glory O. Omage"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/GloryOmage.png"
+                          alt="Glory O. Omage"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                       {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Glory O. Omage</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Director of Socials</p>
                         <div className="flex justify-center gap-3">
@@ -729,17 +744,19 @@ export default function About() {
 
               {/* Academic Advisor */}
                 <SwiperSlide>
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/PeaceAkhaze.png"
-                        alt="Peace Akhaze"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/PeaceAkhaze.png"
+                          alt="Peace Akhaze"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                       {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Peace Akhaze</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Academic Advisor</p>
                         <div className="flex justify-center gap-3">
@@ -958,16 +975,18 @@ export default function About() {
                 {/* Developer 1 - Obuh Daniel */}
                 <SwiperSlide>
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/ObuhDaniel.png"
-                        alt="Obuh Daniel"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
-                      {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/ObuhDaniel.png"
+                          alt="Obuh Daniel"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      {/* Floating overlay - positioned at bottom of container */}
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Obuh Daniel</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">Mobile App Developer</p>
                         <div className="flex justify-center gap-3">
@@ -995,16 +1014,18 @@ export default function About() {
                 {/* Developer 2 - Ayara Elijah */}
                 <SwiperSlide>
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/AyaraElijah.png"
-                        alt="Ayara Elijah"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
-                      {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/AyaraElijah.png"
+                          alt="Ayara Elijah"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      {/* Floating overlay - positioned at bottom of container */}
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Ayara Elijah</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">UI/UX Designer</p>
                         <div className="flex justify-center gap-3">
@@ -1032,16 +1053,18 @@ export default function About() {
                 {/* Developer 3 - Ogbaudu Oghenemaro */}
                 <SwiperSlide>
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/maro.png"
-                        alt="Oghenemaro Prosper"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
-                      {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/ogbaudu-Maro.png"
+                          alt="Oghenemaro Prosper"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      {/* Floating overlay - positioned at bottom of container */}
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Ogbaudu Oghenemaro</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">Web App Developer</p>
                         <div className="flex justify-center gap-3">
@@ -1069,16 +1092,18 @@ export default function About() {
                 {/* Developer 4 - Onwuka David */}
                 <SwiperSlide>
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full relative">
-                    <div className="relative">
-                      <Image
-                        src="/david.png"
-                        alt="Onwuka David"
-                        width={300}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
-                      {/* Floating overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg">
+                    <div className="relative h-96 flex flex-col">
+                      <div className="flex-1 relative">
+                        <Image
+                          src="/OnwukaDavid.jpg"
+                          alt="Onwuka David"
+                          width={300}
+                          height={400}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      {/* Floating overlay - positioned at bottom of container */}
+                      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
                         <h3 className="text-lg font-bold text-[#2F327D] mb-1">Onwuka David</h3>
                         <p className="text-[#0FACAC] font-medium mb-3 text-sm">Web App Developer</p>
                         <div className="flex justify-center gap-3">
