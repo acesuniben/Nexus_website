@@ -1200,7 +1200,7 @@ export default function About() {
                         </div>
                       </div>
                     </div>
-          </div>
+                  </div>
                   </section>
 
         {/* ACES Secretariat Section */}
