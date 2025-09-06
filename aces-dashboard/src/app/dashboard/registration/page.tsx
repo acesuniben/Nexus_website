@@ -168,12 +168,35 @@ export default function Registration() {
           >
             Registration
           </h1>
-          <div className="text-sm text-gray-600 bg-white px-3 py-1 rounded-full shadow-sm border">
-            {new Date().toLocaleDateString("en-GB", {
-              day: "2-digit",
-              month: "2-digit",
-              year: "numeric",
-            })}
+          <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-teal-50 px-4 py-2 rounded-xl shadow-lg border border-blue-100/50 backdrop-blur-sm">
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-teal-600 shadow-sm">
+              <svg
+                className="w-4 h-4 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+                Today
+              </span>
+              <span className="text-sm font-bold text-gray-800">
+                {new Date().toLocaleDateString("en-US", {
+                  weekday: "short",
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </span>
+            </div>
           </div>
         </div>
 
