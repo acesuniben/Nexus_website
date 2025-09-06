@@ -57,7 +57,8 @@ export default function Home() {
         }
         throw new Error(message);
       }
-      // Success: redirect
+      // Success: store token and redirect
+      localStorage.setItem("adminToken", token);
       router.push("/dashboard");
     } catch (err: any) {
       setError(err.message || "Login failed");
