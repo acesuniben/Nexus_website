@@ -120,7 +120,7 @@ export default function Home() {
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:ring-2 transition-all duration-200"
+              className="w-full px-4 py-3 border-2 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 transition-all duration-200"
               style={
                 {
                   borderColor: "#D1D5DB",
@@ -153,7 +153,7 @@ export default function Home() {
               name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:ring-2 transition-all duration-200"
+              className="w-full px-4 py-3 border-2 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 transition-all duration-200"
               style={
                 {
                   borderColor: "#D1D5DB",
@@ -172,16 +172,7 @@ export default function Home() {
             />
           </div>
 
-          {/* Forgot Password Link */}
-          <div className="text-right mb-6">
-            <a
-              href="#"
-              className="text-sm underline hover:opacity-80"
-              style={{ color: "#166D86" }}
-            >
-              Forgot Password?
-            </a>
-          </div>
+          {/* Forgot Password Link removed */}
 
           {/* Sign In Button */}
           <button
