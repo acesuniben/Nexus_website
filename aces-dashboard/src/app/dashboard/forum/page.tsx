@@ -42,25 +42,90 @@ export default function ForumPage() {
 
   const handleAddForum = async (formData: ForumFormData) => {
     try {
-      // Here you would typically make an API call to create the forum
-      console.log("Adding new forum:", formData);
+      let imageUrl = "";
 
-      // For now, just add to local state
-      const newForum: ForumItem = {
-        id: `#${Math.random().toString(36).substr(2, 6)}`,
-        title: formData.title,
-        description: formData.description,
-        date: new Date(formData.date).toLocaleDateString("en-US", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-        }),
-        status: "Active",
-      };
+      // Upload image first if provided
+      if (formData.image) {
+        const imageFormData = new FormData();
+        imageFormData.append("file", formData.image);
+        imageFormData.append("upload_preset", "your-upload-preset"); // You'll need to configure this in Cloudinary
 
-      setForums((prev) => [newForum, ...prev]);
+        const imageResponse = await fetch(
+          "https://api.cloudinary.com/v1_1/dcldvsih8/image/upload",
+          {
+            method: "POST",
+            body: imageFormData,
+          }
+        );
+
+        if (imageResponse.ok) {
+          const imageData = await imageResponse.json();
+          imageUrl = imageData.secure_url;
+        }
+      }
+
+      // Get token from localStorage
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Authentication token not found. Please log in again.");
+        window.location.href = "/";
+        return;
+      }
+
+      // Create forum post
+      const response = await fetch(
+        "https://aces-utky.onrender.com/api/admin/forum/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            title: formData.title,
+            Description: formData.description, // Note: capital 'D' as per schema
+            datePublished: formData.date,
+            imageUrl: imageUrl,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        const newForumData = await response.json();
+
+        // Add to local state for immediate UI update
+        const newForum: ForumItem = {
+          id: newForumData.id || `#${Math.random().toString(36).substr(2, 6)}`,
+          title: formData.title,
+          description: formData.description,
+          date: new Date(formData.date).toLocaleDateString("en-US", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          }),
+          status: "Active",
+        };
+
+        setForums((prev) => [newForum, ...prev]);
+        console.log("Forum created successfully:", newForumData);
+      } else if (response.status === 401) {
+        // Token expired or invalid
+        localStorage.removeItem("token");
+        alert("Your session has expired. Please log in again.");
+        window.location.href = "/";
+      } else if (response.status === 403) {
+        // Insufficient permissions
+        alert("You don't have permission to create forum posts.");
+      } else {
+        const errorData = await response.json();
+        console.error("Failed to create forum:", errorData);
+        alert(
+          `Failed to create forum: ${errorData.message || response.statusText}`
+        );
+      }
     } catch (error) {
       console.error("Error adding forum:", error);
+      alert("An error occurred while creating the forum. Please try again.");
     }
   };
   return (
