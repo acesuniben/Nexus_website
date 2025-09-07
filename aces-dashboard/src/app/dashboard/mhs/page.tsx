@@ -10,10 +10,12 @@ interface MHSItem {
   description: string;
   date: string;
   status: string;
+  volume?: string;
 }
 
 interface MHSFormData {
   title: string;
+  volume: string;
   description: string;
   date: string;
   image?: File;
@@ -123,7 +125,7 @@ export default function MHSPage() {
 
       // Create MHS post
       const response = await fetch(
-        "https://aces-utky.onrender.com/api/admin/mhs/create",
+        "https://aces-utky.onrender.com/api/admin/acesmhs/create",
         {
           method: "POST",
           headers: {
@@ -132,6 +134,7 @@ export default function MHSPage() {
           },
           body: JSON.stringify({
             title: formData.title,
+            volume: formData.volume,
             Description: formData.description, // Note: capital 'D' as per schema
             datePublished: formData.date,
             imageUrl: imageUrl,

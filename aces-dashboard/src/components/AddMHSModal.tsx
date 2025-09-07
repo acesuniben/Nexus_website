@@ -11,6 +11,7 @@ interface AddMHSModalProps {
 
 interface MHSFormData {
   title: string;
+  volume: string;
   description: string;
   date: string;
   image?: File;
@@ -23,6 +24,7 @@ export default function AddMHSModal({
 }: AddMHSModalProps) {
   const [formData, setFormData] = useState<MHSFormData>({
     title: "",
+    volume: "",
     description: "",
     date: "",
   });
@@ -51,7 +53,7 @@ export default function AddMHSModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.title || !formData.description || !formData.date) {
+    if (!formData.title || !formData.volume || !formData.description || !formData.date) {
       return;
     }
 
@@ -64,7 +66,7 @@ export default function AddMHSModal({
       await onSubmit(submitData);
 
       // Reset form
-      setFormData({ title: "", description: "", date: "" });
+      setFormData({ title: "", volume: "", description: "", date: "" });
       setSelectedImage(null);
       setImagePreview(null);
       onClose();
@@ -76,7 +78,7 @@ export default function AddMHSModal({
   };
 
   const handleClose = () => {
-    setFormData({ title: "", description: "", date: "" });
+    setFormData({ title: "", volume: "", description: "", date: "" });
     setSelectedImage(null);
     setImagePreview(null);
     onClose();
@@ -133,6 +135,31 @@ export default function AddMHSModal({
                     type="text"
                     value={formData.title}
                     onChange={(e) => handleInputChange("title", e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#166D86";
+                      e.target.style.boxShadow = `0 0 0 3px ${
+                        "#166D86" + "20"
+                      }`;
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
+                    required
+                  />
+                </div>
+
+                {/* Volume */}
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Volume
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.volume}
+                    onChange={(e) => handleInputChange("volume", e.target.value)}
+                    placeholder="Vol 1"
                     className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
                     onFocus={(e) => {
                       e.target.style.borderColor = "#166D86";
@@ -293,6 +320,7 @@ export default function AddMHSModal({
                 disabled={
                   isLoading ||
                   !formData.title ||
+                  !formData.volume ||
                   !formData.description ||
                   !formData.date
                 }
