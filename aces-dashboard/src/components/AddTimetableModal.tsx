@@ -9,12 +9,18 @@ interface AddTimetableModalProps {
 }
 
 interface TimetableFormData {
-  lectureTime: string;
-  courseCode: string;
   courseTitle: string;
-  day: string;
+  courseCode: string;
   level: string;
-  status: string;
+  session: string;
+  semester: string;
+  creditUnits: number;
+  days: Array<{
+    day: string;
+    startTime: string;
+    endTime: string;
+  }>;
+  lecturers: string[];
 }
 
 // Additional fields for form input
@@ -39,11 +45,11 @@ export default function AddTimetableModal({
   const [formData, setFormData] = useState<FormInputData>({
     courseCode: "",
     courseTitle: "",
-    level: "",
-    semester: "",
-    creditUnit: "",
+    level: "300L",
+    semester: "First Semester",
+    creditUnit: "3",
     session: "2024/2025",
-    day: "",
+    day: "Monday",
     startTime: "",
     endTime: "",
     lecturer: "",
@@ -59,6 +65,8 @@ export default function AddTimetableModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validation with user feedback
     if (
       !formData.courseCode ||
       !formData.courseTitle ||
@@ -67,6 +75,9 @@ export default function AddTimetableModal({
       !formData.startTime ||
       !formData.endTime
     ) {
+      alert(
+        "Please fill in all required fields: Course Code, Course Title, Level, Day, Start Time, and End Time."
+      );
       return;
     }
 
@@ -74,24 +85,34 @@ export default function AddTimetableModal({
     try {
       // Convert form data to expected timetable format
       const submitData: TimetableFormData = {
-        lectureTime: `${formData.startTime} - ${formData.endTime}`,
-        courseCode: formData.courseCode,
         courseTitle: formData.courseTitle,
-        day: formData.day,
+        courseCode: formData.courseCode,
         level: formData.level,
-        status: "Uploaded",
+        session: formData.session,
+        semester: formData.semester,
+        creditUnits: parseInt(formData.creditUnit) || 3,
+        days: [
+          {
+            day: formData.day,
+            startTime: formData.startTime,
+            endTime: formData.endTime,
+          },
+        ],
+        lecturers: formData.lecturer ? [formData.lecturer] : [],
       };
-      onSubmit(submitData);
+
+      console.log("Submitting timetable data:", submitData);
+      await onSubmit(submitData);
 
       // Reset form
       setFormData({
         courseCode: "",
         courseTitle: "",
-        level: "",
-        semester: "",
-        creditUnit: "",
+        level: "300L",
+        semester: "First Semester",
+        creditUnit: "3",
         session: "2024/2025",
-        day: "",
+        day: "Monday",
         startTime: "",
         endTime: "",
         lecturer: "",
@@ -99,6 +120,9 @@ export default function AddTimetableModal({
       onClose();
     } catch (error) {
       console.error("Error submitting timetable:", error);
+      alert(
+        "An error occurred while adding the timetable entry. Please try again."
+      );
     } finally {
       setIsLoading(false);
     }
@@ -108,11 +132,11 @@ export default function AddTimetableModal({
     setFormData({
       courseCode: "",
       courseTitle: "",
-      level: "",
-      semester: "",
-      creditUnit: "",
+      level: "300L",
+      semester: "First Semester",
+      creditUnit: "3",
       session: "2024/2025",
-      day: "",
+      day: "Monday",
       startTime: "",
       endTime: "",
       lecturer: "",
@@ -255,7 +279,6 @@ export default function AddTimetableModal({
                         }}
                         required
                       >
-                        <option value="">300L</option>
                         <option value="100L">100L</option>
                         <option value="200L">200L</option>
                         <option value="300L">300L</option>
@@ -284,7 +307,6 @@ export default function AddTimetableModal({
                           e.target.style.boxShadow = "none";
                         }}
                       >
-                        <option value="">First Semester</option>
                         <option value="First Semester">First Semester</option>
                         <option value="Second Semester">Second Semester</option>
                       </select>
@@ -314,7 +336,6 @@ export default function AddTimetableModal({
                           e.target.style.boxShadow = "none";
                         }}
                       >
-                        <option value="">3</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -365,7 +386,6 @@ export default function AddTimetableModal({
                       style={{ backgroundColor: "#166D86" }}
                       required
                     >
-                      <option value="">Wednesday</option>
                       <option value="Monday">Monday</option>
                       <option value="Tuesday">Tuesday</option>
                       <option value="Wednesday">Wednesday</option>

@@ -1,120 +1,160 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import AddTimetableModal from "@/components/AddTimetableModal";
 
 interface TimetableItem {
   id: string;
-  lectureTime: string;
-  courseCode: string;
   courseTitle: string;
-  day: string;
+  courseCode: string;
   level: string;
+  session: string;
+  semester: string;
+  creditUnits: number;
+  days: Array<{
+    day: string;
+    startTime: string;
+    endTime: string;
+  }>;
+  lecturers: string[];
   status: string;
 }
 
 interface TimetableFormData {
-  lectureTime: string;
-  courseCode: string;
   courseTitle: string;
-  day: string;
+  courseCode: string;
   level: string;
-  status: string;
+  session: string;
+  semester: string;
+  creditUnits: number;
+  days: Array<{
+    day: string;
+    startTime: string;
+    endTime: string;
+  }>;
+  lecturers: string[];
 }
-
-const timetableData: TimetableItem[] = [
-  {
-    id: "1",
-    lectureTime: "9:00 am - 10:00 am",
-    courseCode: "CPE 362",
-    courseTitle: "Software Engineering II",
-    day: "Wednesday",
-    level: "300L",
-    status: "Uploaded",
-  },
-  {
-    id: "2",
-    lectureTime: "9:00 am - 10:00 am",
-    courseCode: "CPE 362",
-    courseTitle: "Software Engineering II",
-    day: "Wednesday",
-    level: "300L",
-    status: "Uploaded",
-  },
-  {
-    id: "3",
-    lectureTime: "9:00 am - 10:00 am",
-    courseCode: "CPE 362",
-    courseTitle: "Software Engineering II",
-    day: "Wednesday",
-    level: "300L",
-    status: "Uploaded",
-  },
-  {
-    id: "4",
-    lectureTime: "9:00 am - 10:00 am",
-    courseCode: "CPE 362",
-    courseTitle: "Software Engineering II",
-    day: "Wednesday",
-    level: "300L",
-    status: "Uploaded",
-  },
-  {
-    id: "5",
-    lectureTime: "9:00 am - 10:00 am",
-    courseCode: "CPE 362",
-    courseTitle: "Software Engineering II",
-    day: "Wednesday",
-    level: "300L",
-    status: "Uploaded",
-  },
-  {
-    id: "6",
-    lectureTime: "9:00 am - 10:00 am",
-    courseCode: "CPE 362",
-    courseTitle: "Software Engineering II",
-    day: "Wednesday",
-    level: "300L",
-    status: "Uploaded",
-  },
-  {
-    id: "7",
-    lectureTime: "9:00 am - 10:00 am",
-    courseCode: "CPE 362",
-    courseTitle: "Software Engineering II",
-    day: "Wednesday",
-    level: "300L",
-    status: "Uploaded",
-  },
-  {
-    id: "8",
-    lectureTime: "9:00 am - 10:00 am",
-    courseCode: "CPE 362",
-    courseTitle: "Software Engineering II",
-    day: "Wednesday",
-    level: "300L",
-    status: "Uploaded",
-  },
-];
 
 export default function TimetablePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [timetableItems, setTimetableItems] =
-    useState<TimetableItem[]>(timetableData);
+  const [timetableItems, setTimetableItems] = useState<TimetableItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedSemester, setSelectedSemester] = useState("Second Semester");
-  const [selectedLevel, setSelectedLevel] = useState("300L");
-  const [selectedDay, setSelectedDay] = useState("Wednesday");
+  const [selectedLevel, setSelectedLevel] = useState("500L");
+  const [selectedDay, setSelectedDay] = useState("Monday");
+
+  // Fetch timetable data from API
+  const fetchTimetableData = async () => {
+    try {
+      // Ensure we're on the client side
+      if (typeof window === "undefined") return;
+
+      const token = localStorage.getItem("adminToken");
+      if (!token) {
+        console.log("No token found in localStorage");
+        alert("Authentication token not found. Please log in again.");
+        window.location.href = "/";
+        return;
+      }
+
+      console.log("Token found, fetching timetable data...");
+      const response = await fetch(
+        "https://aces-utky.onrender.com/api/admin/timetable/read",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        const timetableData = await response.json();
+        console.log("Timetable data received:", timetableData);
+
+        // Handle the response structure with entries array
+        let timetableArray = [];
+        if (
+          timetableData &&
+          timetableData.entries &&
+          Array.isArray(timetableData.entries)
+        ) {
+          timetableArray = timetableData.entries;
+          console.log(`Found ${timetableArray.length} timetable entries`);
+        } else {
+          console.error("Expected entries array but received:", timetableData);
+          setTimetableItems([]);
+          setIsLoading(false);
+          return;
+        }
+
+        // Map the API response to match our TimetableItem interface
+        const mappedTimetable: TimetableItem[] = timetableArray.map(
+          (item: any) => ({
+            id: item.id || `${Math.random().toString(36).substr(2, 6)}`,
+            courseTitle: item.courseTitle,
+            courseCode: item.courseCode,
+            level: item.level,
+            session: item.session,
+            semester: item.semester,
+            creditUnits: item.creditUnits,
+            days: item.days || [],
+            lecturers: item.lecturers || [],
+            status: "Uploaded", // Default status
+          })
+        );
+        setTimetableItems(mappedTimetable);
+      } else if (response.status === 401) {
+        localStorage.removeItem("adminToken");
+        alert("Your session has expired. Please log in again.");
+        window.location.href = "/";
+      } else {
+        console.error("Failed to fetch timetable data:", response.statusText);
+        setTimetableItems([]);
+      }
+    } catch (error) {
+      console.error("Error fetching timetable data:", error);
+      setTimetableItems([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Fetch timetable data on component mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetchTimetableData();
+    }, 100); // Small delay to ensure localStorage is available
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleAddTimetable = async (formData: TimetableFormData) => {
+    console.log("handleAddTimetable called with data:", formData);
     try {
       // Get token from localStorage
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("adminToken");
       if (!token) {
         alert("Authentication token not found. Please log in again.");
         window.location.href = "/";
         return;
       }
+
+      // Prepare the payload
+      const payload = {
+        courseTitle: formData.courseTitle,
+        level: formData.level,
+        session: formData.session,
+        semester: formData.semester,
+        courseCode: formData.courseCode,
+        creditUnits: formData.creditUnits,
+        days: formData.days,
+        lecturers: formData.lecturers,
+      };
+
+      console.log("Sending API request with payload:", payload);
 
       // Create Timetable entry
       const response = await fetch(
@@ -125,50 +165,37 @@ export default function TimetablePage() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({
-            lectureTime: formData.lectureTime,
-            courseCode: formData.courseCode,
-            courseTitle: formData.courseTitle,
-            day: formData.day,
-            level: formData.level,
-            status: formData.status,
-          }),
+          body: JSON.stringify(payload),
         }
       );
 
       if (response.ok) {
         const newTimetableData = await response.json();
 
-        // Add to local state for immediate UI update
-        const newTimetable: TimetableItem = {
-          id:
-            newTimetableData.id || `${Math.random().toString(36).substr(2, 6)}`,
-          lectureTime: formData.lectureTime,
-          courseCode: formData.courseCode,
-          courseTitle: formData.courseTitle,
-          day: formData.day,
-          level: formData.level,
-          status: formData.status,
-        };
+        // Refresh the data from API to get the latest state
+        await fetchTimetableData();
 
-        setTimetableItems((prev) => [newTimetable, ...prev]);
         console.log("Timetable created successfully:", newTimetableData);
+        alert("Timetable entry created successfully!");
       } else if (response.status === 401) {
         // Token expired or invalid
-        localStorage.removeItem("token");
+        localStorage.removeItem("adminToken");
         alert("Your session has expired. Please log in again.");
         window.location.href = "/";
       } else if (response.status === 403) {
         // Insufficient permissions
         alert("You don't have permission to create timetable entries.");
       } else {
-        const errorData = await response.json();
-        console.error("Failed to create timetable:", errorData);
-        alert(
-          `Failed to create timetable: ${
-            errorData.message || response.statusText
-          }`
-        );
+        let errorMessage;
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || JSON.stringify(errorData);
+          console.error("Failed to create timetable:", errorData);
+        } catch (parseError) {
+          errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+          console.error("Failed to parse error response:", parseError);
+        }
+        alert(`Failed to create timetable: ${errorMessage}`);
       }
     } catch (error) {
       console.error("Error adding timetable:", error);
@@ -179,7 +206,9 @@ export default function TimetablePage() {
   };
 
   const filteredTimetable = timetableItems.filter(
-    (item) => item.level === selectedLevel && item.day === selectedDay
+    (item) =>
+      item.level === selectedLevel &&
+      item.days.some((day) => day.day === selectedDay)
   );
 
   return (
@@ -351,47 +380,69 @@ export default function TimetablePage() {
             </tr>
           </thead>
           <tbody>
-            {filteredTimetable.map((item, index) => (
-              <tr
-                key={index}
-                className="border-t border-gray-100 hover:bg-gray-50"
-              >
-                <td className="py-4 px-4">
-                  <div className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                    <span className="text-gray-900">{item.lectureTime}</span>
+            {isLoading ? (
+              <tr>
+                <td colSpan={6} className="py-8 px-4 text-center">
+                  <div className="flex justify-center items-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                    <span className="ml-2 text-gray-600">
+                      Loading timetable data...
+                    </span>
                   </div>
-                </td>
-                <td className="py-4 px-4">
-                  <span className="text-gray-900 font-medium">
-                    {item.courseCode}
-                  </span>
-                </td>
-                <td className="py-4 px-4">
-                  <span className="text-gray-900">{item.courseTitle}</span>
-                </td>
-                <td className="py-4 px-4">
-                  <div className="flex items-center">
-                    <span
-                      className="w-2 h-2 rounded-full mr-2"
-                      style={{ backgroundColor: "#166D86" }}
-                    ></span>
-                    <span className="text-gray-900">{item.day}</span>
-                  </div>
-                </td>
-                <td className="py-4 px-4">
-                  <span className="text-gray-900">{item.level}</span>
-                </td>
-                <td className="py-4 px-4">
-                  <span
-                    className="px-3 py-1 rounded-full text-sm font-medium text-white"
-                    style={{ backgroundColor: "#166D86" }}
-                  >
-                    {item.status}
-                  </span>
                 </td>
               </tr>
-            ))}
+            ) : filteredTimetable.length === 0 ? (
+              <tr>
+                <td colSpan={6} className="py-8 px-4 text-center text-gray-500">
+                  No timetable entries found for {selectedLevel} on{" "}
+                  {selectedDay}
+                </td>
+              </tr>
+            ) : (
+              filteredTimetable.map((item, index) => (
+                <tr
+                  key={item.id || index}
+                  className="border-t border-gray-100 hover:bg-gray-50"
+                >
+                  <td className="py-4 px-4">
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+                      <span className="text-gray-900">
+                        {item.days[0]?.startTime} - {item.days[0]?.endTime}
+                      </span>
+                    </div>
+                  </td>
+                  <td className="py-4 px-4">
+                    <span className="text-gray-900 font-medium">
+                      {item.courseCode}
+                    </span>
+                  </td>
+                  <td className="py-4 px-4">
+                    <span className="text-gray-900">{item.courseTitle}</span>
+                  </td>
+                  <td className="py-4 px-4">
+                    <div className="flex items-center">
+                      <span
+                        className="w-2 h-2 rounded-full mr-2"
+                        style={{ backgroundColor: "#166D86" }}
+                      ></span>
+                      <span className="text-gray-900">{item.days[0]?.day}</span>
+                    </div>
+                  </td>
+                  <td className="py-4 px-4">
+                    <span className="text-gray-900">{item.level}</span>
+                  </td>
+                  <td className="py-4 px-4">
+                    <span
+                      className="px-3 py-1 rounded-full text-sm font-medium text-white"
+                      style={{ backgroundColor: "#166D86" }}
+                    >
+                      {item.status}
+                    </span>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
