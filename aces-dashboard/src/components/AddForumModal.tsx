@@ -209,7 +209,7 @@ export default function AddForumModal({
                   Upload Image
                 </h3>
 
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center bg-gray-50 hover:bg-gray-100 transition-colors">
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center bg-gray-50">
                   {imagePreview ? (
                     <div className="relative">
                       <img
@@ -248,20 +248,31 @@ export default function AddForumModal({
                           />
                         </svg>
                       </div>
-                      <p className="text-gray-600 mb-2">
-                        Click to upload image
+                      <p className="text-gray-600 mb-4">
+                        Upload an image for your forum post
                       </p>
-                      <p className="text-sm text-gray-500">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          document.getElementById("file-input")?.click()
+                        }
+                        className="px-4 py-2 text-white rounded-lg font-medium transition-colors hover:opacity-90"
+                        style={{ backgroundColor: "#166D86" }}
+                      >
+                        Choose File
+                      </button>
+                      <p className="text-sm text-gray-500 mt-2">
                         PNG, JPG up to 10MB
                       </p>
                     </div>
                   )}
 
                   <input
+                    id="file-input"
                     type="file"
                     accept="image/*"
                     onChange={handleImageChange}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                    className="hidden"
                   />
                 </div>
               </div>
