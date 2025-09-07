@@ -123,7 +123,7 @@ export default function EventsPage() {
 
       // Create Event post
       const response = await fetch(
-        "https://aces-utky.onrender.com/api/admin/events/create",
+        "https://aces-utky.onrender.com/api/admin/event/create",
         {
           method: "POST",
           headers: {
