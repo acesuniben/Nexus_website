@@ -4,6 +4,7 @@ import Link from "next/link";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { useItems } from "./blog";
+import { slugify } from '@/lib/slugify';
 // ...existing code...
 
 
@@ -35,7 +36,7 @@ export default function BlogPage() {
               <h2 className="text-2xl font-bold text-[#166D86]">{latest.title}</h2>
               <p className="text-gray-600 line-clamp-4">{latest.content.length > 220 ? latest.content.slice(0, 220) + '...' : latest.content}</p>
               <div className="mt-4">
-                <Link href={`/blog/${latest.category}/${latest.title.trim().replace(/\s+/g, '-')}`} className="flex gap-2 items-center text-sm font-semibold text-[#0FACAC]" >
+                <Link href={`/blog/${latest.category}/${slugify(latest.title)}`} className="flex gap-2 items-center text-sm font-semibold text-[#0FACAC]" >
                   <Image src="/Icon.svg" alt="navigation arrow" width={30} height={30}/>
                   <p>Read More</p>
                 </Link>
@@ -67,7 +68,7 @@ export default function BlogPage() {
                 <h2 className="text-base font-semibold text-[#166D86]">{item.title}</h2>
                 <p className="text-gray-600 line-clamp-3">{item.content.length > 120 ? item.content.slice(0, 120) + '...' : item.content}</p>
                 <div className="flex justify-end items-center mt-auto">
-                  <Link href={`/blog/${item.category}/${item.title.trim().replace(/\s+/g, '-')}`} className="flex gap-2 items-center text-sm font-semibold text-[#0FACAC]" >
+                  <Link href={`/blog/${item.category}/${slugify(item.title)}`} className="flex gap-2 items-center text-sm font-semibold text-[#0FACAC]" >
                     <Image src="/Icon.svg" alt="navigation arrow" width={30} height={30}/>
                     <p>Read More</p>
                   </Link>

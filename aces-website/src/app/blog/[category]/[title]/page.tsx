@@ -38,16 +38,26 @@ export default function ItemDetailPage() {
           const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${apiCategory}/read?page=${page}&limit=50`);
           const data = await res.json();
           const entries = data.entries || [];
-          allEntries = allEntries.concat(entries);
-          totalPages = data.pages || 1;
-          page++;
-        } while (page <= totalPages);
-        // Find the entry by title (trim and replace spaces with hyphens for matching)
-        const normalizedTitle = title?.toString().trim();
-        const found = allEntries.find(
-          (entry: Item) => entry.title.trim().replace(/\s+/g, '-') === normalizedTitle
-        );
-        setItem(found || null);
+            allEntries = allEntries.concat(entries);
+            totalPages = data.pages || 1;
+            page++;
+          } while (page <= totalPages);
+
+          // Find the entry by title using a robust slug function (normalize, remove punctuation, hyphens)
+          const slugify = (s?: string) =>
+            (s || '')
+              .toString()
+              .trim()
+              .toLowerCase()
+              .replace(/[^\u0000-\x7F]/g, '') // strip non-ascii (keep basic ASCII)
+              .replace(/[^\w\s-]/g, '') // remove punctuation except spaces and hyphens
+              .replace(/\s+/g, '-')
+              .replace(/-+/g, '-')
+              .replace(/^-+|-+$/g, '');
+
+    const normalizedTitle = slugify(title?.toString());
+    const found = allEntries.find((entry: Item) => slugify(entry.title) === normalizedTitle);
+    setItem(found || null);
       } catch {
         setError("Could not fetch item");
       } finally {

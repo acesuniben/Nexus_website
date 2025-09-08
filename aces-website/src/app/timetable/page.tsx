@@ -1,21 +1,14 @@
 "use client";
-import { useState } from "react"; // Only keep if used below
+import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-
-interface ClassItem {
-  time: string;
-  endTime: string;
-  course: string;
-  title: string;
-  lecturers: string[];
-  type: string;
-}
-
-interface TimetableData {
-  [key: string]: ClassItem[];
-}
+import {
+  TimetableEntry,
+  ClassItem,
+  fetchAllTimetable,
+  filterTimetableEntries,
+} from "./timetable";
 
 export default function Timetable() {
   const [selectedDay, setSelectedDay] = useState("Monday");
@@ -27,104 +20,50 @@ export default function Timetable() {
   const sessions = ["2024/2025", "2023/2024"];
   const semesters = ["First Semester", "Second Semester"];
   const levels = ["100L", "200L", "300L", "400L", "500L"];
+  const [rawEntries, setRawEntries] = useState<TimetableEntry[]>([]);
+  const [loadingTimetable, setLoadingTimetable] = useState<boolean>(false);
+  const [errorTimetable, setErrorTimetable] = useState<string | null>(null);
+  const [noTimetableMsg, setNoTimetableMsg] = useState<string | null>(null);
 
-  // Sample timetable data
-  const timetableData: TimetableData = {
-    Monday: [
-      {
-        time: "9:00 AM",
-        endTime: "10:00 AM",
-        course: "CPE 451",
-        title: "Software Engineering II",
-        lecturers: ["Eng. Dr. Iu", "Eng. Dr. Okpue"],
-        type: "lecture"
-      },
-      {
-        time: "10:00 AM",
-        endTime: "11:00 AM",
-        course: "CPE 451",
-        title: "Software Engineering II",
-        lecturers: ["Eng. Dr. Iu", "Eng. Dr. Okpue"],
-        type: "lecture"
-      },
-      {
-        time: "11:00 AM",
-        endTime: "12:00 PM",
-        course: "CPE 451",
-        title: "Software Engineering II",
-        lecturers: ["Eng. Dr. Iu", "Eng. Dr. Okpue"],
-        type: "lecture"
-      },
-      {
-        time: "12:00 PM",
-        endTime: "2:00 PM",
-        course: "CPE 451",
-        title: "Software Engineering II",
-        lecturers: ["Eng. Dr. Iu", "Eng. Dr. Okpue"],
-        type: "lecture"
-      },
-      {
-        time: "1:00 PM",
-        endTime: "2:00 PM",
-        course: "CPE 451",
-        title: "Software Engineering II",
-        lecturers: ["Eng. Dr. Iu", "Eng. Dr. Okpue"],
-        type: "lecture"
-      },
-      {
-        time: "2:30 PM",
-        endTime: "3:00 PM",
-        course: "CPE 451",
-        title: "Software Engineering II",
-        lecturers: ["Eng. Dr. Iu", "Eng. Dr. Okpue"],
-        type: "lecture"
-      }
-    ],
-    Tuesday: [
-      {
-        time: "9:00 AM",
-        endTime: "10:00 AM",
-        course: "CPE 452",
-        title: "Digital Signal Processing",
-        lecturers: ["Eng. Dr. Adeyemi", "Eng. Dr. Bello"],
-        type: "lecture"
-      }
-    ],
-    Wednesday: [
-      {
-        time: "8:00 AM",
-        endTime: "9:00 AM",
-        course: "CPE 453",
-        title: "Computer Networks",
-        lecturers: ["Eng. Dr. Johnson"],
-        type: "lecture"
-      }
-    ],
-    Thursday: [
-      {
-        time: "10:00 AM",
-        endTime: "11:00 AM",
-        course: "CPE 454",
-        title: "Database Systems",
-        lecturers: ["Eng. Dr. Smith"],
-        type: "lecture"
-      }
-    ],
-    Friday: [
-      {
-        time: "2:00 PM",
-        endTime: "3:00 PM",
-        course: "CPE 455",
-        title: "Project Management",
-        lecturers: ["Eng. Dr. Brown"],
-        type: "lecture"
-      }
-    ]
-  };
+  const TIMETABLE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/timetable/read`;
 
-  const getCurrentDayClasses = (): ClassItem[] => {
-    return timetableData[selectedDay] || [];
-  };
+  useEffect(() => {
+    let cancelled = false;
+    const controller = new AbortController();
+    async function loadAllOnce() {
+      setLoadingTimetable(true);
+      setErrorTimetable(null);
+      setNoTimetableMsg(null);
+      try {
+        const entries = await fetchAllTimetable(TIMETABLE_URL, { limit: 1000, signal: controller.signal });
+        if (!cancelled) {
+          setRawEntries(entries as TimetableEntry[]);
+          if (!entries.length) setNoTimetableMsg('No timetable entries available.');
+        }
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        if (!cancelled) {
+          setErrorTimetable(`Could not fetch timetable. ${msg}`);
+          setRawEntries([]);
+        }
+      } finally {
+        if (!cancelled) setLoadingTimetable(false);
+      }
+    }
+    loadAllOnce();
+    return () => { cancelled = true; controller.abort(); };
+  }, [TIMETABLE_URL]);
+
+  const currentDayClasses = useMemo((): ClassItem[] => {
+    return filterTimetableEntries(rawEntries as TimetableEntry[], {
+      day: selectedDay,
+      level: selectedLevel,
+      session: selectedSession,
+      semester: selectedSemester,
+    });
+  }, [rawEntries, selectedDay, selectedLevel, selectedSession, selectedSemester]);
+
+  // parsing/formatting and filtering logic now live in ./timetable.ts
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -137,9 +76,20 @@ export default function Timetable() {
             Departmental <span className="text-[#0FACAC]">Timetable</span>
           </h1>
           <p className="text-gray-600 text-sm md:text-base max-w-lg mx-auto">
-            Don't know when you have classes and the lecturers taking those courses? Take a look below and find out.
+            Do not know when you have classes and which lecturers take those courses? Take a look below to find out.
           </p>
         </section>
+
+        {/* show loading or fetch error for timetable */}
+        {loadingTimetable && (
+          <div className="text-center text-gray-600 mb-4">Loading timetable...</div>
+        )}
+        {errorTimetable && (
+          <div className="text-center text-red-500 mb-4">{errorTimetable}</div>
+        )}
+        {noTimetableMsg && !loadingTimetable && !errorTimetable && (
+          <div className="text-center text-yellow-600 mb-4">{noTimetableMsg}</div>
+        )}
 
         {/* Filter Controls Section */}
         <section className="flex flex-wrap gap-4 mb-8 justify-center">
@@ -232,8 +182,8 @@ export default function Timetable() {
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-              {getCurrentDayClasses().length > 0 ? (
-                getCurrentDayClasses().map((classItem: ClassItem, index: number) => (
+              {currentDayClasses.length > 0 ? (
+                currentDayClasses.map((classItem: ClassItem, index: number) => (
                   <div 
                     key={index} 
                     className={`p-4 md:p-6 rounded-xl transition-all duration-200 hover:shadow-lg ${
@@ -273,11 +223,11 @@ export default function Timetable() {
                     </div>
                   </div>
                 ))
-              ) : (
+      ) : (
                 <div className="col-span-full text-center py-12">
                   <div className="text-gray-400 text-lg mb-2">No classes scheduled</div>
                   <div className="text-gray-500 text-sm">
-                    No classes found for {selectedDay} in {selectedLevel}
+                    {noTimetableMsg ? noTimetableMsg : `No classes found for ${selectedDay} in ${selectedLevel}`}
                   </div>
                 </div>
               )}
@@ -330,7 +280,7 @@ export default function Timetable() {
                 Frequently Asked <span className="text-[#0FACAC]">Questions</span>
               </h2>
               <p className="text-sm md:text-base text-gray-600">
-                Do you have questions about the time table? We've got you. You don't need to worry.
+                Do you have questions about the timetable? We have you covered. You do not need to worry.
               </p>
             </div>
 
@@ -473,7 +423,7 @@ export default function Timetable() {
                   </summary>
                   <div className="px-6 pb-6">
                     <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-                      Some courses span multiple hours or may have different sessions (lecture, tutorial, or lab). That's why they appear in more than one block.
+                      Some courses span multiple hours or may have different sessions (lecture, tutorial, or lab). That is why they appear in more than one block.
                     </p>
                   </div>
                 </details>
@@ -483,8 +433,8 @@ export default function Timetable() {
         </section>
 
           {/* CTA Section */}
-                 <section className="py-8 md:py-16 bg-white">
-                  <div className="container mx-auto px-4">
+                 <section className="py-8 md:py-16">
+                          <div className="container mx-auto px-4">
                             <div className="relative max-w-6xl mx-auto">
                               {/* Desktop Layout - Original design */}
                               <div className="hidden md:block">

@@ -20,7 +20,7 @@ function buildUrl(base: string, path: string) {
 
 const endpoints = [
   { key: 'News', url: buildUrl(API_BASE_URL || '', 'blog/read') },
-  { key: 'Event', url: buildUrl(API_BASE_URL || '', 'event/read') },
+  { key: 'Events', url: buildUrl(API_BASE_URL || '', 'event/read') },
   { key: 'Forum', url: buildUrl(API_BASE_URL || '', 'forum/read') },
   { key: 'MHS', url: buildUrl(API_BASE_URL || '', 'acesmhs/read') },
 ];

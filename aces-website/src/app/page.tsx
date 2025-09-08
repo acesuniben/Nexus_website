@@ -2,13 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import EventSection from "@/components/EventSection";
 
 export default function Home() {
-  const events = [
-    { href: '/football.png', alt: 'Picture of a Football', head: 'HOD\'s Cup', paragraph: 'A Departmental cup between the different levels from 100L - 500L. They compete for the cup', date: '28 Sept', time: '12:00 pm' },
-    { href: '/football.png', alt: 'Picture of a Football', head: 'HOD\'s Cup', paragraph: 'A Departmental cup between the different levels from 100L - 500L. They compete for the cup', date: '28 Sept', time: '12:00 pm' },
-    { href: '/football.png', alt: 'Picture of a Football', head: 'HOD\'s Cup', paragraph: 'A Departmental cup between the different levels from 100L - 500L. They compete for the cup', date: '28 Sept', time: '12:00 pm' }
-  ]
+  // const { events, loading, error } = useEventItems();
   return (
     <div className="">
       <Header/>
@@ -69,24 +66,7 @@ export default function Home() {
               <p className="text-center">See the developments that have occurred to Skillines in the world</p>
             </div>
             <div className="flex flex-col items-center md:flex-row justify-center gap-10">
-              <div className="flex flex-col gap-4 items-start w-[90%] md:w-1/3">
-                <Image src="/laptop.png" alt="Laptop to indicate an ACES event" width={427} height={226} />
-                <div className="text-[#166D86] text-xs font-semibold bg-[#98FF98] px-4 py-1 rounded-xl">EVENTS</div>
-                <h3 className="text-2xl font-bold"><span className="text-[#0FACAC]">ACES</span> Week</h3>
-                <p className="text-sm">Class, launched less than a year ago by Blackboard co-founder Michael Chasen, integrates exclusively...</p>
-                <Link key="read more" href="/" className="underline text-[#0facacbf] font-semibold">Read more</Link>
-              </div>
-              <div className="flex flex-col gap-5 w-[90%] md:w-1/3">
-                {events.map(item => (
-                  <div key={item.href} className="grid grid-cols-[1fr 1fr 1fr 1fr] grid-rows-[1fr 1fr 1fr] gap-x-2 items-center justify-center">
-                    <Image key={item.alt} src={item.href} height={133.3} width={166.7} alt={item.alt} className="col-start-1 col-end-3 row-start-1 row-end-4 w-[100%] h-[100%]"/>
-                    <h4 key={item.head} className="col-start-3 col-end-5 row-start-1 row-end-2 text-2xl font-semibold">{item.head}</h4>
-                    <p key={item.paragraph} className="col-start-3 col-end-5 row-start-2 row-end-3 text-xs">{item.paragraph}</p>
-                    <div key={item.date} className="col-start-3 col-end-4 row-start-3 row-end-4 font-bold bg-[#0facac40] text-xs text-center p-2 rounded-2xl text-[#166D86]">{item.date}</div>
-                    <div key={item.time} className="col-start-4 col-end-5 row-start-3 row-end-4  font-bold border-1 border-[#2F327D] text-xs text-center p-2 rounded-2xl text-[#166D86]">{item.time}</div>
-                  </div>
-                ))}
-              </div>
+              <EventSection />
             </div>
           </section>
           <section className="flex flex-col-reverse md:flex-row justify-around items-center mt-10 mb-10">
@@ -134,7 +114,7 @@ export default function Home() {
             <div className="flex flex-col gap-8 w-[100%] md:w-1/5 items-start">
               <h2 className=" text-[#2F327D] text-4xl font-bold">Departmental <span className="text-[#0FACAC] ">Timetable</span></h2>
               <p>Get used to your timetable and familiarize yourself with it so you don’t miss lectures and so you can plan your time effectively</p>
-              <div className="p-4 bg-[#166D86] text-white rounded-4xl">Check it out</div>
+              <div className="p-4 bg-[#166D86] text-white rounded-4xl"><Link href="/timetable">Check it out</Link></div>
             </div>
             <div className="w-[100%] md:w-2/5 self-end md:self-start">
               <Image src="/timetable.svg" alt="Icon depicting Timetable" width={590.03} height={326.08}/>              
