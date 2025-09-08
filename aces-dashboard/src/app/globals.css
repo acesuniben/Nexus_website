@@ -21,14 +21,17 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-nunito), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-nunito), "Segoe UI", Tahoma, Geneva, Verdana,
+    system-ui, -apple-system, sans-serif;
 }
 
 .font-nunito {
-  font-family: var(--font-nunito), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-nunito), "Segoe UI", Tahoma, Geneva, Verdana,
+    system-ui, -apple-system, sans-serif;
 }
 
-/* Ensure all text elements use Nunito */
+/* Ensure all text elements use Nunito with good fallbacks */
 * {
-  font-family: var(--font-nunito), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-nunito), "Segoe UI", Tahoma, Geneva, Verdana,
+    system-ui, -apple-system, sans-serif;
 }
