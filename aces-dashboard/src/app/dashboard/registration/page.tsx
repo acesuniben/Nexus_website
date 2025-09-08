@@ -159,6 +159,28 @@ export default function Registration() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 lg:p-6">
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+          input::placeholder,
+          textarea::placeholder {
+            color: #0FACAC !important;
+          }
+          input::-webkit-input-placeholder,
+          textarea::-webkit-input-placeholder {
+            color: #0FACAC !important;
+          }
+          input::-moz-placeholder,
+          textarea::-moz-placeholder {
+            color: #0FACAC !important;
+          }
+          input:-ms-input-placeholder,
+          textarea:-ms-input-placeholder {
+            color: #0FACAC !important;
+          }
+        `,
+        }}
+      />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-center mb-6 lg:mb-8">
@@ -185,10 +207,13 @@ export default function Registration() {
               </svg>
             </div>
             <div className="flex flex-col">
-              <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+              <span
+                className="text-xs font-medium uppercase tracking-wide"
+                style={{ color: "#2F327D" }}
+              >
                 Today
               </span>
-              <span className="text-sm font-bold text-gray-800">
+              <span className="text-sm font-bold" style={{ color: "#2F327D" }}>
                 {new Date().toLocaleDateString("en-US", {
                   weekday: "short",
                   day: "numeric",
@@ -307,7 +332,10 @@ export default function Registration() {
                   className="hidden"
                 />
               </div>
-              <p className="text-sm text-gray-500 text-center max-w-xs">
+              <p
+                className="text-sm text-center max-w-xs"
+                style={{ color: "#2F327D" }}
+              >
                 Click the edit button to upload your profile picture
               </p>
             </div>
@@ -318,9 +346,12 @@ export default function Registration() {
                 {/* Full Name */}
                 <div className="group">
                   <label
-                    className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:transition-colors"
+                    className="block text-sm font-semibold mb-3 group-focus-within:transition-colors"
                     style={
-                      { "--focus-color": "#166D86" } as React.CSSProperties
+                      {
+                        color: "#2F327D",
+                        "--focus-color": "#166D86",
+                      } as React.CSSProperties
                     }
                   >
                     Full Name
@@ -330,14 +361,16 @@ export default function Registration() {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-4 focus:border-transparent transition-all duration-200 placeholder-gray-400 text-gray-900"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-4 focus:border-transparent transition-all duration-200"
                     style={
                       {
-                        "--tw-ring-color": "#166D86",
+                        "--tw-ring-color": "#0FACAC",
+                        color: "#0FACAC",
+                        "--placeholder-color": "#0FACAC",
                       } as React.CSSProperties
                     }
                     onFocus={(e) => {
-                      e.target.style.borderColor = "#166D86";
+                      e.target.style.borderColor = "#0FACAC";
                       e.target.style.boxShadow =
                         "0 0 0 4px rgba(22, 109, 134, 0.1)";
                     }}
@@ -352,7 +385,10 @@ export default function Registration() {
 
                 {/* Password (Auto Generated) */}
                 <div className="group">
-                  <label className="block text-sm font-semibold text-gray-700 mb-3">
+                  <label
+                    className="block text-sm font-semibold mb-3"
+                    style={{ color: "#2F327D" }}
+                  >
                     Password (Auto Generated)
                   </label>
                   <div className="relative">
@@ -383,7 +419,10 @@ export default function Registration() {
 
                 {/* Email */}
                 <div className="group">
-                  <label className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:transition-colors">
+                  <label
+                    className="block text-sm font-semibold mb-3 group-focus-within:transition-colors"
+                    style={{ color: "#2F327D" }}
+                  >
                     Email
                   </label>
                   <input
@@ -391,11 +430,16 @@ export default function Registration() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none transition-all duration-200 placeholder-gray-400 text-gray-900"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none transition-all duration-200"
+                    style={
+                      {
+                        color: "#0FACAC",
+                      } as React.CSSProperties
+                    }
                     onFocus={(e) => {
-                      e.target.style.borderColor = "#166D86";
+                      e.target.style.borderColor = "#0FACAC";
                       e.target.style.boxShadow =
-                        "0 0 0 4px rgba(22, 109, 134, 0.1)";
+                        "0 0 0 4px rgba(15, 172, 172, 0.1)";
                     }}
                     onBlur={(e) => {
                       e.target.style.borderColor = "#e5e7eb";
@@ -408,7 +452,10 @@ export default function Registration() {
 
                 {/* Confirm Password (Auto Generated) */}
                 <div className="group">
-                  <label className="block text-sm font-semibold text-gray-700 mb-3">
+                  <label
+                    className="block text-sm font-semibold mb-3"
+                    style={{ color: "#2F327D" }}
+                  >
                     Confirm Password (Auto Generated)
                   </label>
                   <div className="relative">
@@ -443,7 +490,10 @@ export default function Registration() {
 
                 {/* Date of Birth */}
                 <div className="group">
-                  <label className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-teal-600 transition-colors">
+                  <label
+                    className="block text-sm font-semibold mb-3 group-focus-within:text-teal-600 transition-colors"
+                    style={{ color: "#2F327D" }}
+                  >
                     Date of Birth
                   </label>
                   <input
@@ -451,7 +501,22 @@ export default function Registration() {
                     name="dateOfBirth"
                     value={formData.dateOfBirth}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-100 focus:border-teal-500 transition-all duration-200 text-gray-900"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none transition-all duration-200"
+                    style={
+                      {
+                        "--tw-ring-color": "#0FACAC",
+                        color: "#0FACAC",
+                      } as React.CSSProperties
+                    }
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#0FACAC";
+                      e.target.style.boxShadow =
+                        "0 0 0 4px rgba(15, 172, 172, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
                     max={new Date().toISOString().split("T")[0]} // Prevents future dates
                     min="1970-01-01" // Reasonable minimum date
                     required
@@ -460,7 +525,10 @@ export default function Registration() {
 
                 {/* Phone Number */}
                 <div className="group">
-                  <label className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-teal-600 transition-colors">
+                  <label
+                    className="block text-sm font-semibold mb-3 group-focus-within:text-teal-600 transition-colors"
+                    style={{ color: "#2F327D" }}
+                  >
                     Phone Number
                   </label>
                   <input
@@ -468,7 +536,22 @@ export default function Registration() {
                     name="phoneNumber"
                     value={formData.phoneNumber}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-100 focus:border-teal-500 transition-all duration-200 placeholder-gray-400 text-gray-900"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none transition-all duration-200"
+                    style={
+                      {
+                        "--tw-ring-color": "#0FACAC",
+                        color: "#0FACAC",
+                      } as React.CSSProperties
+                    }
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#0FACAC";
+                      e.target.style.boxShadow =
+                        "0 0 0 4px rgba(15, 172, 172, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
                     placeholder="Enter your phone number"
                     required
                   />
@@ -476,7 +559,10 @@ export default function Registration() {
 
                 {/* Matriculation Number */}
                 <div className="group">
-                  <label className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-teal-600 transition-colors">
+                  <label
+                    className="block text-sm font-semibold mb-3 group-focus-within:text-teal-600 transition-colors"
+                    style={{ color: "#2F327D" }}
+                  >
                     Matriculation Number
                   </label>
                   <input
@@ -484,7 +570,22 @@ export default function Registration() {
                     name="matriculationNumber"
                     value={formData.matriculationNumber}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-100 focus:border-teal-500 transition-all duration-200 placeholder-gray-400 text-gray-900"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none transition-all duration-200"
+                    style={
+                      {
+                        "--tw-ring-color": "#0FACAC",
+                        color: "#0FACAC",
+                      } as React.CSSProperties
+                    }
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#0FACAC";
+                      e.target.style.boxShadow =
+                        "0 0 0 4px rgba(15, 172, 172, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
                     placeholder="Enter your matriculation number"
                     required
                   />
@@ -492,17 +593,35 @@ export default function Registration() {
 
                 {/* State of Origin */}
                 <div className="group">
-                  <label className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-teal-600 transition-colors">
+                  <label
+                    className="block text-sm font-semibold mb-3 group-focus-within:text-teal-600 transition-colors"
+                    style={{ color: "#2F327D" }}
+                  >
                     State of Origin
                   </label>
                   <select
                     name="stateOfOrigin"
                     value={formData.stateOfOrigin}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-100 focus:border-teal-500 transition-all duration-200 text-gray-700"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none transition-all duration-200"
+                    style={
+                      {
+                        "--tw-ring-color": "#0FACAC",
+                        color: "#0FACAC",
+                      } as React.CSSProperties
+                    }
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#0FACAC";
+                      e.target.style.boxShadow =
+                        "0 0 0 4px rgba(15, 172, 172, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
                     required
                   >
-                    <option value="" className="text-gray-400">
+                    <option value="" style={{ color: "#2F327D" }}>
                       Select your state of origin
                     </option>
                     {nigerianStates.map((state) => (
@@ -515,17 +634,35 @@ export default function Registration() {
 
                 {/* Level */}
                 <div className="group">
-                  <label className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-teal-600 transition-colors">
+                  <label
+                    className="block text-sm font-semibold mb-3 group-focus-within:text-teal-600 transition-colors"
+                    style={{ color: "#2F327D" }}
+                  >
                     Level
                   </label>
                   <select
                     name="level"
                     value={formData.level}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-100 focus:border-teal-500 transition-all duration-200 text-gray-700"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none transition-all duration-200"
+                    style={
+                      {
+                        "--tw-ring-color": "#0FACAC",
+                        color: "#0FACAC",
+                      } as React.CSSProperties
+                    }
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#0FACAC";
+                      e.target.style.boxShadow =
+                        "0 0 0 4px rgba(15, 172, 172, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
                     required
                   >
-                    <option value="" className="text-gray-400">
+                    <option value="" style={{ color: "#2F327D" }}>
                       Select your level
                     </option>
                     {levels.map((level) => (
@@ -538,7 +675,10 @@ export default function Registration() {
 
                 {/* University Email */}
                 <div className="group">
-                  <label className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-teal-600 transition-colors">
+                  <label
+                    className="block text-sm font-semibold mb-3 group-focus-within:text-teal-600 transition-colors"
+                    style={{ color: "#2F327D" }}
+                  >
                     University Email
                   </label>
                   <input
@@ -546,7 +686,22 @@ export default function Registration() {
                     name="universityEmail"
                     value={formData.universityEmail}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-100 focus:border-teal-500 transition-all duration-200 placeholder-gray-400 text-gray-900"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none transition-all duration-200"
+                    style={
+                      {
+                        "--tw-ring-color": "#0FACAC",
+                        color: "#0FACAC",
+                      } as React.CSSProperties
+                    }
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#0FACAC";
+                      e.target.style.boxShadow =
+                        "0 0 0 4px rgba(15, 172, 172, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
                     placeholder="Enter your university email"
                     required
                   />
@@ -558,7 +713,7 @@ export default function Registration() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="text-white font-semibold py-4 px-12 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:scale-105 focus:outline-none focus:ring-4"
+                  className="text-white font-semibold py-4 px-12 rounded-3xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:scale-105 focus:outline-none focus:ring-4"
                   style={
                     {
                       backgroundColor: "#166D86",

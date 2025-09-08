@@ -8,14 +8,38 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   const menuItems = [
-    { name: "Dashboard", icon: "🏠", href: "/dashboard" },
-    { name: "Registration", icon: "📝", href: "/dashboard/registration" },
-    { name: "MHS", icon: "🧠", href: "/dashboard/mhs" },
-    { name: "Forum", icon: "💬", href: "/dashboard/forum" },
-    { name: "Events", icon: "🎉", href: "/dashboard/events" },
-    { name: "Timetable", icon: "📅", href: "/dashboard/timetable" },
-    { name: "Blog", icon: "📰", href: "/dashboard/blog" },
-    { name: "Students", icon: "👨‍🎓", href: "/dashboard/students" },
+    {
+      name: "Dashboard",
+      icon: "/SidebarDashboardIcon.png",
+      href: "/dashboard",
+    },
+    {
+      name: "Registration",
+      icon: "/sidebarRegistration.png",
+      href: "/dashboard/registration",
+    },
+    { name: "MHS", icon: "/sidebarMHS.png", href: "/dashboard/mhs" },
+    { name: "Forum", icon: "/sidebarForum.png", href: "/dashboard/forum" },
+    {
+      name: "Events",
+      icon: "/sidebarTimetable.png",
+      href: "/dashboard/events",
+    },
+    {
+      name: "Timetable",
+      icon: "/sidebarTimetable.png",
+      href: "/dashboard/timetable",
+    },
+    {
+      name: "Blog",
+      icon: "/sidebarBloganStudents.png",
+      href: "/dashboard/blog",
+    },
+    {
+      name: "Students",
+      icon: "/sidebarBloganStudents.png",
+      href: "/dashboard/students",
+    },
   ];
 
   return (
@@ -40,7 +64,7 @@ export default function Sidebar() {
               <li key={item.name}>
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-2 px-2 py-1 rounded-lg transition-colors ${
+                  className={`flex items-center px-2 py-1 rounded-lg transition-colors ${
                     isActive ? "font-semibold" : "hover:bg-gray-50"
                   }`}
                   style={{
@@ -48,7 +72,13 @@ export default function Sidebar() {
                     backgroundColor: isActive ? "#F0F9FF" : "transparent",
                   }}
                 >
-                  <span>{item.icon}</span>
+                  <Image
+                    src={item.icon}
+                    alt={`${item.name} Icon`}
+                    width={20}
+                    height={20}
+                    className="mr-3"
+                  />
                   {item.name}
                 </Link>
               </li>
