@@ -153,6 +153,7 @@ export default function Home() {
               <Image src="/classroom.png" height={359.33} width={498.67} alt="Picture of students listening to their teacher in their classroom"/>
             </div>
           </section>
+          
           <section className="w-full flex justify-center items-center">
             <div className="relative w-[90%]">
               <Image src="/subscribe.svg" height={712.5} width={1525} alt="Newsletter sign-up background" className="w-full"/>
@@ -175,8 +176,7 @@ export default function Home() {
                     </button>
                   </form>
                 </div>
-              </div>
-              
+              </div>    
             </div>
           </section>
       </main>

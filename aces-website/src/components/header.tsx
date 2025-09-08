@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { useState } from "react";
+import { useState } from "react"; // Only keep if used below
 
 export default function Header() {
     const pathname = usePathname();
