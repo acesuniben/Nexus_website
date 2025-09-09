@@ -12,7 +12,9 @@ interface AddEventModalProps {
 interface EventFormData {
   title: string;
   description: string;
-  date: string;
+  datePublished: string;
+  dateOfEvent: string;
+  timeOfEvent: string;
   image?: File;
 }
 
@@ -24,7 +26,9 @@ export default function AddEventModal({
   const [formData, setFormData] = useState<EventFormData>({
     title: "",
     description: "",
-    date: "",
+    datePublished: "",
+    dateOfEvent: "",
+    timeOfEvent: "",
   });
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -51,7 +55,13 @@ export default function AddEventModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.title || !formData.description || !formData.date) {
+    if (
+      !formData.title ||
+      !formData.description ||
+      !formData.datePublished ||
+      !formData.dateOfEvent ||
+      !formData.timeOfEvent
+    ) {
       return;
     }
 
@@ -64,7 +74,13 @@ export default function AddEventModal({
       await onSubmit(submitData);
 
       // Reset form
-      setFormData({ title: "", description: "", date: "" });
+      setFormData({
+        title: "",
+        description: "",
+        datePublished: "",
+        dateOfEvent: "",
+        timeOfEvent: "",
+      });
       setSelectedImage(null);
       setImagePreview(null);
       onClose();
@@ -76,7 +92,13 @@ export default function AddEventModal({
   };
 
   const handleClose = () => {
-    setFormData({ title: "", description: "", date: "" });
+    setFormData({
+      title: "",
+      description: "",
+      datePublished: "",
+      dateOfEvent: "",
+      timeOfEvent: "",
+    });
     setSelectedImage(null);
     setImagePreview(null);
     onClose();
@@ -175,15 +197,69 @@ export default function AddEventModal({
                   />
                 </div>
 
-                {/* Date */}
+                {/* Publication Date */}
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Publication Date
+                  </label>
+                  <input
+                    type="date"
+                    value={formData.datePublished}
+                    onChange={(e) =>
+                      handleInputChange("datePublished", e.target.value)
+                    }
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#166D86";
+                      e.target.style.boxShadow = `0 0 0 3px ${
+                        "#166D86" + "20"
+                      }`;
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
+                    required
+                  />
+                </div>
+
+                {/* Event Date */}
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Event Date
                   </label>
                   <input
                     type="date"
-                    value={formData.date}
-                    onChange={(e) => handleInputChange("date", e.target.value)}
+                    value={formData.dateOfEvent}
+                    onChange={(e) =>
+                      handleInputChange("dateOfEvent", e.target.value)
+                    }
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#166D86";
+                      e.target.style.boxShadow = `0 0 0 3px ${
+                        "#166D86" + "20"
+                      }`;
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
+                    required
+                  />
+                </div>
+
+                {/* Event Time */}
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Event Time
+                  </label>
+                  <input
+                    type="time"
+                    value={formData.timeOfEvent}
+                    onChange={(e) =>
+                      handleInputChange("timeOfEvent", e.target.value)
+                    }
                     className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
                     onFocus={(e) => {
                       e.target.style.borderColor = "#166D86";
@@ -294,7 +370,9 @@ export default function AddEventModal({
                   isLoading ||
                   !formData.title ||
                   !formData.description ||
-                  !formData.date
+                  !formData.datePublished ||
+                  !formData.dateOfEvent ||
+                  !formData.timeOfEvent
                 }
                 className="px-6 py-2 text-white rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-md flex items-center space-x-2"
                 style={{

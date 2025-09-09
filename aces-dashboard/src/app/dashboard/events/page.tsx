@@ -8,7 +8,9 @@ interface EventItem {
   id: string;
   title: string;
   description: string;
-  date: string;
+  datePublished: string;
+  dateOfEvent: string;
+  timeOfEvent: string;
   status: string;
   imageUrl?: string;
 }
@@ -16,7 +18,9 @@ interface EventItem {
 interface EventFormData {
   title: string;
   description: string;
-  date: string;
+  datePublished: string;
+  dateOfEvent: string;
+  timeOfEvent: string;
   image?: File;
 }
 
@@ -93,13 +97,21 @@ export default function EventsPage() {
           id: event.id || `#${Math.random().toString(36).substr(2, 6)}`,
           title: event.title,
           description: event.Description || event.description,
-          date: event.datePublished
+          datePublished: event.datePublished
             ? new Date(event.datePublished).toLocaleDateString("en-US", {
                 day: "numeric",
                 month: "short",
                 year: "numeric",
               })
             : "N/A",
+          dateOfEvent: event.dateOfEvent
+            ? new Date(event.dateOfEvent).toLocaleDateString("en-US", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })
+            : "N/A",
+          timeOfEvent: event.timeOfEvent || "N/A",
           status: "Upcoming", // Default status
           imageUrl: event.imageUrl,
         }));
@@ -173,7 +185,9 @@ export default function EventsPage() {
           body: JSON.stringify({
             title: formData.title,
             Description: formData.description, // Note: capital 'D' as per schema
-            datePublished: formData.date,
+            datePublished: formData.datePublished,
+            dateOfEvent: formData.dateOfEvent,
+            timeOfEvent: formData.timeOfEvent,
             imageUrl: imageUrl,
           }),
         }
@@ -517,7 +531,7 @@ export default function EventsPage() {
                           className="text-sm font-medium"
                           style={{ color: "#2F327D" }}
                         >
-                          {event.date}
+                          {event.dateOfEvent} at {event.timeOfEvent}
                         </span>
                       </div>
                     </div>
