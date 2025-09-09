@@ -158,24 +158,26 @@ export default function AddTimetableModal({
 
   return (
     <div className="fixed inset-0 bg-white/20 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden">
         <div className="flex">
           {/* Left Panel - Form */}
-          <div className="flex-1 p-6 border-r border-gray-200">
+          <div className="flex-1 p-8 border-r border-gray-100">
             {/* Header */}
-            <div className="flex justify-between items-center mb-6">
-              <h2
-                className="text-xl font-semibold"
-                style={{ color: "#166D86" }}
-              >
-                Add Timetable
-              </h2>
+            <div className="flex justify-between items-center mb-8">
+              <div className="flex items-center gap-4">
+                <button
+                  className="px-6 py-2 text-white text-sm rounded-full font-medium"
+                  style={{ backgroundColor: "#166D86" }}
+                >
+                  + Add Time Table
+                </button>
+              </div>
               <button
                 onClick={handleClose}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 hover:text-gray-600 transition-colors p-2 hover:bg-gray-100 rounded-full"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -190,21 +192,24 @@ export default function AddTimetableModal({
               </button>
             </div>
 
-            <form onSubmit={handleSubmit}>
-              <div className="space-y-6">
+            <form
+              onSubmit={handleSubmit}
+              className="overflow-y-auto max-h-[calc(90vh-200px)]"
+            >
+              <div className="space-y-8">
                 {/* General Time Table Section */}
                 <div>
                   <h3
-                    className="text-lg font-medium mb-4"
+                    className="text-xl font-semibold mb-6"
                     style={{ color: "#166D86" }}
                   >
                     General Time Table
                   </h3>
 
                   {/* Course Code and Course Title Row */}
-                  <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="grid grid-cols-2 gap-6 mb-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-3">
                         Course code
                       </label>
                       <input
@@ -214,7 +219,7 @@ export default function AddTimetableModal({
                           handleInputChange("courseCode", e.target.value)
                         }
                         placeholder="CPE 362"
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 transition-all duration-200"
                         onFocus={(e) => {
                           e.target.style.borderColor = "#166D86";
                           e.target.style.boxShadow = `0 0 0 3px ${
@@ -229,7 +234,7 @@ export default function AddTimetableModal({
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-3">
                         Course Title
                       </label>
                       <input
@@ -239,7 +244,7 @@ export default function AddTimetableModal({
                           handleInputChange("courseTitle", e.target.value)
                         }
                         placeholder="Software Engineering II"
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 transition-all duration-200"
                         onFocus={(e) => {
                           e.target.style.borderColor = "#166D86";
                           e.target.style.boxShadow = `0 0 0 3px ${
@@ -256,9 +261,9 @@ export default function AddTimetableModal({
                   </div>
 
                   {/* Level and Semester Row */}
-                  <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="grid grid-cols-2 gap-6 mb-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-3">
                         Level
                       </label>
                       <select
@@ -266,7 +271,7 @@ export default function AddTimetableModal({
                         onChange={(e) =>
                           handleInputChange("level", e.target.value)
                         }
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 appearance-none"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 appearance-none transition-all duration-200"
                         onFocus={(e) => {
                           e.target.style.borderColor = "#166D86";
                           e.target.style.boxShadow = `0 0 0 3px ${
@@ -287,7 +292,7 @@ export default function AddTimetableModal({
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-3">
                         Semester
                       </label>
                       <select
@@ -295,7 +300,7 @@ export default function AddTimetableModal({
                         onChange={(e) =>
                           handleInputChange("semester", e.target.value)
                         }
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 appearance-none"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 appearance-none transition-all duration-200"
                         onFocus={(e) => {
                           e.target.style.borderColor = "#166D86";
                           e.target.style.boxShadow = `0 0 0 3px ${
@@ -314,9 +319,9 @@ export default function AddTimetableModal({
                   </div>
 
                   {/* Credit Unit and Session Row */}
-                  <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="grid grid-cols-2 gap-6 mb-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-3">
                         Credit Unit
                       </label>
                       <select
@@ -324,7 +329,7 @@ export default function AddTimetableModal({
                         onChange={(e) =>
                           handleInputChange("creditUnit", e.target.value)
                         }
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 appearance-none"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 appearance-none transition-all duration-200"
                         onFocus={(e) => {
                           e.target.style.borderColor = "#166D86";
                           e.target.style.boxShadow = `0 0 0 3px ${
@@ -345,7 +350,7 @@ export default function AddTimetableModal({
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-3">
                         Session
                       </label>
                       <div className="relative">
@@ -355,7 +360,7 @@ export default function AddTimetableModal({
                           onChange={(e) =>
                             handleInputChange("session", e.target.value)
                           }
-                          className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 bg-green-100"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 bg-green-50 transition-all duration-200"
                           onFocus={(e) => {
                             e.target.style.borderColor = "#166D86";
                             e.target.style.boxShadow = `0 0 0 3px ${
@@ -367,23 +372,28 @@ export default function AddTimetableModal({
                             e.target.style.boxShadow = "none";
                           }}
                         />
-                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center">
-                          <span className="text-white text-xs">✓</span>
+                        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                          <span className="text-white text-xs font-bold">
+                            ✓
+                          </span>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Day */}
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-3">
                       Day
                     </label>
                     <select
                       value={formData.day}
                       onChange={(e) => handleInputChange("day", e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-white font-medium"
-                      style={{ backgroundColor: "#166D86" }}
+                      className="w-full px-4 py-3 border-2 rounded-xl focus:outline-none text-white font-medium transition-all duration-200"
+                      style={{
+                        backgroundColor: "#166D86",
+                        borderColor: "#166D86",
+                      }}
                       required
                     >
                       <option value="Monday">Monday</option>
@@ -396,9 +406,9 @@ export default function AddTimetableModal({
                   </div>
 
                   {/* Start Time and End Time Row */}
-                  <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="grid grid-cols-2 gap-6 mb-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-3">
                         Start time
                       </label>
                       <input
@@ -407,7 +417,7 @@ export default function AddTimetableModal({
                         onChange={(e) =>
                           handleInputChange("startTime", e.target.value)
                         }
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 transition-all duration-200"
                         onFocus={(e) => {
                           e.target.style.borderColor = "#166D86";
                           e.target.style.boxShadow = `0 0 0 3px ${
@@ -422,7 +432,7 @@ export default function AddTimetableModal({
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-3">
                         End time
                       </label>
                       <input
@@ -431,7 +441,7 @@ export default function AddTimetableModal({
                         onChange={(e) =>
                           handleInputChange("endTime", e.target.value)
                         }
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 transition-all duration-200"
                         onFocus={(e) => {
                           e.target.style.borderColor = "#166D86";
                           e.target.style.boxShadow = `0 0 0 3px ${
@@ -448,11 +458,11 @@ export default function AddTimetableModal({
                   </div>
 
                   {/* Lecturer */}
-                  <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <div className="mb-8">
+                    <label className="block text-sm font-medium text-gray-700 mb-3">
                       Lecturer
                     </label>
-                    <div className="space-y-2">
+                    <div className="space-y-4">
                       <input
                         type="text"
                         value={formData.lecturer}
@@ -460,7 +470,7 @@ export default function AddTimetableModal({
                           handleInputChange("lecturer", e.target.value)
                         }
                         placeholder="Eng. Dr. Isi"
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 transition-all duration-200"
                         onFocus={(e) => {
                           e.target.style.borderColor = "#166D86";
                           e.target.style.boxShadow = `0 0 0 3px ${
@@ -475,7 +485,7 @@ export default function AddTimetableModal({
                       <input
                         type="text"
                         placeholder="Prof Apeh"
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-gray-900 transition-all duration-200"
                         onFocus={(e) => {
                           e.target.style.borderColor = "#166D86";
                           e.target.style.boxShadow = `0 0 0 3px ${
@@ -502,12 +512,12 @@ export default function AddTimetableModal({
                       !formData.startTime ||
                       !formData.endTime
                     }
-                    className="w-full py-2 text-white rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-md"
+                    className="w-full py-4 text-white rounded-xl font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
                     style={{
                       backgroundColor: "#166D86",
                     }}
                   >
-                    {isLoading ? "Adding..." : "+ Add Course"}
+                    {isLoading ? "Adding Course..." : "+ Add Course"}
                   </button>
                 </div>
               </div>
@@ -515,13 +525,16 @@ export default function AddTimetableModal({
           </div>
 
           {/* Right Panel - Summary */}
-          <div className="w-80 p-6 bg-gray-50">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-medium" style={{ color: "#166D86" }}>
+          <div className="w-96 p-8 bg-gradient-to-br from-gray-50 to-gray-100">
+            <div className="flex justify-between items-center mb-6">
+              <h3
+                className="text-xl font-semibold"
+                style={{ color: "#166D86" }}
+              >
                 Summary
               </h3>
               <button
-                className="px-3 py-1 text-white text-sm rounded-full"
+                className="px-4 py-2 text-white text-sm rounded-full font-medium shadow-sm hover:shadow-md transition-all duration-200"
                 style={{ backgroundColor: "#166D86" }}
               >
                 First Semester
@@ -529,43 +542,65 @@ export default function AddTimetableModal({
             </div>
 
             {/* Summary Table Headers */}
-            <div className="grid grid-cols-3 gap-2 mb-3 text-sm font-medium text-gray-600">
-              <div>Day</div>
-              <div>Code</div>
-              <div>Title</div>
+            <div className="grid grid-cols-3 gap-4 mb-4 text-sm font-semibold text-gray-600 border-b border-gray-200 pb-3">
+              <div>Day ↓</div>
+              <div>Code ↓</div>
+              <div>Title ↓</div>
             </div>
 
             {/* Summary Entries */}
-            <div className="space-y-2">
+            <div className="space-y-3">
               {summaryEntries.length > 0 ? (
                 summaryEntries.map((entry, index) => (
-                  <div key={index} className="grid grid-cols-3 gap-2 text-sm">
-                    <div className="text-gray-900">{entry.day}</div>
-                    <div className="text-blue-600 font-medium">
+                  <div
+                    key={index}
+                    className="grid grid-cols-3 gap-4 text-sm py-3 px-3 bg-white rounded-lg shadow-sm border border-gray-100"
+                  >
+                    <div className="text-gray-900 font-medium">{entry.day}</div>
+                    <div className="font-semibold" style={{ color: "#166D86" }}>
                       {entry.code}
                     </div>
                     <div className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-                      <span className="text-gray-900">{entry.time}</span>
+                      <span
+                        className="w-2 h-2 rounded-full mr-2"
+                        style={{ backgroundColor: "#166D86" }}
+                      ></span>
+                      <span className="text-gray-900 text-xs">
+                        {entry.time}
+                      </span>
                     </div>
                   </div>
                 ))
               ) : (
-                <div className="space-y-2">
-                  <div className="grid grid-cols-3 gap-2 text-sm">
-                    <div className="text-gray-900">Monday</div>
-                    <div className="text-blue-600 font-medium">CPE 362</div>
+                <div className="space-y-3">
+                  <div className="grid grid-cols-3 gap-4 text-sm py-3 px-3 bg-white rounded-lg shadow-sm border border-gray-100">
+                    <div className="text-gray-900 font-medium">Monday</div>
+                    <div className="font-semibold" style={{ color: "#166D86" }}>
+                      CPE 362
+                    </div>
                     <div className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-                      <span className="text-gray-900">9:00 am - 10:00 am</span>
+                      <span
+                        className="w-2 h-2 rounded-full mr-2"
+                        style={{ backgroundColor: "#166D86" }}
+                      ></span>
+                      <span className="text-gray-900 text-xs">
+                        9:00 am - 10:00 am
+                      </span>
                     </div>
                   </div>
-                  <div className="grid grid-cols-3 gap-2 text-sm">
-                    <div className="text-gray-900">Wednesday</div>
-                    <div className="text-blue-600 font-medium">CPE 362</div>
+                  <div className="grid grid-cols-3 gap-4 text-sm py-3 px-3 bg-white rounded-lg shadow-sm border border-gray-100">
+                    <div className="text-gray-900 font-medium">Wednesday</div>
+                    <div className="font-semibold" style={{ color: "#166D86" }}>
+                      CPE 362
+                    </div>
                     <div className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-                      <span className="text-gray-900">9:00 am - 10:00 am</span>
+                      <span
+                        className="w-2 h-2 rounded-full mr-2"
+                        style={{ backgroundColor: "#166D86" }}
+                      ></span>
+                      <span className="text-gray-900 text-xs">
+                        9:00 am - 10:00 am
+                      </span>
                     </div>
                   </div>
                 </div>
