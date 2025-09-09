@@ -3,11 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
@@ -18,7 +18,7 @@ export default function About() {
     { name: "About Us", href: "/about" },
     { name: "Hardware Club", href: "/hardware" },
     { name: "Software Club", href: "/software" },
-    { name: "MHS", href: "/mhs" },
+    { name: "MHS", href: "https://acesuniben.github.io/mhs/" },
     { name: "Blog", href: "/blog" },
     { name: "Contact Us", href: "/contact" },
   ];
@@ -61,17 +61,17 @@ export default function About() {
     },
   ];
 
-
   return (
-    <div className="min-h-screen bg-white">
+    <div className="">
       {/* Header */}
       <Header />
 
       <main className="flex flex-col gap-8 md:gap-25 items-center mb-20">
-         {/* Hero Text Section */}
-        <section className="w-full px-4 md:w-1/2 text-center flex flex-col gap-3 mt-10 md:mt-20">
+        {/* Hero Text Section */}
+        <section className="w-full md:w-1/2 text-center flex flex-col gap-3 mt-10 md:mt-20">
           <h1 className="text-2xl md:text-4xl text-[#2F327D] font-bold leading-tight">
-            Know more <span className="text-[#0FACAC]">about us</span> the Association
+            Know more <span className="text-[#0FACAC]">about us</span> the
+            Association
             <br className="hidden md:block" />
             <span className="md:hidden"> </span>of Computer Engineering Students
           </h1>
@@ -80,30 +80,50 @@ export default function About() {
             done and the impact we have made in the lives of students.
           </p>
         </section>
-        
+
         {/* Hero Image Section */}
         <section className="w-full flex flex-col items-center text-center px-4 md:px-0">
           <div className="relative w-full max-w-6xl">
             {/* Desktop buttons - positioned absolutely over image */}
             <div className="hidden md:flex gap-3 px-5 w-1/2 absolute left-[30%] z-10">
               <div className="bg-[#166D86] text-white w-2/5 rounded-4xl px-12 py-4 text-2xl font-bold hover:bg-[#1a7a96] transition-colors flex items-center justify-center">
-                <Link href="/software" className="text-center whitespace-nowrap">Software Club</Link>
+                <Link
+                  href="/software"
+                  className="text-center whitespace-nowrap"
+                >
+                  Software Club
+                </Link>
               </div>
               <div className="text-[#166D86] border-2 w-2/5 border-[#166D86] bg-white rounded-4xl px-12 py-4 text-2xl font-bold hover:bg-gray-50 transition-colors flex items-center justify-center">
-                <Link href="/hardware" className="text-center whitespace-nowrap">Hardware Club</Link>
+                <Link
+                  href="/hardware"
+                  className="text-center whitespace-nowrap"
+                >
+                  Hardware Club
+                </Link>
               </div>
             </div>
-            
+
             {/* Mobile buttons - positioned at top of image */}
             <div className="flex md:hidden gap-1 absolute top-0.8 left-1/2 transform -translate-x-1/2 z-10">
               <div className="bg-[#166D86] text-white rounded-full px-1 py-1 text-[8px] font-semibold hover:bg-[#1a7a96] transition-colors shadow-lg flex items-center justify-center">
-                <Link href="/software" className="block text-center whitespace-nowrap">Software Club</Link>
+                <Link
+                  href="/software"
+                  className="block text-center whitespace-nowrap"
+                >
+                  Software Club
+                </Link>
               </div>
               <div className="text-[#166D86] border-2 border-[#166D86] bg-white rounded-full px-1 py-1.5 text-[8px] font-semibold hover:bg-gray-50 transition-colors shadow-lg flex items-center justify-center">
-                <Link href="/hardware" className="block text-center whitespace-nowrap">Hardware Club</Link>
+                <Link
+                  href="/hardware"
+                  className="block text-center whitespace-nowrap"
+                >
+                  Hardware Club
+                </Link>
               </div>
             </div>
-            
+
             {/* Hero Image */}
             <Image
               src="/Subtract-About.png"
@@ -130,11 +150,16 @@ export default function About() {
             </div>
             <div className="flex justify-center items-center gap-3 md:gap-16 max-w-6xl mx-auto overflow-x-auto">
               {stats.map((stat, index) => (
-                <div key={index} className="text-center min-w-[60px] md:min-w-[80px] flex-shrink-0">
+                <div
+                  key={index}
+                  className="text-center min-w-[60px] md:min-w-[80px] flex-shrink-0"
+                >
                   <div className="text-lg md:text-4xl font-bold text-[#2F327D] mb-1 md:mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-gray-600 text-[10px] md:text-base">{stat.label}</div>
+                  <div className="text-gray-600 text-[10px] md:text-base">
+                    {stat.label}
+                  </div>
                 </div>
               ))}
             </div>
@@ -167,17 +192,18 @@ export default function About() {
                   {/* Header content overlay */}
                   <div className="absolute inset-0 flex items-start pt-2 md:pt-4 gap-2 px-2 md:px-4">
                     <h2 className="text-xl md:text-4xl font-bold text-[#2F327D]">
-                      About The <span className="text-[#0FACAC]">Department</span>
+                      About The{" "}
+                      <span className="text-[#0FACAC]">Department</span>
                     </h2>
                   </div>
                 </div>
                 <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                   Computer Engineering is a department in the faculty of
                   Engineering, university of Benin, It consists of five (5)
-                  levels from 100L - 500L. <br /> Recently the department had a new HOD and consists of amazing
-                  lecturers. The department has a set of executives that govern
-                  the affairs of the students and also ensures that things go
-                  smoothly and are coordinated.
+                  levels from 100L - 500L. <br /> Recently the department had a
+                  new HOD and consists of amazing lecturers. The department has
+                  a set of executives that govern the affairs of the students
+                  and also ensures that things go smoothly and are coordinated.
                 </p>
               </div>
             </div>
@@ -192,11 +218,12 @@ export default function About() {
                 What We Have <span className="text-[#0FACAC]">Achieved</span>
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base px-2 md:px-0">
-                The department of Computer Engineering has achieved a lot over the 
-                coming years and that is just the tip of the iceberg. More to come !
+                The department of Computer Engineering has achieved a lot over
+                the coming years and that is just the tip of the iceberg. More
+                to come !
               </p>
             </div>
-            
+
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 max-w-6xl mx-auto">
               {/* Left side - Image */}
               <div className="w-full md:w-1/2">
@@ -208,12 +235,15 @@ export default function About() {
                   className="w-full h-auto rounded-lg"
                 />
               </div>
-              
+
               {/* Right side - Achievements List */}
               <div className="w-full md:w-1/2">
                 <div className="space-y-4 md:space-y-6">
                   {achievements.map((achievement, index) => (
-                    <div key={index} className="flex items-start gap-3 md:gap-4">
+                    <div
+                      key={index}
+                      className="flex items-start gap-3 md:gap-4"
+                    >
                       <div className="w-6 h-6 md:w-8 md:h-8 bg-[#166D86] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                         <svg
                           className="w-3 h-3 md:w-4 md:h-4 text-white"
@@ -223,7 +253,9 @@ export default function About() {
                           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-sm md:text-lg leading-relaxed">{achievement}</span>
+                      <span className="text-gray-700 text-sm md:text-lg leading-relaxed">
+                        {achievement}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -240,14 +272,18 @@ export default function About() {
                 Aims and <span className="text-[#0FACAC]">Objectives</span>
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base px-2 md:px-0">
-                These are the aims and objectives of this amazing Association. Read 
-                carefully and take note of them and be part of this movement.
+                These are the aims and objectives of this amazing Association.
+                Read carefully and take note of them and be part of this
+                movement.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 max-w-6xl mx-auto">
               {/* Objective 1 */}
-              <div className="text-center p-4 md:p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+              <div
+                className="text-center p-4 md:p-6 rounded-2xl bg-white relative"
+                style={{ boxShadow: "0 8px 16px rgba(0, 0, 0, 0.1)" }}
+              >
                 <div className="flex justify-center mb-4 md:mb-6 -mt-6 md:-mt-10">
                   <Image
                     src="/number-one.png"
@@ -258,12 +294,16 @@ export default function About() {
                   />
                 </div>
                 <h3 className="text-base md:text-lg font-semibold mb-4 text-[#2F327D]">
-                  To Promote academic excellence through peer support, seminars and mentoring programs.
+                  To Promote academic excellence through peer support, seminars
+                  and mentoring programs.
                 </h3>
               </div>
 
               {/* Objective 2 */}
-              <div className="text-center p-4 md:p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+              <div
+                className="text-center p-4 md:p-6 rounded-2xl bg-white relative"
+                style={{ boxShadow: "0 8px 16px rgba(0, 0, 0, 0.1)" }}
+              >
                 <div className="flex justify-center mb-4 md:mb-6 -mt-6 md:-mt-10">
                   <Image
                     src="/number-two.png"
@@ -274,12 +314,16 @@ export default function About() {
                   />
                 </div>
                 <h3 className="text-base md:text-lg font-semibold mb-4 text-[#2F327D]">
-                  To Encourage innovation, critical thinking and creative problem-solving
+                  To Encourage innovation, critical thinking and creative
+                  problem-solving
                 </h3>
               </div>
 
               {/* Objective 3 */}
-              <div className="text-center p-4 md:p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+              <div
+                className="text-center p-4 md:p-6 rounded-2xl bg-white relative"
+                style={{ boxShadow: "0 8px 16px rgba(0, 0, 0, 0.1)" }}
+              >
                 <div className="flex justify-center mb-4 md:mb-6 -mt-6 md:-mt-10">
                   <Image
                     src="/number-three.png"
@@ -290,12 +334,16 @@ export default function About() {
                   />
                 </div>
                 <h3 className="text-base md:text-lg font-semibold mb-4 text-[#2F327D]">
-                  To build leadership capacity among members through organized responsibilities and projects.
+                  To build leadership capacity among members through organized
+                  responsibilities and projects.
                 </h3>
               </div>
 
               {/* Objective 4 */}
-              <div className="text-center p-4 md:p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+              <div
+                className="text-center p-4 md:p-6 rounded-2xl bg-white relative"
+                style={{ boxShadow: "0 8px 16px rgba(0, 0, 0, 0.1)" }}
+              >
                 <div className="flex justify-center mb-4 md:mb-6 -mt-6 md:-mt-10">
                   <Image
                     src="/number-four.png"
@@ -306,12 +354,16 @@ export default function About() {
                   />
                 </div>
                 <h3 className="text-base md:text-lg font-semibold mb-4 text-[#2F327D]">
-                  To foster a strong sense of unity, collaboration, teamwork within the student body.
+                  To foster a strong sense of unity, collaboration, teamwork
+                  within the student body.
                 </h3>
               </div>
 
               {/* Objective 5 */}
-              <div className="text-center p-4 md:p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+              <div
+                className="text-center p-4 md:p-6 rounded-2xl bg-white relative"
+                style={{ boxShadow: "0 8px 16px rgba(0, 0, 0, 0.1)" }}
+              >
                 <div className="flex justify-center mb-4 md:mb-6 -mt-6 md:-mt-10">
                   <Image
                     src="/number-five.png"
@@ -322,12 +374,16 @@ export default function About() {
                   />
                 </div>
                 <h3 className="text-base md:text-lg font-semibold mb-4 text-[#2F327D]">
-                  To build the gap between students and faculty through regular engagement and dialogue.
+                  To build the gap between students and faculty through regular
+                  engagement and dialogue.
                 </h3>
               </div>
 
               {/* Objective 6 */}
-              <div className="text-center p-4 md:p-6 rounded-2xl bg-white relative" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+              <div
+                className="text-center p-4 md:p-6 rounded-2xl bg-white relative"
+                style={{ boxShadow: "0 8px 16px rgba(0, 0, 0, 0.1)" }}
+              >
                 <div className="flex justify-center mb-4 md:mb-6 -mt-6 md:-mt-10">
                   <Image
                     src="/number-six.png"
@@ -338,7 +394,8 @@ export default function About() {
                   />
                 </div>
                 <h3 className="text-base md:text-lg font-semibold mb-4 text-[#2F327D]">
-                  To initiate and participate in community service and social impact projects.
+                  To initiate and participate in community service and social
+                  impact projects.
                 </h3>
               </div>
             </div>
@@ -350,13 +407,16 @@ export default function About() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-8 md:mb-12">
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#2F327D]">
-                Meet the <span className="text-[#0FACAC]">Next Wave Executives</span>
+                Meet the{" "}
+                <span className="text-[#0FACAC]">Next Wave Executives</span>
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base px-2 md:px-0">
-                Get to know the people that have taken the responsibility of being leaders and also to serve the great students of this department
+                Get to know the people that have taken the responsibility of
+                being leaders and also to serve the great students of this
+                department
               </p>
             </div>
-            
+
             <div className="relative max-w-6xl mx-auto">
               {/* Swiper Carousel */}
               <Swiper
@@ -365,12 +425,12 @@ export default function About() {
                 slidesPerView={3}
                 loop={true}
                 navigation={{
-                  prevEl: '.swiper-button-prev-custom',
-                  nextEl: '.swiper-button-next-custom',
+                  prevEl: ".swiper-button-prev-custom",
+                  nextEl: ".swiper-button-next-custom",
                 }}
                 pagination={{
                   clickable: true,
-                  el: '.swiper-pagination-custom'
+                  el: ".swiper-pagination-custom",
                 }}
                 autoplay={{
                   delay: 3000,
@@ -408,22 +468,38 @@ export default function About() {
                       </div>
                       {/* Floating overlay */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Zack Jennifer</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES President</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Zack Jennifer
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          ACES President
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                           </div>
                         </div>
@@ -447,22 +523,38 @@ export default function About() {
                       </div>
                       {/* Floating overlay */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Aigbede E. Wisdom</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Vice President</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Aigbede E. Wisdom
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          ACES Vice President
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                           </div>
                         </div>
@@ -486,22 +578,38 @@ export default function About() {
                       </div>
                       {/* Floating overlay */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Ilo C. Sylvia</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Secretary General</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Ilo C. Sylvia
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          ACES Secretary General
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                           </div>
                         </div>
@@ -525,22 +633,38 @@ export default function About() {
                       </div>
                       {/* Floating overlay */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Okereke Chidalu Maryann</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Assistant Secretary General</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Okereke Chidalu Maryann
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          ACES Assistant Secretary General
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                           </div>
                         </div>
@@ -549,7 +673,7 @@ export default function About() {
                   </div>
                 </SwiperSlide>
 
-              {/* Fin. Sec. */}
+                {/* Fin. Sec. */}
                 <SwiperSlide>
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full">
                     <div className="relative h-96 flex flex-col">
@@ -564,22 +688,38 @@ export default function About() {
                       </div>
                       {/* Floating overlay */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Aisekhame T. Divine</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Financial Secretary</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Aisekhame T. Divine
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          ACES Financial Secretary
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                           </div>
                         </div>
@@ -603,22 +743,38 @@ export default function About() {
                       </div>
                       {/* Floating overlay */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Osamede Ayela-Uwague</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Public Relations Officer</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Osamede Ayela-Uwague
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          ACES Public Relations Officer
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                           </div>
                         </div>
@@ -642,22 +798,38 @@ export default function About() {
                       </div>
                       {/* Floating overlay */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Obeira Osamudiamen</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Director of Welfare</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Obeira Osamudiamen
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          ACES Director of Welfare
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                           </div>
                         </div>
@@ -681,22 +853,38 @@ export default function About() {
                       </div>
                       {/* Floating overlay */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Joshua Charles</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Director of Sports</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Joshua Charles
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          ACES Director of Sports
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                           </div>
                         </div>
@@ -720,22 +908,38 @@ export default function About() {
                       </div>
                       {/* Floating overlay */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Glory O. Omage</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Director of Socials</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Glory O. Omage
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          ACES Director of Socials
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                           </div>
                         </div>
@@ -744,7 +948,7 @@ export default function About() {
                   </div>
                 </SwiperSlide>
 
-              {/* Academic Advisor */}
+                {/* Academic Advisor */}
                 <SwiperSlide>
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full">
                     <div className="relative h-96 flex flex-col">
@@ -759,22 +963,38 @@ export default function About() {
                       </div>
                       {/* Floating overlay */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Peace Akhaze</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">ACES Academic Advisor</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Peace Akhaze
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          ACES Academic Advisor
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                           </div>
                         </div>
@@ -782,18 +1002,37 @@ export default function About() {
                     </div>
                   </div>
                 </SwiperSlide>
-          
               </Swiper>
 
               {/* Custom Navigation Buttons */}
               <button className="swiper-button-prev-custom absolute left-0 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-[#0FACAC] rounded-full flex items-center justify-center text-white hover:bg-[#166D86] transition-colors z-10">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
                 </svg>
               </button>
               <button className="swiper-button-next-custom absolute right-0 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-[#0FACAC] rounded-full flex items-center justify-center text-white hover:bg-[#166D86] transition-colors z-10">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </button>
 
@@ -810,7 +1049,8 @@ export default function About() {
               Our <span className="text-[#0FACAC]">Services</span>
             </h2>
             <p className="text-center text-gray-600 mb-8 md:mb-16 max-w-2xl mx-auto text-sm md:text-lg px-2 md:px-0">
-              Get to know what ACES and the Department of Computer Engineering offers to the students of this great department
+              Get to know what ACES and the Department of Computer Engineering
+              offers to the students of this great department
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 max-w-5xl mx-auto">
               {/* Past Questions Service */}
@@ -890,17 +1130,24 @@ export default function About() {
                 </h2>
                 <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
                   <p className="text-gray-600 leading-relaxed text-sm md:text-base text-left">
-                    To improve the department and to ensure activities like 
-                    fresher's welcome, HOD's Cup and others are able to be achieved.
+                    To improve the department and to ensure activities like
+                    fresher's welcome, HOD's Cup and others are able to be
+                    achieved.
                   </p>
                   <p className="text-gray-600 leading-relaxed text-sm md:text-base text-left">
-                    paying your ELA Dues shows how important this department is to you.
+                    paying your ELA Dues shows how important this department is
+                    to you.
                   </p>
                 </div>
                 <div className="text-left">
-                  <button className="bg-[#166D86] text-white px-6 md:px-8 py-2 md:py-3 rounded-full font-medium hover:bg-[#0FACAC] transition-colors text-sm md:text-base">
-                    Explore
-                  </button>
+                  <Link
+                    href="https://acesuniben.github.io/mhs/"
+                    target="_blank"
+                  >
+                    <button className="bg-[#166D86] text-white px-6 md:px-8 py-2 md:py-3 rounded-full font-medium hover:bg-[#0FACAC] transition-colors text-sm md:text-base">
+                      Explore
+                    </button>
+                  </Link>
                 </div>
               </div>
               <div className="w-full md:w-1/2 flex justify-center">
@@ -929,31 +1176,32 @@ export default function About() {
         </section>
 
         {/* Meet the Developers */}
-          <section className="py-8 md:py-16 bg-white w-full">
+        <section className="py-8 md:py-16 bg-white w-full">
           <div className="container mx-auto px-4">
             <div className="text-center mb-8 md:mb-12">
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#2F327D]">
                 Meet the <span className="text-[#0FACAC]">Developers</span>
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base px-2 md:px-0">
-                Get to know the people responsible for creating and developing both the mobile app and website
+                Get to know the people responsible for creating and developing
+                both the mobile and web apps
               </p>
             </div>
-            
+
             <div className="relative max-w-6xl mx-auto">
               {/* Swiper Carousel */}
               <Swiper
-              loop={true}
+                loop={true}
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={30}
                 slidesPerView={3}
                 navigation={{
-                  prevEl: '.swiper-button-prev-custom',
-                  nextEl: '.swiper-button-next-custom',
+                  prevEl: ".swiper-button-prev-custom",
+                  nextEl: ".swiper-button-next-custom",
                 }}
                 pagination={{
                   clickable: true,
-                  el: '.swiper-pagination-custom'
+                  el: ".swiper-pagination-custom",
                 }}
                 autoplay={{
                   delay: 3000,
@@ -991,23 +1239,57 @@ export default function About() {
                       </div>
                       {/* Floating overlay - positioned at bottom of container */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Obuh Daniel</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">Mobile App Developer</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Obuh Daniel
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          Mobile App Developer
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                            </svg>
+                            <a
+                              href="https://twitter.com/obuhdaniel2"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                              </svg>
+                            </a>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
+                            <a
+                              href="https://ng.linkedin.com/in/daniel-obuh-04665a2b9"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                              </svg>
+                            </a>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
+                            <a
+                              href="https://www.github.com/obuhdaniel"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                              </svg>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -1030,23 +1312,57 @@ export default function About() {
                       </div>
                       {/* Floating overlay - positioned at bottom of container */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Ayara Elijah</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">UI/UX Designer</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Ayara Elijah
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          UI/UX Designer
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                            </svg>
+                            <a
+                              href="https://twitter.com/Elijah1480605"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                              </svg>
+                            </a>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
+                            <a
+                              href="https://www.linkedin.com/in/elijah-ayara-b60666310?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                              </svg>
+                            </a>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
+                            <a
+                              href="https://www.github.com/ayaraelijah"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                              </svg>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -1069,23 +1385,57 @@ export default function About() {
                       </div>
                       {/* Floating overlay - positioned at bottom of container */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Ogbaudu Oghenemaro</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">Web App Developer</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Ogbaudu Oghenemaro
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          Web App Developer
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                            </svg>
+                            <a
+                              href="https://twitter.com/odogwuScript"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                              </svg>
+                            </a>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
+                            <a
+                              href="https://www.linkedin.com/in/oghenemaro-ogbaudu-124a93278"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                              </svg>
+                            </a>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
+                            <a
+                              href="https://www.github.com/Maroprosper"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                              </svg>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -1108,23 +1458,57 @@ export default function About() {
                       </div>
                       {/* Floating overlay - positioned at bottom of container */}
                       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-4 shadow-lg text-center">
-                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">Onwuka David</h3>
-                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">Web App Developer</p>
+                        <h3 className="text-lg font-bold text-[#2F327D] mb-1">
+                          Onwuka David
+                        </h3>
+                        <p className="text-[#0FACAC] font-medium mb-3 text-sm">
+                          Web App Developer
+                        </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                            </svg>
+                            <a
+                              href="https://twitter.com/xavierScript"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                              </svg>
+                            </a>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
+                            <a
+                              href="https://www.linkedin.com/in/david-onwuka-1b882a220?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                              </svg>
+                            </a>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
+                            <a
+                              href="https://github.com/xavierScript"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                              </svg>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -1135,13 +1519,33 @@ export default function About() {
 
               {/* Custom Navigation Buttons */}
               <button className="swiper-button-prev-custom absolute left-0 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-[#0FACAC] rounded-full flex items-center justify-center text-white hover:bg-[#166D86] transition-colors z-10">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
                 </svg>
               </button>
               <button className="swiper-button-next-custom absolute right-0 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-[#0FACAC] rounded-full flex items-center justify-center text-white hover:bg-[#166D86] transition-colors z-10">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </button>
 
@@ -1152,56 +1556,69 @@ export default function About() {
         </section>
 
         {/* CTA Section */}
-         <section className="py-8 md:py-16 bg-white">
+        <section className="py-8 md:py-16 bg-white">
           <div className="container mx-auto px-4">
-                    <div className="relative max-w-6xl mx-auto">
-                      {/* Desktop Layout - Original design */}
-                      <div className="hidden md:block">
-                        <Image src="/GirlSittingWithPen.png" height={234.135} width={1016.67} alt="Newsletter sign-up background" className="w-full"/>
-                        <div className="absolute top-[25%] left-[20%] flex flex-col gap-6 items-left w-[60%]">
-                          <h2 className="text-[#2F327D] font-bold text-3xl text-left w-[75%]">Get <span className=" text-[#0FACAC]">Past Questions</span> with ease and ensure you use them efficiently and consistently</h2>          
-                          <div>
-                            <button 
-                                type="submit"
-                                className="bg-[#166D86] text-white rounded-4xl py-2 px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium"
-                              >
-                                Get Past Questions
-                              </button>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Mobile Layout - Image background like desktop */}
-                      <div className="md:hidden">
-                        <div className="relative rounded-2xl overflow-hidden">
-                          {/* Background Image */}
-                          <Image 
-                            src="/GirlSittingWithPen.png" 
-                            alt="Newsletter sign-up background" 
-                            width={1000} 
-                            height={234}
-                            className="w-full h-full object-cover"
-                          />
-                          
-                          {/* Content Overlay */}
-                          <div className="absolute inset-0 p-6 flex flex-col justify-center">
-                            <div className="max-w-[60%]">
-                              <h2 className="text-[#2F327D] font-bold text-xs leading-tight mb-4">
-                                Get <span className="text-[#0FACAC]">Past Questions</span> with ease and ensure you use them efficiently and consistently
-                              </h2>
-                              <button 
-                                type="submit"
-                                className="bg-[#166D86] text-white rounded-full py-3 px-6 hover:bg-[#0FACAC] transition-colors duration-200 font-medium text-sm whitespace-nowrap"
-                              >
-                                Get Past Questions
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+            <div className="relative max-w-6xl mx-auto">
+              {/* Desktop Layout - Original design */}
+              <div className="hidden md:block">
+                <Image
+                  src="/GirlSittingWithPen.png"
+                  height={234.135}
+                  width={1016.67}
+                  alt="Newsletter sign-up background"
+                  className="w-full"
+                />
+                <div className="absolute top-[25%] left-[20%] flex flex-col gap-6 items-left w-[60%]">
+                  <h2 className="text-[#2F327D] font-bold text-3xl text-left w-[75%]">
+                    Get <span className=" text-[#0FACAC]">Past Questions</span>{" "}
+                    with ease and ensure you use them efficiently and
+                    consistently
+                  </h2>
+                  <div>
+                    <button
+                      type="submit"
+                      className="bg-[#166D86] text-white rounded-4xl py-2 px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium"
+                    >
+                      Get Past Questions
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile Layout - Image background like desktop */}
+              <div className="md:hidden">
+                <div className="relative rounded-2xl overflow-hidden">
+                  {/* Background Image */}
+                  <Image
+                    src="/GirlSittingWithPen.png"
+                    alt="Newsletter sign-up background"
+                    width={1000}
+                    height={234}
+                    className="w-full h-full object-cover"
+                  />
+
+                  {/* Content Overlay */}
+                  <div className="absolute inset-0 p-6 flex flex-col justify-center">
+                    <div className="max-w-[60%]">
+                      <h2 className="text-[#2F327D] font-bold text-xs leading-tight mb-4">
+                        Get{" "}
+                        <span className="text-[#0FACAC]">Past Questions</span>{" "}
+                        with ease and ensure you use them efficiently and
+                        consistently
+                      </h2>
+                      <button
+                        type="submit"
+                        className="bg-[#166D86] text-white rounded-full py-3 px-6 hover:bg-[#0FACAC] transition-colors duration-200 font-medium text-sm whitespace-nowrap"
+                      >
+                        Get Past Questions
+                      </button>
                     </div>
                   </div>
-                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* ACES Secretariat Section */}
         <section className="py-8 md:py-16 bg-white">
@@ -1214,11 +1631,12 @@ export default function About() {
                   <span className="text-[#2F327D]">ACES </span>
                   <span className="text-[#0FACAC]">SECRETARIAT</span>
                 </h2>
-                
+
                 {/* Description */}
                 <p className="text-gray-600 text-sm leading-relaxed mb-6 text-left">
-                  To improve the department and to ensure activities like 
-                  fresher's welcome, HOD's Cup and others are able to be achieved.
+                  To improve the department and to ensure activities like
+                  fresher's welcome, HOD's Cup and others are able to be
+                  achieved.
                 </p>
 
                 {/* Location */}
@@ -1234,8 +1652,8 @@ export default function About() {
                   </div>
                   <div className="text-left">
                     <p className="text-gray-700 text-sm leading-relaxed">
-                      Before the Electrical Engineering Building,
-                      Faculty of Engineering, University of Benin, Ugbowo
+                      Before the Electrical Engineering Building, Faculty of
+                      Engineering, University of Benin, Ugbowo
                     </p>
                   </div>
                 </div>
@@ -1298,7 +1716,7 @@ export default function About() {
                 <h2 className="text-3xl font-bold mb-6 text-[#2F327D]">
                   <span className="text-[#0FACAC]">ACES SECRETARIAT</span>
                 </h2>
-                
+
                 <p className="text-gray-600 mb-6 md:mb-8 leading-relaxed text-base text-left">
                   To improve the department and to ensure activities like
                   fresher's welcome, HOD's Cup and others are able to be
