@@ -348,7 +348,7 @@ export default function Students() {
                   Email
                 </div>
                 <div className="min-w-[120px] text-xs font-bold text-gray-600 uppercase tracking-wider">
-                  Date
+                  Date of Birth
                 </div>
                 <div className="min-w-[60px] text-xs font-bold text-gray-600 uppercase tracking-wider">
                   Level
@@ -459,7 +459,7 @@ export default function Students() {
                         </span>
                       </div>
 
-                      {/* Date */}
+                      {/* Date of Birth*/}
                       <div className="flex items-center space-x-2 min-w-[120px]">
                         <Image
                           src="/dateIcon.png"

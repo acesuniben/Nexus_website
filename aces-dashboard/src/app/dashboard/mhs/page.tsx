@@ -26,8 +26,25 @@ export default function MHSPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [mhsItems, setMhsItems] = useState<MHSItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  // Fetch MHS data from API
+  useEffect(() => {
+    fetchMHSData();
+  }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (activeDropdown && !(event.target as Element).closest(".relative")) {
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [activeDropdown]);
   const fetchMHSData = async () => {
     try {
       // Ensure we're on the client side
@@ -187,6 +204,54 @@ export default function MHSPage() {
       console.error("Error adding MHS:", error);
       alert("An error occurred while creating the MHS post. Please try again.");
     }
+  };
+
+  const toggleDropdown = (mhsId: string) => {
+    setActiveDropdown(activeDropdown === mhsId ? null : mhsId);
+  };
+
+  const handleUpdateMHS = (mhsId: string) => {
+    // TODO: Implement update MHS functionality
+    // You can create an UpdateMHSModal similar to UpdateStudentModal
+    console.log("Update MHS with ID:", mhsId);
+    alert("Update functionality will be implemented soon!");
+    setActiveDropdown(null);
+  };
+
+  const handleDeleteMHS = async (mhsId: string) => {
+    if (confirm("Are you sure you want to delete this MHS post?")) {
+      try {
+        const token = localStorage.getItem("adminToken");
+        if (!token) {
+          throw new Error("You must be logged in as an admin");
+        }
+
+        const response = await fetch(
+          `https://aces-utky.onrender.com/api/admin/acesmhs/delete/${mhsId}`,
+          {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Failed to delete MHS post");
+        }
+
+        // Refresh the MHS list
+        await fetchMHSData();
+        console.log("MHS post deleted successfully");
+        alert("MHS post deleted successfully!");
+      } catch (err: any) {
+        console.error("Error deleting MHS post:", err);
+        alert(`Error deleting MHS post: ${err.message}`);
+      }
+    }
+    setActiveDropdown(null);
   };
 
   return (
@@ -475,7 +540,7 @@ export default function MHSPage() {
                       </div>
                     </div>
 
-                    {/* Right side - Status */}
+                    {/* Right side - Status and Actions */}
                     <div className="flex items-center space-x-4">
                       {/* Status */}
                       <span
@@ -488,6 +553,68 @@ export default function MHSPage() {
                       >
                         {item.status}
                       </span>
+
+                      {/* Actions Menu */}
+                      <div className="relative">
+                        <button
+                          onClick={() => toggleDropdown(item.id)}
+                          className="p-1 rounded-lg transition-all duration-200 hover:bg-gray-100"
+                          style={{ color: "#2F327D" }}
+                        >
+                          <svg
+                            className="w-5 h-5"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                          </svg>
+                        </button>
+
+                        {/* Dropdown Menu */}
+                        {activeDropdown === item.id && (
+                          <div className="absolute right-0 top-8 w-36 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-10">
+                            <button
+                              onClick={() => handleUpdateMHS(item.id)}
+                              className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors flex items-center space-x-3"
+                              style={{ color: "#2F327D" }}
+                            >
+                              <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                />
+                              </svg>
+                              <span className="font-medium">Update</span>
+                            </button>
+                            <button
+                              onClick={() => handleDeleteMHS(item.id)}
+                              className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50 transition-colors flex items-center space-x-3"
+                            >
+                              <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                />
+                              </svg>
+                              <span className="font-medium">Delete</span>
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
