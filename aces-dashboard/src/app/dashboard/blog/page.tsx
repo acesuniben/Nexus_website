@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import AddBlogModal from "@/components/AddBlogModal";
+import UpdateBlogModal from "@/components/UpdateBlogModal";
 
 interface BlogItem {
   id: string;
@@ -25,6 +26,8 @@ export default function BlogPage() {
   const [blogs, setBlogs] = useState<BlogItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [editingBlog, setEditingBlog] = useState<BlogItem | null>(null);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   useEffect(() => {
     fetchBlogs();
@@ -213,11 +216,22 @@ export default function BlogPage() {
   };
 
   const handleUpdateBlog = (blogId: string) => {
-    // TODO: Implement update blog functionality
-    // You can create an UpdateBlogModal similar to UpdateStudentModal
-    console.log("Update blog with ID:", blogId);
-    alert("Update functionality will be implemented soon!");
+    const blog = blogs.find((b) => b.id === blogId);
+    if (blog) {
+      setEditingBlog(blog);
+      setIsUpdateModalOpen(true);
+    }
     setActiveDropdown(null);
+  };
+
+  const handleBlogUpdated = async (updatedBlog: BlogItem) => {
+    // Refresh the blogs list after update
+    await fetchBlogs();
+  };
+
+  const closeUpdateModal = () => {
+    setIsUpdateModalOpen(false);
+    setEditingBlog(null);
   };
 
   const handleDeleteBlog = async (blogId: string) => {
@@ -640,6 +654,14 @@ export default function BlogPage() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSubmit={handleAddBlog}
+      />
+
+      {/* Update Blog Modal */}
+      <UpdateBlogModal
+        isOpen={isUpdateModalOpen}
+        onClose={closeUpdateModal}
+        blog={editingBlog}
+        onUpdate={handleBlogUpdated}
       />
     </div>
   );
