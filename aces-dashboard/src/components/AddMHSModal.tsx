@@ -53,7 +53,12 @@ export default function AddMHSModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.title || !formData.volume || !formData.description || !formData.date) {
+    if (
+      !formData.title ||
+      !formData.volume ||
+      !formData.description ||
+      !formData.date
+    ) {
       return;
     }
 
@@ -158,7 +163,9 @@ export default function AddMHSModal({
                   <input
                     type="text"
                     value={formData.volume}
-                    onChange={(e) => handleInputChange("volume", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("volume", e.target.value)
+                    }
                     placeholder="Vol 1"
                     className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
                     onFocus={(e) => {

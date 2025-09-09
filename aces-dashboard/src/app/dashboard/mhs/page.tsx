@@ -406,9 +406,9 @@ export default function MHSPage() {
                   className="bg-white px-8 py-4 hover:bg-gray-50 transition-colors duration-200 group rounded-xl border border-gray-100 shadow-sm"
                 >
                   <div className="flex items-center justify-between w-full">
-                    <div className="flex items-center space-x-6">
+                    <div className="flex items-center space-x-4 lg:space-x-6">
                       {/* MHS Ref */}
-                      <div className="min-w-[80px]">
+                      <div className="min-w-[60px]">
                         <span
                           className="text-sm font-semibold"
                           style={{ color: "#2F327D" }}
@@ -418,20 +418,20 @@ export default function MHSPage() {
                       </div>
 
                       {/* Title */}
-                      <div className="min-w-[200px]">
+                      <div className="min-w-[150px] lg:min-w-[200px]">
                         <span
                           className="text-sm font-semibold"
                           style={{ color: "#2F327D" }}
                           title={item.title}
                         >
-                          {item.title.length > 25
-                            ? `${item.title.substring(0, 25)}...`
+                          {item.title.length > 20
+                            ? `${item.title.substring(0, 20)}...`
                             : item.title}
                         </span>
                       </div>
 
                       {/* Volume */}
-                      <div className="min-w-[100px]">
+                      <div className="min-w-[80px]">
                         <span
                           className="text-sm font-medium px-2 py-1 rounded-md"
                           style={{
@@ -445,20 +445,20 @@ export default function MHSPage() {
                       </div>
 
                       {/* Description */}
-                      <div className="min-w-[250px]">
+                      <div className="min-w-[180px] lg:min-w-[250px]">
                         <span
                           className="text-sm font-medium"
                           style={{ color: "#2F327D" }}
                           title={item.description}
                         >
-                          {item.description.length > 40
-                            ? `${item.description.substring(0, 40)}...`
+                          {item.description.length > 50
+                            ? `${item.description.substring(0, 50)}...`
                             : item.description}
                         </span>
                       </div>
 
                       {/* Date */}
-                      <div className="flex items-center space-x-2 min-w-[150px]">
+                      <div className="flex items-center space-x-2 min-w-[120px]">
                         <Image
                           src="/dateIcon.png"
                           alt="Date"
@@ -479,7 +479,7 @@ export default function MHSPage() {
                     <div className="flex items-center space-x-4">
                       {/* Status */}
                       <span
-                        className="inline-flex items-center px-6 py-2.5 rounded-full text-sm font-semibold"
+                        className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap"
                         style={{
                           backgroundColor: "#E0F7F6",
                           color: "#166D86",
