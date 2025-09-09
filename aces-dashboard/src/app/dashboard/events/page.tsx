@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import AddEventModal from "@/components/AddEventModal";
+import UpdateEventModal from "@/components/UpdateEventModal";
 
 interface EventItem {
   id: string;
@@ -29,6 +30,8 @@ export default function EventsPage() {
   const [events, setEvents] = useState<EventItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [editingEvent, setEditingEvent] = useState<EventItem | null>(null);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   useEffect(() => {
     fetchEvents();
@@ -225,10 +228,11 @@ export default function EventsPage() {
   };
 
   const handleUpdateEvent = (eventId: string) => {
-    // TODO: Implement update event functionality
-    // You can create an UpdateEventModal similar to UpdateStudentModal
-    console.log("Update event with ID:", eventId);
-    alert("Update functionality will be implemented soon!");
+    const eventToEdit = events.find((event) => event.id === eventId);
+    if (eventToEdit) {
+      setEditingEvent(eventToEdit);
+      setIsUpdateModalOpen(true);
+    }
     setActiveDropdown(null);
   };
 
@@ -266,6 +270,19 @@ export default function EventsPage() {
       }
     }
     setActiveDropdown(null);
+  };
+
+  const handleEventUpdated = (updatedEvent: EventItem) => {
+    setEvents((prevEvents) =>
+      prevEvents.map((event) =>
+        event.id === updatedEvent.id ? updatedEvent : event
+      )
+    );
+  };
+
+  const closeUpdateModal = () => {
+    setIsUpdateModalOpen(false);
+    setEditingEvent(null);
   };
 
   return (
@@ -652,6 +669,14 @@ export default function EventsPage() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSubmit={handleAddEvent}
+      />
+
+      {/* Update Event Modal */}
+      <UpdateEventModal
+        isOpen={isUpdateModalOpen}
+        onClose={closeUpdateModal}
+        event={editingEvent}
+        onUpdate={handleEventUpdated}
       />
     </div>
   );
