@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import AddMHSModal from "@/components/AddMHSModal";
+import UpdateMHSModal from "@/components/UpdateMHSModal";
 
 interface MHSItem {
   id: string;
@@ -27,6 +28,8 @@ export default function MHSPage() {
   const [mhsItems, setMhsItems] = useState<MHSItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [editingMHS, setEditingMHS] = useState<MHSItem | null>(null);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   useEffect(() => {
     fetchMHSData();
@@ -211,10 +214,11 @@ export default function MHSPage() {
   };
 
   const handleUpdateMHS = (mhsId: string) => {
-    // TODO: Implement update MHS functionality
-    // You can create an UpdateMHSModal similar to UpdateStudentModal
-    console.log("Update MHS with ID:", mhsId);
-    alert("Update functionality will be implemented soon!");
+    const mhsToEdit = mhsItems.find((mhs) => mhs.id === mhsId);
+    if (mhsToEdit) {
+      setEditingMHS(mhsToEdit);
+      setIsUpdateModalOpen(true);
+    }
     setActiveDropdown(null);
   };
 
@@ -252,6 +256,17 @@ export default function MHSPage() {
       }
     }
     setActiveDropdown(null);
+  };
+
+  const handleMHSUpdated = (updatedMHS: MHSItem) => {
+    setMhsItems((prevItems) =>
+      prevItems.map((item) => (item.id === updatedMHS.id ? updatedMHS : item))
+    );
+  };
+
+  const closeUpdateModal = () => {
+    setIsUpdateModalOpen(false);
+    setEditingMHS(null);
   };
 
   return (
@@ -656,6 +671,14 @@ export default function MHSPage() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSubmit={handleAddMHS}
+      />
+
+      {/* Update MHS Modal */}
+      <UpdateMHSModal
+        isOpen={isUpdateModalOpen}
+        onClose={closeUpdateModal}
+        mhs={editingMHS}
+        onUpdate={handleMHSUpdated}
       />
     </div>
   );
