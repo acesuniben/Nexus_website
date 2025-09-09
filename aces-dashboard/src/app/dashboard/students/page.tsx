@@ -401,21 +401,35 @@ export default function Students() {
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
           {/* Table Header */}
           <div
-            className="px-6 py-4 border-b border-gray-100"
+            className="px-8 py-4 border-b border-gray-100"
             style={{ backgroundColor: "#f8fafc" }}
           >
-            <div className="grid grid-cols-6 gap-4 text-xs font-bold text-gray-600 uppercase tracking-wider">
-              <div>Mat No.</div>
-              <div>Name</div>
-              <div>Email</div>
-              <div>Date</div>
-              <div>Level</div>
-              <div>Status</div>
+            <div className="flex items-center justify-between w-full">
+              <div className="flex items-center space-x-6">
+                <div className="min-w-[120px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  Mat No.
+                </div>
+                <div className="min-w-[150px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  Name
+                </div>
+                <div className="min-w-[200px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  Email
+                </div>
+                <div className="min-w-[120px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  Date
+                </div>
+                <div className="min-w-[60px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  Level
+                </div>
+              </div>
+              <div className="text-xs font-bold text-gray-600 uppercase tracking-wider">
+                Status
+              </div>
             </div>
           </div>
 
           {/* Table Body */}
-          <div className="divide-y divide-gray-100">
+          <div className="p-4 space-y-3 bg-gray-100">
             {isLoading ? (
               <div className="px-6 py-12 text-center">
                 <div className="flex items-center justify-center space-x-2">
@@ -471,63 +485,87 @@ export default function Students() {
               filteredStudents.map((student, index) => (
                 <div
                   key={student.id}
-                  className="px-6 py-4 hover:bg-gray-50 transition-colors duration-200 group"
+                  className="bg-white px-8 py-4 hover:bg-gray-50 transition-colors duration-200 group rounded-xl border border-gray-100 shadow-sm"
                 >
-                  <div className="grid grid-cols-6 gap-4 items-center">
-                    {/* Mat No */}
-                    <div className="flex items-center space-x-3">
-                      <div className="flex-shrink-0">
-                        <div
-                          className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold"
-                          style={{ backgroundColor: "#166D86" }}
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center space-x-6">
+                      {/* Mat No */}
+                      <div className="min-w-[120px]">
+                        <span
+                          className="text-sm font-semibold"
+                          style={{ color: "#2F327D" }}
                         >
-                          {student.fullName.charAt(0).toUpperCase()}
-                        </div>
-                      </div>
-                      <div>
-                        <span className="text-sm font-medium text-gray-900">
                           {student.matriculationNumber}
+                        </span>
+                      </div>
+
+                      {/* Name */}
+                      <div className="min-w-[150px]">
+                        <span
+                          className="text-sm font-semibold"
+                          style={{ color: "#2F327D" }}
+                        >
+                          {student.fullName}
+                        </span>
+                      </div>
+
+                      {/* Email */}
+                      <div className="flex items-center space-x-2 min-w-[200px]">
+                        <Image
+                          src="/emailIcon.png"
+                          alt="Email"
+                          width={16}
+                          height={16}
+                          className="flex-shrink-0"
+                        />
+                        <span
+                          className="text-sm font-medium truncate"
+                          style={{ color: "#2F327D" }}
+                          title={student.email}
+                        >
+                          {student.email}
+                        </span>
+                      </div>
+
+                      {/* Date */}
+                      <div className="flex items-center space-x-2 min-w-[120px]">
+                        <Image
+                          src="/dateIcon.png"
+                          alt="Date"
+                          width={16}
+                          height={16}
+                          className="flex-shrink-0"
+                        />
+                        <span
+                          className="text-sm font-medium"
+                          style={{ color: "#2F327D" }}
+                        >
+                          {formatDate(student.dateOfBirth)}
+                        </span>
+                      </div>
+
+                      {/* Level */}
+                      <div className="min-w-[60px]">
+                        <span
+                          className="text-sm font-bold"
+                          style={{ color: "#2F327D" }}
+                        >
+                          {student.level}
                         </span>
                       </div>
                     </div>
 
-                    {/* Name */}
-                    <div>
-                      <span className="text-sm font-medium text-gray-900">
-                        {student.fullName}
-                      </span>
-                    </div>
-
-                    {/* Email */}
-                    <div>
+                    {/* Right side - Status and Actions */}
+                    <div className="flex items-center space-x-4">
+                      {/* Status */}
                       <span
-                        className="text-sm font-medium hover:underline cursor-pointer"
-                        style={{ color: "#166D86" }}
+                        className="inline-flex items-center px-6 py-2.5 rounded-full text-sm font-semibold"
+                        style={{
+                          backgroundColor: "#E0F7F6",
+                          color: "#166D86",
+                          border: "1px solid #B2DFDB",
+                        }}
                       >
-                        {student.email}
-                      </span>
-                    </div>
-
-                    {/* Date */}
-                    <div>
-                      <span className="text-sm text-gray-600">
-                        {formatDate(student.dateOfBirth)}
-                      </span>
-                    </div>
-
-                    {/* Level */}
-                    <div>
-                      <span
-                        className="text-sm font-bold"
-                        style={{ color: "#166D86" }}
-                      >
-                        {student.level}
-                      </span>
-                    </div>
-
-                    {/* Status */}
-                    <div className="flex items-center justify-between">
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                         Registered
                       </span>
 
@@ -535,8 +573,8 @@ export default function Students() {
                       <div className="relative">
                         <button
                           onClick={() => toggleDropdown(student.id)}
-                          className="opacity-0 group-hover:opacity-100 p-1 rounded-lg transition-all duration-200 hover:bg-gray-100"
-                          style={{ color: "#166D86" }}
+                          className="p-1 rounded-lg transition-all duration-200 hover:bg-gray-100"
+                          style={{ color: "#2F327D" }}
                         >
                           <svg
                             className="w-5 h-5"
@@ -549,10 +587,11 @@ export default function Students() {
 
                         {/* Dropdown Menu */}
                         {activeDropdown === student.id && (
-                          <div className="absolute right-0 top-8 w-32 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-10">
+                          <div className="absolute right-0 top-8 w-36 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-10">
                             <button
                               onClick={() => handleUpdateStudent(student.id)}
-                              className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors flex items-center space-x-2"
+                              className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors flex items-center space-x-3"
+                              style={{ color: "#2F327D" }}
                             >
                               <svg
                                 className="w-4 h-4"
@@ -567,11 +606,11 @@ export default function Students() {
                                   d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                                 />
                               </svg>
-                              <span>Update</span>
+                              <span className="font-medium">Update</span>
                             </button>
                             <button
                               onClick={() => handleDeleteStudent(student.id)}
-                              className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50 transition-colors flex items-center space-x-2"
+                              className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50 transition-colors flex items-center space-x-3"
                             >
                               <svg
                                 className="w-4 h-4"
@@ -586,7 +625,7 @@ export default function Students() {
                                   d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                                 />
                               </svg>
-                              <span>Delete</span>
+                              <span className="font-medium">Delete</span>
                             </button>
                           </div>
                         )}
