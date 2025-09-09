@@ -164,14 +164,9 @@ export default function AddTimetableModal({
           <div className="flex-1 p-8 border-r border-gray-100">
             {/* Header */}
             <div className="flex justify-between items-center mb-8">
-              <div className="flex items-center gap-4">
-                <button
-                  className="px-6 py-2 text-white text-sm rounded-full font-medium"
-                  style={{ backgroundColor: "#166D86" }}
-                >
-                  + Add Time Table
-                </button>
-              </div>
+              <h2 className="text-2xl font-bold text-gray-900">
+                Add New Timetable
+              </h2>
               <button
                 onClick={handleClose}
                 className="text-gray-400 hover:text-gray-600 transition-colors p-2 hover:bg-gray-100 rounded-full"
