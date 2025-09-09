@@ -212,239 +212,472 @@ export default function TimetablePage() {
   );
 
   return (
-    <div className="p-10">
-      {/* Top Bar */}
-      <div className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-2xl font-bold mb-2" style={{ color: "#166D86" }}>
-            Timetable
-          </h1>
-          <p className="text-gray-600">
-            Manage course schedules and timetables
-          </p>
-        </div>
-        <div className="flex items-center space-x-4">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="pl-10 pr-4 py-2 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
-              onFocus={(e) => {
-                e.target.style.borderColor = "#166D86";
-                e.target.style.boxShadow = `0 0 0 3px ${"#166D86" + "20"}`;
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 lg:p-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-6 lg:mb-8">
+          <div className="flex items-center space-x-4">
+            <h1
+              className="text-2xl lg:text-3xl font-bold tracking-tight"
+              style={{ color: "#166D86" }}
+            >
+              Timetable
+            </h1>
+            <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-teal-50 px-3 py-1 rounded-full shadow-sm border border-blue-100/50">
+              <div
+                className="w-2 h-2 rounded-full"
+                style={{ backgroundColor: "#166D86" }}
+              ></div>
+              <span className="text-sm font-medium text-gray-700">
+                {filteredTimetable.length} scheduled courses
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-4">
+            {/* Search */}
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg
+                  className="h-5 w-5 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="text"
+                placeholder="Search courses..."
+                className="pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 text-gray-900 bg-white"
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#166D86";
+                  e.target.style.boxShadow = `0 0 0 3px ${"#166D86" + "20"}`;
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#e5e7eb";
+                  e.target.style.boxShadow = "none";
+                }}
+              />
+            </div>
+
+            {/* Refresh Button */}
+            <button
+              onClick={fetchTimetableData}
+              disabled={isLoading}
+              className="flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-md"
+              style={{
+                backgroundColor: "#166D86",
+                color: "white",
               }}
-              onBlur={(e) => {
-                e.target.style.borderColor = "#e5e7eb";
-                e.target.style.boxShadow = "none";
+              onMouseEnter={(e) => {
+                if (!isLoading) {
+                  e.currentTarget.style.backgroundColor = "#124f63";
+                }
               }}
-            />
-            <span className="absolute left-3 top-2 text-gray-400">🔍</span>
-          </div>
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="text-white px-6 py-2 rounded-full shadow-md hover:opacity-90 transition font-semibold"
-            style={{ backgroundColor: "#166D86" }}
-          >
-            + Add Time Table
-          </button>
-        </div>
-      </div>
-
-      {/* Filter Controls */}
-      <div className="flex items-center space-x-4 mb-6">
-        {/* Semester Dropdown */}
-        <div className="relative">
-          <select
-            value={selectedSemester}
-            onChange={(e) => setSelectedSemester(e.target.value)}
-            className="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
-            onFocus={(e) => {
-              e.target.style.borderColor = "#166D86";
-              e.target.style.boxShadow = `0 0 0 3px ${"#166D86" + "20"}`;
-            }}
-            onBlur={(e) => {
-              e.target.style.borderColor = "#e5e7eb";
-              e.target.style.boxShadow = "none";
-            }}
-          >
-            <option value="First Semester">First Semester</option>
-            <option value="Second Semester">Second Semester</option>
-          </select>
-          <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-            <svg
-              className="w-4 h-4 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+              onMouseLeave={(e) => {
+                if (!isLoading) {
+                  e.currentTarget.style.backgroundColor = "#166D86";
+                }
+              }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </div>
-        </div>
+              <svg
+                className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                />
+              </svg>
+              <span>{isLoading ? "Loading..." : "Refresh"}</span>
+            </button>
 
-        {/* Level Dropdown */}
-        <div className="relative">
-          <select
-            value={selectedLevel}
-            onChange={(e) => setSelectedLevel(e.target.value)}
-            className="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
-            onFocus={(e) => {
-              e.target.style.borderColor = "#166D86";
-              e.target.style.boxShadow = `0 0 0 3px ${"#166D86" + "20"}`;
-            }}
-            onBlur={(e) => {
-              e.target.style.borderColor = "#e5e7eb";
-              e.target.style.boxShadow = "none";
-            }}
-          >
-            <option value="100L">100L</option>
-            <option value="200L">200L</option>
-            <option value="300L">300L</option>
-            <option value="400L">400L</option>
-            <option value="500L">500L</option>
-          </select>
-          <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-            <svg
-              className="w-4 h-4 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+            {/* Add Timetable Button */}
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:shadow-md"
+              style={{
+                backgroundColor: "#166D86",
+                color: "white",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#124f63";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#166D86";
+              }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+              <span>Add Schedule</span>
+            </button>
           </div>
         </div>
 
-        {/* Day Dropdown */}
-        <div className="relative">
-          <select
-            value={selectedDay}
-            onChange={(e) => setSelectedDay(e.target.value)}
-            className="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
-            onFocus={(e) => {
-              e.target.style.borderColor = "#166D86";
-              e.target.style.boxShadow = `0 0 0 3px ${"#166D86" + "20"}`;
-            }}
-            onBlur={(e) => {
-              e.target.style.borderColor = "#e5e7eb";
-              e.target.style.boxShadow = "none";
-            }}
+        {/* Filter Controls */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-6">
+          <div className="flex items-center space-x-4">
+            <span className="text-sm font-medium text-gray-700">
+              Filter by:
+            </span>
+
+            {/* Semester Dropdown */}
+            <div className="relative">
+              <select
+                value={selectedSemester}
+                onChange={(e) => setSelectedSemester(e.target.value)}
+                className="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#166D86";
+                  e.target.style.boxShadow = `0 0 0 3px ${"#166D86" + "20"}`;
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#e5e7eb";
+                  e.target.style.boxShadow = "none";
+                }}
+              >
+                <option value="First Semester">First Semester</option>
+                <option value="Second Semester">Second Semester</option>
+              </select>
+              <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            {/* Level Dropdown */}
+            <div className="relative">
+              <select
+                value={selectedLevel}
+                onChange={(e) => setSelectedLevel(e.target.value)}
+                className="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#166D86";
+                  e.target.style.boxShadow = `0 0 0 3px ${"#166D86" + "20"}`;
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#e5e7eb";
+                  e.target.style.boxShadow = "none";
+                }}
+              >
+                <option value="100L">100L</option>
+                <option value="200L">200L</option>
+                <option value="300L">300L</option>
+                <option value="400L">400L</option>
+                <option value="500L">500L</option>
+              </select>
+              <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            {/* Day Dropdown */}
+            <div className="relative">
+              <select
+                value={selectedDay}
+                onChange={(e) => setSelectedDay(e.target.value)}
+                className="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:border-transparent text-gray-900"
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#166D86";
+                  e.target.style.boxShadow = `0 0 0 3px ${"#166D86" + "20"}`;
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#e5e7eb";
+                  e.target.style.boxShadow = "none";
+                }}
+              >
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+              </select>
+              <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Timetable Table */}
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+          {/* Table Header */}
+          <div
+            className="px-8 py-4 border-b border-gray-100"
+            style={{ backgroundColor: "#f8fafc" }}
           >
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
-          </select>
-          <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-            <svg
-              className="w-4 h-4 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+            <div className="flex items-center justify-between w-full">
+              <div className="flex items-center space-x-6">
+                <div className="min-w-[150px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  Lecture Time
+                </div>
+                <div className="min-w-[120px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  Course Code
+                </div>
+                <div className="min-w-[250px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  Course Title
+                </div>
+                <div className="min-w-[100px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  Day
+                </div>
+                <div className="min-w-[80px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  Level
+                </div>
+              </div>
+              <div className="text-xs font-bold text-gray-600 uppercase tracking-wider">
+                Status
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      {/* Table */}
-      <div className="bg-white rounded-2xl shadow p-6">
-        <table className="w-full text-left">
-          <thead>
-            <tr className="text-gray-500 text-sm">
-              <th className="py-3 px-4 font-medium">Lecture Time</th>
-              <th className="py-3 px-4 font-medium">Course Code</th>
-              <th className="py-3 px-4 font-medium">Course Title</th>
-              <th className="py-3 px-4 font-medium">Day</th>
-              <th className="py-3 px-4 font-medium">Level</th>
-              <th className="py-3 px-4 font-medium">Status</th>
-            </tr>
-          </thead>
-          <tbody>
+          {/* Table Body */}
+          <div className="p-4 space-y-3 bg-gray-100">
             {isLoading ? (
-              <tr>
-                <td colSpan={6} className="py-8 px-4 text-center">
-                  <div className="flex justify-center items-center">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-                    <span className="ml-2 text-gray-600">
-                      Loading timetable data...
-                    </span>
-                  </div>
-                </td>
-              </tr>
+              <div className="px-6 py-12 text-center">
+                <div className="flex items-center justify-center space-x-2">
+                  <svg
+                    className="animate-spin h-6 w-6"
+                    style={{ color: "#166D86" }}
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  <span className="text-gray-600 font-medium">
+                    Loading timetable...
+                  </span>
+                </div>
+              </div>
             ) : filteredTimetable.length === 0 ? (
-              <tr>
-                <td colSpan={6} className="py-8 px-4 text-center text-gray-500">
+              <div className="px-6 py-12 text-center">
+                <svg
+                  className="mx-auto h-12 w-12 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 0V6a2 2 0 012-2h4a2 2 0 012 2v1m-6 0h8m-8 0v8a2 2 0 002 2h4a2 2 0 002-2V7M8 7H6a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-2-2h-2"
+                  />
+                </svg>
+                <h3 className="mt-4 text-lg font-medium text-gray-900">
+                  No courses scheduled
+                </h3>
+                <p className="mt-2 text-gray-500">
                   No timetable entries found for {selectedLevel} on{" "}
                   {selectedDay}
-                </td>
-              </tr>
+                </p>
+              </div>
             ) : (
               filteredTimetable.map((item, index) => (
-                <tr
+                <div
                   key={item.id || index}
-                  className="border-t border-gray-100 hover:bg-gray-50"
+                  className="bg-white px-8 py-4 hover:bg-gray-50 transition-colors duration-200 group rounded-xl border border-gray-100 shadow-sm"
                 >
-                  <td className="py-4 px-4">
-                    <div className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                      <span className="text-gray-900">
-                        {item.days[0]?.startTime} - {item.days[0]?.endTime}
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center space-x-6">
+                      {/* Lecture Time */}
+                      <div className="min-w-[150px]">
+                        <div className="flex items-center space-x-2">
+                          <svg
+                            className="w-4 h-4 text-gray-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                          </svg>
+                          <span
+                            className="text-sm font-semibold"
+                            style={{ color: "#2F327D" }}
+                          >
+                            {item.days[0]?.startTime} - {item.days[0]?.endTime}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Course Code */}
+                      <div className="min-w-[120px]">
+                        <span
+                          className="text-sm font-bold px-2 py-1 rounded-md"
+                          style={{
+                            color: "#166D86",
+                            backgroundColor: "#f0f9ff",
+                            border: "1px solid #e0f7fa",
+                          }}
+                        >
+                          {item.courseCode}
+                        </span>
+                      </div>
+
+                      {/* Course Title */}
+                      <div className="min-w-[250px]">
+                        <span
+                          className="text-sm font-semibold"
+                          style={{ color: "#2F327D" }}
+                          title={item.courseTitle}
+                        >
+                          {item.courseTitle.length > 35
+                            ? `${item.courseTitle.substring(0, 35)}...`
+                            : item.courseTitle}
+                        </span>
+                      </div>
+
+                      {/* Day */}
+                      <div className="min-w-[100px]">
+                        <div className="flex items-center space-x-2">
+                          <div
+                            className="w-2 h-2 rounded-full"
+                            style={{ backgroundColor: "#166D86" }}
+                          ></div>
+                          <span
+                            className="text-sm font-medium"
+                            style={{ color: "#2F327D" }}
+                          >
+                            {item.days[0]?.day}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Level */}
+                      <div className="min-w-[80px]">
+                        <span
+                          className="text-sm font-bold"
+                          style={{ color: "#2F327D" }}
+                        >
+                          {item.level}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Right side - Status */}
+                    <div className="flex items-center space-x-4">
+                      {/* Status */}
+                      <span
+                        className="inline-flex items-center px-6 py-2.5 rounded-full text-sm font-semibold"
+                        style={{
+                          backgroundColor: "#E0F7F6",
+                          color: "#166D86",
+                          border: "1px solid #B2DFDB",
+                        }}
+                      >
+                        {item.status}
                       </span>
                     </div>
-                  </td>
-                  <td className="py-4 px-4">
-                    <span className="text-gray-900 font-medium">
-                      {item.courseCode}
-                    </span>
-                  </td>
-                  <td className="py-4 px-4">
-                    <span className="text-gray-900">{item.courseTitle}</span>
-                  </td>
-                  <td className="py-4 px-4">
-                    <div className="flex items-center">
-                      <span
-                        className="w-2 h-2 rounded-full mr-2"
-                        style={{ backgroundColor: "#166D86" }}
-                      ></span>
-                      <span className="text-gray-900">{item.days[0]?.day}</span>
-                    </div>
-                  </td>
-                  <td className="py-4 px-4">
-                    <span className="text-gray-900">{item.level}</span>
-                  </td>
-                  <td className="py-4 px-4">
-                    <span
-                      className="px-3 py-1 rounded-full text-sm font-medium text-white"
-                      style={{ backgroundColor: "#166D86" }}
-                    >
-                      {item.status}
-                    </span>
-                  </td>
-                </tr>
+                  </div>
+                </div>
               ))
             )}
-          </tbody>
-        </table>
+          </div>
+        </div>
+
+        {/* Pagination */}
+        <div className="flex items-center justify-between mt-6">
+          <div className="text-sm text-gray-600">
+            Showing {filteredTimetable.length} courses for {selectedLevel} on{" "}
+            {selectedDay}
+          </div>
+          <div className="flex items-center space-x-2">
+            <button
+              className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+              disabled
+            >
+              Previous
+            </button>
+            <button
+              className="px-3 py-2 text-sm font-medium text-white rounded-lg transition-colors"
+              style={{ backgroundColor: "#166D86" }}
+            >
+              1
+            </button>
+            <button
+              className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+              disabled
+            >
+              Next
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Add Timetable Modal */}
