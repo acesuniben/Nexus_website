@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import AddForumModal from "@/components/AddForumModal";
+import UpdateForumModal from "@/components/UpdateForumModal";
 
 interface ForumItem {
   id: string;
@@ -24,6 +25,8 @@ export default function ForumPage() {
   const [forums, setForums] = useState<ForumItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [editingForum, setEditingForum] = useState<ForumItem | null>(null);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   useEffect(() => {
     fetchForums();
@@ -251,11 +254,22 @@ export default function ForumPage() {
   };
 
   const handleUpdateForum = (forumId: string) => {
-    // TODO: Implement update forum functionality
-    // You can create an UpdateForumModal similar to UpdateStudentModal
-    console.log("Update forum with ID:", forumId);
-    alert("Update functionality will be implemented soon!");
+    const forum = forums.find((f) => f.id === forumId);
+    if (forum) {
+      setEditingForum(forum);
+      setIsUpdateModalOpen(true);
+    }
     setActiveDropdown(null);
+  };
+
+  const handleForumUpdated = async (updatedForum: ForumItem) => {
+    // Refresh the forums list after update
+    await fetchForums();
+  };
+
+  const closeUpdateModal = () => {
+    setIsUpdateModalOpen(false);
+    setEditingForum(null);
   };
 
   const handleDeleteForum = async (forumId: string) => {
@@ -677,6 +691,14 @@ export default function ForumPage() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSubmit={handleAddForum}
+      />
+
+      {/* Update Forum Modal */}
+      <UpdateForumModal
+        isOpen={isUpdateModalOpen}
+        onClose={closeUpdateModal}
+        forum={editingForum}
+        onUpdate={handleForumUpdated}
       />
     </div>
   );
