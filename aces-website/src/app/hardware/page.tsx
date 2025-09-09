@@ -13,7 +13,7 @@ export default function Software() {
   const governors = [
     {name: "Bassey Favour", role: "Hardware Governor", description: "400L CPE Student. A hardware Enthusiast and Robotics lover. Builds, designs and create innovative tech solutions", picture: "/maro.png", facebook: "#", github: "#", linkedIn: "#"},
     {name: "Oghosa Derick Osarobo", role: "Deputy Governor", description: "300L CPE Student. Passionate about Electronics, IOT, hardware design and programming. Enjoys building practical solutions.", picture: "/OghosaDerick.png", facebook: "#", github: "#", linkedIn: "#"},
-    {name: "Efeteyan E. Miracle", role: "Deputy Governor", description: "300L Student of CPE. A growing tech lover with interest in electronics and Embedded Systems", picture: "/david.png", facebook: "#", github: "#", linkedIn: "#"},
+    {name: "Efeteyan E. Miracle", role: "Deputy Governor", description: "300L Student of CPE. A growing tech lover with interest in electronics and Embedded Systems", picture: "/efeteyan.png", facebook: "#", github: "#", linkedIn: "#"},
   ]
   const activities = [
     {picture: "/research-icon.png", title: "Research", paragraph: "The club engage in different Classwork and assignment to research on different components and projects that develop them individually and also work and learn with each other."},
