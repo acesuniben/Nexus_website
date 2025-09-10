@@ -138,11 +138,10 @@ export default function MHSPage() {
       // Upload image first if provided
       if (formData.image) {
         const imageFormData = new FormData();
-        imageFormData.append("file", formData.image);
-        imageFormData.append("upload_preset", "your-upload-preset"); // You'll need to configure this in Cloudinary
+        imageFormData.append("image", formData.image);
 
         const imageResponse = await fetch(
-          "https://api.cloudinary.com/v1_1/dcldvsih8/image/upload",
+          "https://aces-utky.onrender.com/api/upload2cloud",
           {
             method: "POST",
             body: imageFormData,
@@ -151,7 +150,8 @@ export default function MHSPage() {
 
         if (imageResponse.ok) {
           const imageData = await imageResponse.json();
-          imageUrl = imageData.secure_url;
+          imageUrl = imageData.url;
+          console.log("Image uploaded successfully:", imageUrl);
         }
       }
 
