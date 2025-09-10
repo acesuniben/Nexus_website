@@ -64,8 +64,10 @@ export default function Sidebar() {
               <li key={item.name}>
                 <Link
                   href={item.href}
-                  className={`flex items-center px-2 py-1 rounded-lg transition-colors ${
-                    isActive ? "font-semibold" : "hover:bg-gray-50"
+                  className={`flex items-center px-3 py-2.5 rounded-lg transition-all duration-200 group ${
+                    isActive
+                      ? "font-semibold shadow-sm"
+                      : "hover:bg-gray-50 hover:shadow-sm hover:scale-[1.02]"
                   }`}
                   style={{
                     color: isActive ? "#166D86" : "#6B7280",
@@ -77,9 +79,17 @@ export default function Sidebar() {
                     alt={`${item.name} Icon`}
                     width={20}
                     height={20}
-                    className="mr-3"
+                    className={`mr-3 transition-transform duration-200 ${
+                      isActive ? "" : "group-hover:scale-110"
+                    }`}
                   />
-                  {item.name}
+                  <span
+                    className={`transition-colors duration-200 ${
+                      isActive ? "" : "group-hover:text-gray-700"
+                    }`}
+                  >
+                    {item.name}
+                  </span>
                 </Link>
               </li>
             );

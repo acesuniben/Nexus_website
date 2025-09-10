@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import AddForumModal from "@/components/AddForumModal";
+import UpdateForumModal from "@/components/UpdateForumModal";
 
 interface ForumItem {
   id: string;
@@ -23,8 +24,27 @@ export default function ForumPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [forums, setForums] = useState<ForumItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [editingForum, setEditingForum] = useState<ForumItem | null>(null);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
-  // Fetch forums from API
+  useEffect(() => {
+    fetchForums();
+  }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (activeDropdown && !(event.target as Element).closest(".relative")) {
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [activeDropdown]);
   const fetchForums = async () => {
     try {
       // Ensure we're on the client side
@@ -228,107 +248,442 @@ export default function ForumPage() {
       alert("An error occurred while creating the forum. Please try again.");
     }
   };
-  return (
-    <div className="p-10">
-      {/* Top Bar */}
-      <div className="flex items-center justify-between mb-8">
-        <h2 className="text-xl font-semibold" style={{ color: "#166D86" }}>
-          Forum
-        </h2>
-        <div className="flex items-center gap-4">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search"
-              className="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:border-opacity-50"
-              style={{ "--tw-ring-color": "#166D86" } as React.CSSProperties}
-            />
-            <span className="absolute left-3 top-2 text-gray-400">🔍</span>
-          </div>
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="text-white px-6 py-2 rounded-full shadow-md hover:opacity-90 transition font-semibold"
-            style={{ backgroundColor: "#166D86" }}
-          >
-            + Add New
-          </button>
-        </div>
-      </div>
 
-      {/* Table */}
-      <div className="bg-white rounded-2xl shadow p-6">
-        <table className="w-full text-left">
-          <thead>
-            <tr className="text-gray-500 text-sm">
-              <th className="py-3 px-2 font-medium">
-                <input type="checkbox" />
-              </th>
-              <th className="py-3 px-2 font-medium">Forum ID</th>
-              <th className="py-3 px-2 font-medium">Title</th>
-              <th className="py-3 px-2 font-medium">Description</th>
-              <th className="py-3 px-2 font-medium">Date</th>
-              <th className="py-3 px-2 font-medium">Status</th>
-              <th className="py-3 px-2 font-medium text-right">
-                <span className="text-red-400">🗑️</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {isLoading ? (
-              <tr>
-                <td colSpan={7} className="py-8 text-center">
-                  <div className="flex items-center justify-center">
-                    <div
-                      className="w-6 h-6 border-2 border-t-transparent rounded-full animate-spin mr-2"
-                      style={{ borderColor: "#166D86" }}
-                    ></div>
-                    <span className="text-gray-600">Loading forums...</span>
-                  </div>
-                </td>
-              </tr>
-            ) : forums.length === 0 ? (
-              <tr>
-                <td colSpan={7} className="py-8 text-center">
-                  <span className="text-gray-500">
-                    No forums found. Create your first forum post!
-                  </span>
-                </td>
-              </tr>
-            ) : (
-              forums.map((item, idx) => (
-                <tr
-                  key={idx}
-                  className="border-b last:border-b-0 hover:bg-gray-50"
+  const toggleDropdown = (forumId: string) => {
+    setActiveDropdown(activeDropdown === forumId ? null : forumId);
+  };
+
+  const handleUpdateForum = (forumId: string) => {
+    const forum = forums.find((f) => f.id === forumId);
+    if (forum) {
+      setEditingForum(forum);
+      setIsUpdateModalOpen(true);
+    }
+    setActiveDropdown(null);
+  };
+
+  const handleForumUpdated = async (updatedForum: ForumItem) => {
+    // Refresh the forums list after update
+    await fetchForums();
+  };
+
+  const closeUpdateModal = () => {
+    setIsUpdateModalOpen(false);
+    setEditingForum(null);
+  };
+
+  const handleDeleteForum = async (forumId: string) => {
+    if (confirm("Are you sure you want to delete this forum post?")) {
+      try {
+        const token = localStorage.getItem("adminToken");
+        if (!token) {
+          throw new Error("You must be logged in as an admin");
+        }
+
+        const response = await fetch(
+          `https://aces-utky.onrender.com/api/admin/forum/delete/${forumId}`,
+          {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Failed to delete forum post");
+        }
+
+        // Refresh the forums list
+        await fetchForums();
+        console.log("Forum post deleted successfully");
+        alert("Forum post deleted successfully!");
+      } catch (err: any) {
+        console.error("Error deleting forum post:", err);
+        alert(`Error deleting forum post: ${err.message}`);
+      }
+    }
+    setActiveDropdown(null);
+  };
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 lg:p-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-6 lg:mb-8">
+          <div className="flex items-center space-x-4">
+            <h1
+              className="text-2xl lg:text-3xl font-bold tracking-tight"
+              style={{ color: "#166D86" }}
+            >
+              Forum
+            </h1>
+            <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-teal-50 px-3 py-1 rounded-full shadow-sm border border-blue-100/50">
+              <div
+                className="w-2 h-2 rounded-full"
+                style={{ backgroundColor: "#166D86" }}
+              ></div>
+              <span className="text-sm font-medium text-gray-700">
+                {forums.length} discussions
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-4">
+            {/* Search */}
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg
+                  className="h-5 w-5 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  <td className="py-4 px-2">
-                    <input type="checkbox" />
-                  </td>
-                  <td className="py-4 px-2 text-gray-700">{item.id}</td>
-                  <td className="py-4 px-2 text-gray-700">{item.title}</td>
-                  <td className="py-4 px-2 text-gray-700">
-                    {item.description}
-                  </td>
-                  <td className="py-4 px-2 text-gray-700 flex items-center gap-2">
-                    <span style={{ color: "#166D86" }}>📅</span> {item.date}
-                  </td>
-                  <td className="py-4 px-2">
-                    <span
-                      className="px-6 py-2 rounded-full font-semibold text-sm"
-                      style={{ backgroundColor: "#F0F9FF", color: "#166D86" }}
-                    >
-                      {item.status}
-                    </span>
-                  </td>
-                  <td className="py-4 px-2 text-right">
-                    <button className="text-red-400 hover:text-red-600">
-                      🗑️
-                    </button>
-                  </td>
-                </tr>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="text"
+                placeholder="Search discussions..."
+                className="pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 text-gray-900 bg-white"
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#166D86";
+                  e.target.style.boxShadow = `0 0 0 3px ${"#166D86" + "20"}`;
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#e5e7eb";
+                  e.target.style.boxShadow = "none";
+                }}
+              />
+            </div>
+
+            {/* Refresh Button */}
+            <button
+              onClick={fetchForums}
+              disabled={isLoading}
+              className="flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-md"
+              style={{
+                backgroundColor: "#166D86",
+                color: "white",
+              }}
+              onMouseEnter={(e) => {
+                if (!isLoading) {
+                  e.currentTarget.style.backgroundColor = "#124f63";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isLoading) {
+                  e.currentTarget.style.backgroundColor = "#166D86";
+                }
+              }}
+            >
+              <svg
+                className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                />
+              </svg>
+              <span>{isLoading ? "Loading..." : "Refresh"}</span>
+            </button>
+
+            {/* Add Forum Button */}
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:shadow-md"
+              style={{
+                backgroundColor: "#166D86",
+                color: "white",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#124f63";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#166D86";
+              }}
+            >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+              <span>Add Discussion</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Forum Table */}
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+          {/* Table Header */}
+          <div
+            className="px-8 py-4 border-b border-gray-100"
+            style={{ backgroundColor: "#f8fafc" }}
+          >
+            <div className="flex items-center justify-between w-full">
+              <div className="flex items-center space-x-6">
+                <div className="min-w-[80px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  ID
+                </div>
+                <div className="min-w-[200px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  Title
+                </div>
+                <div className="min-w-[300px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  Description
+                </div>
+                <div className="min-w-[150px] text-xs font-bold text-gray-600 uppercase tracking-wider">
+                  Date
+                </div>
+              </div>
+              <div className="text-xs font-bold text-gray-600 uppercase tracking-wider">
+                Status
+              </div>
+            </div>
+          </div>
+
+          {/* Table Body */}
+          <div className="p-4 space-y-3 bg-gray-100">
+            {isLoading ? (
+              <div className="px-6 py-12 text-center">
+                <div className="flex items-center justify-center space-x-2">
+                  <svg
+                    className="animate-spin h-6 w-6"
+                    style={{ color: "#166D86" }}
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  <span className="text-gray-600 font-medium">
+                    Loading discussions...
+                  </span>
+                </div>
+              </div>
+            ) : forums.length === 0 ? (
+              <div className="px-6 py-12 text-center">
+                <svg
+                  className="mx-auto h-12 w-12 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2v-6a2 2 0 012-2h8z"
+                  />
+                </svg>
+                <h3 className="mt-4 text-lg font-medium text-gray-900">
+                  No discussions found
+                </h3>
+                <p className="mt-2 text-gray-500">
+                  Get started by creating your first forum discussion.
+                </p>
+              </div>
+            ) : (
+              forums.map((forum, index) => (
+                <div
+                  key={forum.id}
+                  className="bg-white px-8 py-4 hover:bg-gray-50 transition-colors duration-200 group rounded-xl border border-gray-100 shadow-sm"
+                >
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center space-x-6">
+                      {/* Forum ID */}
+                      <div className="min-w-[80px]">
+                        <span
+                          className="text-sm font-semibold"
+                          style={{ color: "#2F327D" }}
+                        >
+                          #{index + 1}
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <div className="min-w-[200px]">
+                        <span
+                          className="text-sm font-semibold"
+                          style={{ color: "#2F327D" }}
+                          title={forum.title}
+                        >
+                          {forum.title.length > 30
+                            ? `${forum.title.substring(0, 30)}...`
+                            : forum.title}
+                        </span>
+                      </div>
+
+                      {/* Description */}
+                      <div className="min-w-[300px]">
+                        <span
+                          className="text-sm font-medium"
+                          style={{ color: "#2F327D" }}
+                          title={forum.description}
+                        >
+                          {forum.description.length > 50
+                            ? `${forum.description.substring(0, 50)}...`
+                            : forum.description}
+                        </span>
+                      </div>
+
+                      {/* Date */}
+                      <div className="flex items-center space-x-2 min-w-[150px]">
+                        <Image
+                          src="/dateIcon.png"
+                          alt="Date"
+                          width={16}
+                          height={16}
+                          className="flex-shrink-0"
+                        />
+                        <span
+                          className="text-sm font-medium"
+                          style={{ color: "#2F327D" }}
+                        >
+                          {forum.date}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Right side - Status and Actions */}
+                    <div className="flex items-center space-x-4">
+                      {/* Status */}
+                      <span
+                        className="inline-flex items-center px-6 py-2.5 rounded-full text-sm font-semibold"
+                        style={{
+                          backgroundColor: "#E0F7F6",
+                          color: "#166D86",
+                          border: "1px solid #B2DFDB",
+                        }}
+                      >
+                        {forum.status}
+                      </span>
+
+                      {/* Actions Menu */}
+                      <div className="relative">
+                        <button
+                          onClick={() => toggleDropdown(forum.id)}
+                          className="p-1 rounded-lg transition-all duration-200 hover:bg-gray-100"
+                          style={{ color: "#2F327D" }}
+                        >
+                          <svg
+                            className="w-5 h-5"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                          </svg>
+                        </button>
+
+                        {/* Dropdown Menu */}
+                        {activeDropdown === forum.id && (
+                          <div className="absolute right-0 top-8 w-36 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-10">
+                            <button
+                              onClick={() => handleUpdateForum(forum.id)}
+                              className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors flex items-center space-x-3"
+                              style={{ color: "#2F327D" }}
+                            >
+                              <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                />
+                              </svg>
+                              <span className="font-medium">Update</span>
+                            </button>
+                            <button
+                              onClick={() => handleDeleteForum(forum.id)}
+                              className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50 transition-colors flex items-center space-x-3"
+                            >
+                              <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                />
+                              </svg>
+                              <span className="font-medium">Delete</span>
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               ))
             )}
-          </tbody>
-        </table>
+          </div>
+        </div>
+
+        {/* Pagination */}
+        <div className="flex items-center justify-between mt-6">
+          <div className="text-sm text-gray-600">
+            Showing {forums.length} discussions
+          </div>
+          <div className="flex items-center space-x-2">
+            <button
+              className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+              disabled
+            >
+              Previous
+            </button>
+            <button
+              className="px-3 py-2 text-sm font-medium text-white rounded-lg transition-colors"
+              style={{ backgroundColor: "#166D86" }}
+            >
+              1
+            </button>
+            <button
+              className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+              disabled
+            >
+              Next
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Add Forum Modal */}
@@ -336,6 +691,14 @@ export default function ForumPage() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSubmit={handleAddForum}
+      />
+
+      {/* Update Forum Modal */}
+      <UpdateForumModal
+        isOpen={isUpdateModalOpen}
+        onClose={closeUpdateModal}
+        forum={editingForum}
+        onUpdate={handleForumUpdated}
       />
     </div>
   );

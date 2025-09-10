@@ -354,7 +354,7 @@ export default function Registration() {
                       } as React.CSSProperties
                     }
                   >
-                    Full Name
+                    Full Name (Surname Firstname Middlename)
                   </label>
                   <input
                     type="text"
