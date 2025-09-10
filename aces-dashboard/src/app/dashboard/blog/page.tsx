@@ -154,8 +154,6 @@ export default function BlogPage() {
           }
         );
 
-        console.log(imageResponse);
-
         if (imageResponse.ok) {
           const imageData = await imageResponse.json();
           imageUrl = imageData.url;
