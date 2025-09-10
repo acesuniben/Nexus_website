@@ -102,3 +102,41 @@ export function filterTimetableEntries(
   classes.sort((a, b) => parseTime(a.time) - parseTime(b.time));
   return classes;
 }
+
+export interface CurrentSemesterResponse {
+  currentSemester?: string;
+  currentSession?: string;
+}
+
+
+export function getDefaultDay(): string {
+  const names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const d = new Date();
+  return names[d.getDay()];
+}
+
+export async function fetchCurrentSemester(
+  apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/timetable/current-semester`,
+  opts?: { signal?: AbortSignal }
+): Promise<CurrentSemesterResponse> {
+  const res = await fetch(apiUrl, { headers: { Accept: 'application/json' }, signal: opts?.signal });
+  if (!res.ok) {
+    const body = await res.text().catch(() => '');
+    throw new Error(`Current-semester API ${res.status} ${res.statusText}${body ? ': ' + body : ''}`);
+  }
+  const data = await res.json().catch(() => ({}));
+  return {
+    currentSemester: data?.currentSemester,
+    currentSession: data?.currentSession,
+  } as CurrentSemesterResponse;
+}
+
+/**
+ * Convenience helper that returns the default filters: day, session and semester.
+ * It computes day locally and fetches current session/semester from the API.
+ */
+export async function getDefaultFilters(apiUrl?: string, opts?: { signal?: AbortSignal }) {
+  const day = getDefaultDay();
+  const sem = await fetchCurrentSemester(apiUrl, opts).catch(() => ({} as CurrentSemesterResponse));
+  return { day, session: sem.currentSession, semester: sem.currentSemester };
+}
