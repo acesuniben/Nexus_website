@@ -560,43 +560,100 @@ export default function DashboardPage() {
               <>
                 {/* Circular Progress */}
                 <div className="relative w-40 h-40 mb-8">
-                  <svg
-                    className="w-40 h-40 transform -rotate-90"
-                    viewBox="0 0 144 144"
-                  >
-                    {/* Background Circle */}
-                    <circle
-                      cx="72"
-                      cy="72"
-                      r="64"
-                      stroke="#f1f5f9"
-                      strokeWidth="12"
-                      fill="none"
-                    />
-                    {/* Progress Circle */}
-                    <circle
-                      cx="72"
-                      cy="72"
-                      r="64"
-                      stroke="#166D86"
-                      strokeWidth="12"
-                      fill="none"
-                      strokeDasharray="402.12"
-                      strokeDashoffset={
-                        402.12 - (Math.abs(uploadPercentage) / 100) * 402.12
-                      }
-                      strokeLinecap="round"
-                      className="transition-all duration-1000 ease-out"
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span
-                      className="text-3xl font-bold"
-                      style={{ color: "#166D86" }}
+                  <div className="group relative w-40 h-40 mb-8 flex items-center justify-center">
+                    <svg
+                      className="w-40 h-40 transform -rotate-90"
+                      viewBox="0 0 144 144"
                     >
-                      {uploadPercentage}%
-                    </span>
-                    <span className="text-sm text-gray-500 mt-1">Uploads</span>
+                      {/* Background Circle */}
+                      <circle
+                        cx="72"
+                        cy="72"
+                        r="64"
+                        stroke="#f1f5f9"
+                        strokeWidth="12"
+                        fill="none"
+                      />
+                      {/* Progress Circle */}
+                      <circle
+                        cx="72"
+                        cy="72"
+                        r="64"
+                        stroke="#166D86"
+                        strokeWidth="12"
+                        fill="none"
+                        strokeDasharray="402.12"
+                        strokeDashoffset={
+                          402.12 - (Math.abs(uploadPercentage) / 100) * 402.12
+                        }
+                        strokeLinecap="round"
+                        className="transition-all duration-1000 ease-out"
+                      />
+                    </svg>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <span
+                        className="text-3xl font-bold"
+                        style={{ color: "#166D86" }}
+                      >
+                        {uploadPercentage}%
+                      </span>
+                      <span className="text-sm text-gray-500 mt-1">
+                        Uploads
+                      </span>
+                    </div>
+                    {/* Tooltip on hover */}
+                    <div className="absolute left-1/2 -bottom-10 -translate-x-1/2 z-10 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200">
+                      <div
+                        className="flex items-center gap-2 px-4 py-2 rounded-lg shadow-xl border border-[#0f4c5c] whitespace-nowrap text-xs font-medium"
+                        style={{
+                          background: "#166D86",
+                          color: "#fff",
+                          borderColor:
+                            uploadPercentage < 0 ? "#e53e3e" : "#16a34a",
+                        }}
+                      >
+                        {uploadPercentage < 0 ? (
+                          <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            className="inline-block mr-1"
+                            style={{ color: "#e53e3e" }}
+                          >
+                            <path
+                              d="M10 15V5M10 15l-4-4m4 4l4-4"
+                              stroke="#e53e3e"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        ) : (
+                          <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            className="inline-block mr-1"
+                            style={{ color: "#16a34a" }}
+                          >
+                            <path
+                              d="M10 5v10m0-10l-4 4m4-4l4 4"
+                              stroke="#16a34a"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        )}
+                        <span>
+                          {uploadPercentage < 0
+                            ? "Percentage decrease as opposed to the previous week"
+                            : "Percentage increase as opposed to the previous week"}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
