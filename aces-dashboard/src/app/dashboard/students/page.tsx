@@ -15,9 +15,21 @@ interface Student {
   profileImage?: string;
 }
 
+interface PaginationInfo {
+  total: number;
+  page: number;
+  pages: number;
+}
+
 export default function Students() {
   const [students, setStudents] = useState<Student[]>([]);
   const [filteredStudents, setFilteredStudents] = useState<Student[]>([]);
+  const [paginationInfo, setPaginationInfo] = useState<PaginationInfo>({
+    total: 0,
+    page: 1,
+    pages: 1,
+  });
+  const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState("");
@@ -26,12 +38,12 @@ export default function Students() {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   useEffect(() => {
-    // Fetch students on component mount
-    fetchStudents();
-  }, []);
+    // Fetch students on component mount and when page changes
+    fetchStudents(currentPage);
+  }, [currentPage]);
 
   useEffect(() => {
-    // If search term is empty, show all students
+    // If search term is empty, show all students from the current page
     if (!searchTerm.trim()) {
       setFilteredStudents(students);
       return;
@@ -78,7 +90,7 @@ export default function Students() {
     };
   }, [activeDropdown]);
 
-  const fetchStudents = async () => {
+  const fetchStudents = async (page: number = 1) => {
     setIsLoading(true);
     setError("");
     try {
@@ -88,7 +100,7 @@ export default function Students() {
       }
 
       const response = await fetch(
-        "https://aces-utky.onrender.com/api/admin/students/read",
+        "https://aces-utky.onrender.com/api/admin/students/read?page=${page}",
         {
           method: "GET",
           headers: {
@@ -112,12 +124,20 @@ export default function Students() {
         : data.students || data.data || [];
       setStudents(studentsArray);
       setFilteredStudents(studentsArray);
+
+      // Set pagination info from backend response
+      setPaginationInfo({
+        total: data.total || studentsArray.length,
+        page: data.page || page,
+        pages: data.pages || 1,
+      });
     } catch (err: any) {
       console.error("Error fetching students:", err);
       setError(err.message);
       // Clear students data on any error
       setStudents([]);
       setFilteredStudents([]);
+      setPaginationInfo({ total: 0, page: 1, pages: 1 });
     } finally {
       setIsLoading(false);
     }
@@ -164,6 +184,24 @@ export default function Students() {
       setFilteredStudents([]);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handlePageChange = (newPage: number) => {
+    if (newPage >= 1 && newPage <= paginationInfo.pages) {
+      setCurrentPage(newPage);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      handlePageChange(currentPage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < paginationInfo.pages) {
+      handlePageChange(currentPage + 1);
     }
   };
 
@@ -233,6 +271,40 @@ export default function Students() {
     setActiveDropdown(activeDropdown === studentId ? null : studentId);
   };
 
+  // Generate page numbers for pagination display
+  const getVisiblePageNumbers = () => {
+    const { page, pages } = paginationInfo;
+    const maxVisiblePages = 5;
+    let start = Math.max(1, page - Math.floor(maxVisiblePages / 2));
+    let end = Math.min(pages, start + maxVisiblePages - 1);
+
+    if (end - start < maxVisiblePages - 1) {
+      start = Math.max(1, end - maxVisiblePages + 1);
+    }
+
+    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  };
+
+  // Calculate the range of students being displayed
+  const getDisplayRange = () => {
+    if (filteredStudents.length === 0) return { start: 0, end: 0 };
+
+    // If we're searching and showing filtered results
+    if (searchTerm.trim()) {
+      return { start: 1, end: filteredStudents.length };
+    }
+
+    // For paginated results
+    const studentsPerPage =
+      Math.ceil(paginationInfo.total / paginationInfo.pages) || 20;
+    const start = (currentPage - 1) * studentsPerPage + 1;
+    const end = Math.min(currentPage * studentsPerPage, paginationInfo.total);
+
+    return { start, end };
+  };
+
+  const displayRange = getDisplayRange();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 lg:p-6">
       <div className="max-w-7xl mx-auto">
@@ -251,7 +323,10 @@ export default function Students() {
                 style={{ backgroundColor: "#166D86" }}
               ></div>
               <span className="text-sm font-medium text-gray-700">
-                {filteredStudents.length} students
+                {searchTerm.trim()
+                  ? filteredStudents.length
+                  : paginationInfo.total}{" "}
+                students
               </span>
             </div>
           </div>
@@ -293,7 +368,7 @@ export default function Students() {
 
             {/* Refresh Button */}
             <button
-              onClick={fetchStudents}
+              onClick={() => fetchStudents(currentPage)}
               disabled={isLoading}
               className="flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-md"
               style={{
@@ -328,6 +403,26 @@ export default function Students() {
             </button>
           </div>
         </div>
+
+        {/* Error Display */}
+        {error && (
+          <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <div className="flex items-center">
+              <svg
+                className="w-5 h-5 text-red-400 mr-2"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span className="text-red-700 text-sm font-medium">{error}</span>
+            </div>
+          </div>
+        )}
 
         {/* Students Table */}
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
@@ -410,7 +505,9 @@ export default function Students() {
                   No students found
                 </h3>
                 <p className="mt-2 text-gray-500">
-                  Try adjusting your search terms.
+                  {searchTerm.trim()
+                    ? "Try adjusting your search terms."
+                    : "No students available at the moment."}
                 </p>
               </div>
             ) : (
@@ -570,31 +667,57 @@ export default function Students() {
           </div>
         </div>
 
-        {/* Pagination - Optional */}
+        {/* Pagination */}
         <div className="flex items-center justify-between mt-6">
           <div className="text-sm text-gray-600">
-            Showing {filteredStudents.length} of {students.length} students
+            {searchTerm.trim()
+              ? `Showing ${filteredStudents.length} search results`
+              : `Showing ${displayRange.start}-${displayRange.end} of ${paginationInfo.total} students`}
           </div>
-          <div className="flex items-center space-x-2">
-            <button
-              className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-              disabled
-            >
-              Previous
-            </button>
-            <button
-              className="px-3 py-2 text-sm font-medium text-white rounded-lg transition-colors"
-              style={{ backgroundColor: "#166D86" }}
-            >
-              1
-            </button>
-            <button
-              className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-              disabled
-            >
-              Next
-            </button>
-          </div>
+
+          {/* Only show pagination controls when not searching */}
+          {!searchTerm.trim() && paginationInfo.pages > 1 && (
+            <div className="flex items-center space-x-2">
+              {/* Previous Button */}
+              <button
+                onClick={handlePrevious}
+                disabled={currentPage === 1 || isLoading}
+                className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Previous
+              </button>
+
+              {/* Page Numbers */}
+              {getVisiblePageNumbers().map((pageNum) => (
+                <button
+                  key={pageNum}
+                  onClick={() => handlePageChange(pageNum)}
+                  disabled={isLoading}
+                  className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                    pageNum === currentPage
+                      ? "text-white"
+                      : "text-gray-500 bg-white border border-gray-200 hover:bg-gray-50"
+                  }`}
+                  style={
+                    pageNum === currentPage
+                      ? { backgroundColor: "#166D86" }
+                      : {}
+                  }
+                >
+                  {pageNum}
+                </button>
+              ))}
+
+              {/* Next Button */}
+              <button
+                onClick={handleNext}
+                disabled={currentPage === paginationInfo.pages || isLoading}
+                className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Next
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
