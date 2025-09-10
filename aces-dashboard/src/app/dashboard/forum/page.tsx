@@ -183,14 +183,10 @@ export default function ForumPage() {
 
       // Create forum post
       const requestBody = {
-        title: formData.title || "Untitled Forum",
-        Description: formData.description || "No description provided",
-        datePublished: formData.date
-          ? new Date(formData.date).toISOString().split("T")[0]
-          : "2025-01-10",
-        imageUrl:
-          imageUrl ||
-          "https://res.cloudinary.com/dcldvsih8/image/upload/v1730732213/WhatsApp_Image_2024-11-04_at_3.54.34_PM_ehgwqx.jpg",
+        title: formData.title,
+        Description: formData.description,
+        datePublished: formData.date,
+        imageUrl: imageUrl,
       };
 
       console.log("Sending request body:", requestBody);
@@ -204,7 +200,12 @@ export default function ForumPage() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify(requestBody),
+          body: JSON.stringify({
+            title: formData.title,
+            Description: formData.description, // Note: capital 'D' as per schema
+            datePublished: formData.date,
+            imageUrl: imageUrl,
+          }),
         }
       );
 
