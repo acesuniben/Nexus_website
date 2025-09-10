@@ -76,8 +76,8 @@ export default function About() {
             <span className="md:hidden"> </span>of Computer Engineering Students
           </h1>
           <p className="text-sm md:text-base text-gray-600 px-4 md:px-0">
-            Know more about us and the achievements, activities that we have
-            done and the impact we have made in the lives of students.
+            Know more about us and the achievements, 
+            activities that we have done and the impact we have made in the lives of students.
           </p>
         </section>
 
@@ -104,25 +104,7 @@ export default function About() {
               </div>
             </div>
 
-            {/* Mobile buttons - positioned at top of image */}
-            <div className="flex md:hidden gap-1 absolute top-0.8 left-1/2 transform -translate-x-1/2 z-10">
-              <div className="bg-[#166D86] text-white rounded-full px-1 py-1 text-[8px] font-semibold hover:bg-[#1a7a96] transition-colors shadow-lg flex items-center justify-center">
-                <Link
-                  href="/software"
-                  className="block text-center whitespace-nowrap"
-                >
-                  Software Club
-                </Link>
-              </div>
-              <div className="text-[#166D86] border-2 border-[#166D86] bg-white rounded-full px-1 py-1.5 text-[8px] font-semibold hover:bg-gray-50 transition-colors shadow-lg flex items-center justify-center">
-                <Link
-                  href="/hardware"
-                  className="block text-center whitespace-nowrap"
-                >
-                  Hardware Club
-                </Link>
-              </div>
-            </div>
+            
 
             {/* Hero Image */}
             <Image
@@ -130,8 +112,14 @@ export default function About() {
               alt="ACES Students in classroom"
               width={1088}
               height={549}
-              className="w-full h-auto"
+              className="hidden md:block w-full h-auto"
             />
+            <Image 
+            className="md:hidden w-[100%]" 
+            src="/mobSubtract-About.png" 
+            alt="ACES Students" 
+            width={600} 
+            height={215} />
           </div>
         </section>
 
@@ -172,7 +160,7 @@ export default function About() {
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 max-w-6xl mx-auto">
               <div className="w-full md:w-1/2">
                 <Image
-                  src="/classroom.png"
+                  src="/Groupela.png"
                   alt="Students in classroom"
                   width={500}
                   height={400}
@@ -1660,35 +1648,39 @@ export default function About() {
 
                 {/* Phone Numbers */}
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-[#0FACAC] rounded-full flex items-center justify-center">
-                      <svg
-                        className="w-4 h-4 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-                      </svg>
+                  <a href="tel:+2348054287652">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-[#0FACAC] rounded-full flex items-center justify-center">
+                        <svg
+                          className="w-4 h-4 text-white"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                        </svg>
+                      </div>
+                      <span className="text-gray-700 font-medium text-sm">
+                        08054287652
+                      </span>
                     </div>
-                    <span className="text-gray-700 font-medium text-sm">
-                      08054287652
-                    </span>
-                  </div>
+                  </a>
 
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-[#0FACAC] rounded-full flex items-center justify-center">
-                      <svg
-                        className="w-4 h-4 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-                      </svg>
+                  <a href="tel:+2348054287652">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-[#0FACAC] rounded-full flex items-center justify-center">
+                        <svg
+                          className="w-4 h-4 text-white"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                        </svg>
+                      </div>
+                      <span className="text-gray-700 font-medium text-sm">
+                        08054287652
+                      </span>
                     </div>
-                    <span className="text-gray-700 font-medium text-sm">
-                      08054287652
-                    </span>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
