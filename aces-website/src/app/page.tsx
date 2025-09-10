@@ -99,14 +99,18 @@ export default function Home() {
                   <p>Contact any executive contact below or kindly reach the secetariat</p>
                 </div>
                 <div className="flex gap-4 md:gap-0 md:justify-between">
-                  <div className="flex gap-1 md:gap-4 items-center text-sm">
-                    <Image src="/call.svg" width={40} height={40} alt="Call Icon"/>
-                    <a href="tel:08134408004"><p>08134408004</p></a>
-                  </div>
-                  <div className="flex gap-1 md:gap-4 items-center text-sm">
-                    <Image src="/call.svg" width={40} height={40} alt="Call Icon"/>
-                    <a href="tel:09134971826"><p>09134971826</p></a>
-                  </div>
+                  <a href="tel:08134408004">
+                    <div className="flex gap-1 md:gap-4 items-center text-sm">
+                      <Image src="/call.svg" width={40} height={40} alt="Call Icon"/>
+                      <p>08134408004</p>
+                    </div>
+                  </a>
+                  <a href="tel:09134971826">
+                    <div className="flex gap-1 md:gap-4 items-center text-sm">
+                      <Image src="/call.svg" width={40} height={40} alt="Call Icon"/>
+                      <p>09134971826</p>
+                    </div>
+                  </a>
                 </div>
               </div>
             </div> 
