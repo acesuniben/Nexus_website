@@ -7,8 +7,8 @@ export interface EventItem {
   Description?: string;
   imageUrl?: string;
   createdAt: string;
-  date?: string;
-  time?: string;
+  dateOfEvent?: string;
+  timeOfEvent?: string;
 }
 
 export function useEventItems() {
