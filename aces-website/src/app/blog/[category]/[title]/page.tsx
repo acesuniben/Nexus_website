@@ -70,27 +70,27 @@ export default function ItemDetailPage() {
   return (
     <div>
       <Header />
-      <main className="flex flex-col items-center py-10 min-h-screen">
+      <main className="flex flex-col items-center py-10">
         {loading && <div>Loading...</div>}
         {error && <div className="text-red-500">{error}</div>}
         {item && (
-          <div className="w-full max-w-2xl bg-white rounded-xl shadow-xl p-6 flex flex-col gap-6">
+          <div className="w-full md:w-[80%] bg-white p-6 flex flex-col gap-6">
             {/* Title */}
-            <h1 className="text-3xl font-bold text-[#166D86] mb-2 text-left">{item.title}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#2F327D] mb-4 text-left">{item.title}</h1>
             {/* Black line */}
             <hr className="border-black border mb-4" />
             {/* Date, blue dot, category */}
             <div className="flex items-center gap-3 mb-4 text-left">
-              <span className="text-sm text-gray-600">Published at {new Date(item.createdAt).toLocaleDateString()}</span>
-              <span className="w-4 h-4 rounded-full bg-[#166D86] inline-block"></span>
-              <span className="text-sm font-semibold text-[#166D86]">{category}</span>
+              <span className="text-sm text-[#2F327D]">Published: {new Date(item.createdAt).toLocaleDateString("en", {year: "numeric", month: "short", day: "numeric"})}</span>
+              <span className="w-3 h-3 rounded-full bg-[#166D86] inline-block"></span>
+              <span className="text-sm font-semibold text-[#2F327D]">{category}</span>
             </div>
             {/* Image full width */}
             <div className="w-full flex justify-center mb-4">
-              <Image src={item.imageUrl || item.image || "/default.jpg"} width={700} height={400} alt={item.title} className="object-cover w-full h-auto" />
+              <Image src={item.imageUrl || item.image} width={700} height={400} alt={item.title} className="object-cover w-full h-auto" />
             </div>
             {/* Text */}
-            <div className="text-gray-700 text-lg whitespace-pre-line mb-4 text-left">{item.Description || item.content}</div>
+            <div className="text-[#565886] text-md whitespace-pre-line mb-4 text-left">{item.Description || item.content}</div>
             {/* Final black line */}
             <hr className="border-black border mt-4" />
           </div>

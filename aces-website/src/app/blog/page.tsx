@@ -19,26 +19,28 @@ export default function BlogPage() {
       <main className="flex flex-col gap-10 md:gap-25 items-center mb-20">
         <section className="md:w-2/3 text-center flex flex-col gap-3 mt-10 md:mt-20">
           <h1 className="text-3xl md:text-5xl text-[#2F327D] font-bold">Association of Computer <br/>Engineering Students <span className="text-[#0FACAC] ">Blog</span></h1>
-          <p className="w-[80%] mx-auto">Explore the latest news and information ACES have to offer</p>
+          <p className="w-[80%] mx-auto text-[#696984]">Explore the latest news and information ACES have to offer</p>
         </section>
 
         {/* Latest Entry Featured Section */}
         {latest && (
           <section className="w-[90%] flex flex-col md:flex-row gap-10 md:gap-20">
             <div className="flex items-center justify-center w-full md:w-1/2 max-h-[433px] bg-gray-100 rounded-xl overflow-hidden">
-              <Image src={latest.image || "/default.jpg"} height={443} width={553} alt={latest.title} className="object-cover w-full h-full rounded-xl" />
+              <Image src={latest.image} height={443} width={553} alt={latest.title} className="object-cover w-full h-full rounded-xl" />
             </div>
-            <div className="flex flex-col gap-3 flex-1">
-              <div className="flex gap-3 items-center mb-3">
-                <div className="text-xs py-1 px-2 rounded-2xl bg-[#98FF98] text-[#166D86]">{latest.category}</div>
-                <p>{new Date(latest.createdAt).toLocaleDateString()}</p>
+            <div className="flex flex-col justify-between flex-1">
+              <div>
+                <div className="flex gap-3 items-center mb-3">
+                  <div className="text-xs py-2 px-4 rounded-2xl bg-[#98FF98] text-[#166D86]">{latest.category}</div>
+                  <p className="text-[#696984]">{new Date(latest.createdAt).toLocaleDateString("en", {year: "numeric", month: "short", day: "numeric"})}</p>
+                </div>
+                <h2 className="text-2xl font-bold text-[#166D86]">{latest.title}</h2>
               </div>
-              <h2 className="text-2xl font-bold text-[#166D86]">{latest.title}</h2>
-              <p className="text-gray-600 line-clamp-4">{latest.content.length > 220 ? latest.content.slice(0, 220) + '...' : latest.content}</p>
+              <p className="text-[#565886] line-clamp-4">{latest.content.length > 400 ? latest.content.slice(0, 400) + '...' : latest.content}</p>
               <div className="mt-4">
-                <Link href={`/blog/${latest.category}/${slugify(latest.title)}`} className="flex gap-2 items-center text-sm font-semibold text-[#0FACAC]" >
-                  <Image src="/Icon.svg" alt="navigation arrow" width={30} height={30}/>
-                  <p>Read More</p>
+                <Link href={`/blog/${latest.category}/${slugify(latest.title)}`} className="flex gap-2 items-center text-sm font-semibold text-[#166D86]" >
+                  <Image src="/Icon.svg" alt="navigation arrow" width={25} height={25}/>
+                  <p className="underline">Read More</p>
                 </Link>
               </div>
             </div>
@@ -58,20 +60,22 @@ export default function BlogPage() {
           {!loading && !error && rest.slice(0, 24).map(item => (
             <div key={item.id} className="flex flex-col shadow-xl rounded-xl bg-white overflow-hidden min-h-[420px] max-h-[420px]">
               <div className="flex items-center justify-center  max-h-[255px] bg-gray-100 overflow-hidden">
-                <Image src={item.image || "/default.jpg"} height={254.67} width={351.33} alt={item.title} className="object-cover w-full h-full rounded-t-xl" />
+                <Image src={item.image} height={254.67} width={351.33} alt={item.title} className="object-cover w-full h-full rounded-t-xl" />
               </div>
-              <div className="flex flex-col gap-2 p-4 flex-1">
+              <div className="flex flex-col gap-4 p-4 flex-1">
                 <div className="flex gap-2 items-center mb-2">
-                  <div className="text-xs py-1 px-2 rounded-2xl bg-[#98FF98] text-[#166D86]">{item.category}</div>
-                  <p className="text-xs text-gray-500">{new Date(item.createdAt).toLocaleDateString()}</p>
+                  <div className="text-xs py-2 px-4 rounded-2xl bg-[#98FF98] text-[#166D86]">{item.category}</div>
                 </div>
-                <h2 className="text-base font-semibold text-[#166D86]">{item.title}</h2>
-                <p className="text-gray-600 line-clamp-3">{item.content.length > 120 ? item.content.slice(0, 120) + '...' : item.content}</p>
-                <div className="flex justify-end items-center mt-auto">
-                  <Link href={`/blog/${item.category}/${slugify(item.title)}`} className="flex gap-2 items-center text-sm font-semibold text-[#0FACAC]" >
-                    <Image src="/Icon.svg" alt="navigation arrow" width={30} height={30}/>
-                    <p>Read More</p>
-                  </Link>
+                <h2 className="text-base font-bold text-[#2F327D]">{item.title}</h2>
+                <p className="text-[#2F327D] font-semibold line-clamp-3">{item.content.length > 120 ? item.content.slice(0, 120) + '...' : item.content}</p>
+                <div className="flex justify-between">
+                  <p className="text-xs text-[#696984]">{new Date(item.createdAt).toLocaleDateString("en", {year: "numeric", month: "short", day: "numeric"})}</p>
+                  <div className="flex justify-end items-center mt-auto">
+                    <Link href={`/blog/${item.category}/${slugify(item.title)}`} className="flex gap-2 items-center text-sm font-semibold text-[#0FACAC]" >
+                      <Image src="/Icon.svg" alt="navigation arrow" width={20} height={20}/>
+                      <p className="text-xs underline text-[#166D86]">Read More</p>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -81,7 +85,7 @@ export default function BlogPage() {
         <section className="flex justify-center items-center mt-6">
           <button
             onClick={loadMore}
-            className={`bg-[#0FACAC] text-white py-3 px-6 rounded-full font-semibold transition-opacity duration-200 ${hasMore ? '' : 'opacity-50 cursor-not-allowed'}`}
+            className={`bg-[#166D86] text-white py-2 px-4 rounded-full font-semibold transition-opacity duration-200 ${hasMore ? '' : 'opacity-50 cursor-not-allowed'}`}
             disabled={!hasMore}
           >
             {hasMore ? 'Load More' : 'No More Posts'}
@@ -90,8 +94,9 @@ export default function BlogPage() {
 
         <section className="w-full flex justify-center items-center">
           <div className="relative w-[90%]">
-            <Image src="/subscribe.svg" height={712.5} width={1525} alt="Newsletter sign-up background" className="w-full"/>
-            <div className="absolute pt-1 top-[7.5%] md:top-[25%] left-[5%] md:left-[20%] flex flex-col gap-2 md:gap-6 items-center w-[90%] md:w-[60%]">
+            <Image src="/subscribe.svg" height={712.5} width={1525} alt="Newsletter sign-up background" className="hidden md:block w-full"/>
+            <Image src="/mobsubscribe.svg" height={188} width={356} alt="Newsletter sign-up background" className=" md:hidden w-full"/>
+            <div className="absolute pt-1 top-[25%] left-[5%] md:left-[20%] flex flex-col gap-2 md:gap-6 items-center w-[90%] md:w-[60%]">
               <h2 className="text-[#2F327D] font-bold text-md md:text-3xl text-center w-[60%]">Register to stay up to date with <span className=" text-[#0FACAC]">ACES</span> Blog</h2>          
               <div className="bg-white text-sm md:text-lg rounded-4xl px-1 py-1 md:py-2 md:px-4 w-full md:w-[70%]">
                 <form className="flex justify-between text-sm md:text-lg items-center w-full">
@@ -104,7 +109,7 @@ export default function BlogPage() {
                   />
                   <button 
                     type="submit"
-                    className="text-xs md:text-lg bg-[#166D86] text-white rounded-4xl p-1 md:py-2 md:px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium"
+                    className="text-xs bg-[#166D86] text-white rounded-4xl p-1 md:py-2 md:px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium"
                   >
                     Subscribe
                   </button>
