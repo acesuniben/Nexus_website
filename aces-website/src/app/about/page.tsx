@@ -34,7 +34,7 @@ export default function About() {
   const achievements = [
     "Introduction of the Mental Health Scheme",
     "Winners of University based Hackathon and other prizes given",
-    "Collaboration with NVIDIA for ACES Week",
+    "Launch of ACES web and mobile app",
     "Collaboration with WAW Detergent for ACES Mental Health Scheme Program",
     "Introduction of the ACES Software and Hardware Club",
     "Collaboration with Google Developers on Campus Uniben Chapter",
@@ -82,39 +82,30 @@ export default function About() {
         </section>
 
         {/* Hero Image Section */}
-        <section className="w-full flex flex-col items-center text-center px-4 md:px-0">
-          <div className="relative w-full max-w-7xl">
-            {/* Desktop buttons - positioned absolutely over image */}
-            <div className="hidden md:flex gap-3 px-5 w-1/2 absolute left-[30%] z-10">
-              <div className="bg-[#166D86] text-white w-2/5 rounded-4xl px-12 py-4 text-2xl font-bold hover:bg-[#1a7a96] transition-colors flex items-center justify-center">
-                <Link
-                  href="/software"
-                  className="text-center whitespace-nowrap"
-                >
-                  Software Club
+        <section className="w-full flex flex-col items-center text-center w-[90%]">
+          <div className="relative px-5 md:px-0">
+            <div className="hidden md:flex gap-1 md:gap-3 px-2 md:py-0 md:px-5 w-1/2 absolute left-[30%] top-[0%]">
+              <div className="bg-[#166D86] text-white w-2/5 rounded-4xl md:px-10 md:py-4 text-xs md:text-xl font-bold p-0.5">
+                <Link key="software" href="/software">
+                  Software Club{" "}
                 </Link>
               </div>
-              <div className="text-[#166D86] border-2 w-2/5 border-[#166D86] bg-white rounded-4xl px-12 py-4 text-2xl font-bold hover:bg-gray-50 transition-colors flex items-center justify-center">
-                <Link
-                  href="/hardware"
-                  className="text-center whitespace-nowrap"
-                >
-                  Hardware Club
+              <div className="text-[#166D86] border-2  w-2/5 border-[#166D86] bg-white rounded-4xl p-0.5 md:px-10 md:py-4 text-xs md:text-xl font-bold">
+                <Link key="hardware" href="/hardware">
+                  Hardware Club{" "}
                 </Link>
               </div>
             </div>
-
-            {/* Hero Image */}
             <Image
-              src="/Subtract-About.png"
-              alt="ACES Students in classroom"
+              className="hidden md:block"
+              src="/Subtract.png"
+              alt="ACES Students"
               width={1088}
               height={549}
-              className="hidden md:block w-full h-auto"
             />
             <Image
               className="md:hidden w-[100%]"
-              src="/mobSubtract-About.png"
+              src="/mobheader.png"
               alt="ACES Students"
               width={600}
               height={215}
@@ -1104,46 +1095,45 @@ export default function About() {
                             </a>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            
-                              <svg
-                                className="w-4 h-4 text-gray-600"
-                                fill="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                              </svg>
+                            <svg
+                              className="w-4 h-4 text-gray-600"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
                           </div>
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
                             <a href="https://www.instagram.com/_glowrii">
-                            <svg
-                              className="w-4 h-4 text-gray-600"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <rect
-                                width="18"
-                                height="18"
-                                x="3"
-                                y="3"
-                                rx="5"
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="none"
                                 stroke="currentColor"
-                                strokeWidth="2"
-                              />
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="4"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                              />
-                              <circle
-                                cx="17"
-                                cy="7"
-                                r="1.5"
-                                fill="currentColor"
-                              />
-                            </svg>
+                                viewBox="0 0 24 24"
+                              >
+                                <rect
+                                  width="18"
+                                  height="18"
+                                  x="3"
+                                  y="3"
+                                  rx="5"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                />
+                                <circle
+                                  cx="12"
+                                  cy="12"
+                                  r="4"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                />
+                                <circle
+                                  cx="17"
+                                  cy="7"
+                                  r="1.5"
+                                  fill="currentColor"
+                                />
+                              </svg>
                             </a>
                           </div>
                         </div>
