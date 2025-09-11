@@ -189,7 +189,7 @@ export default function Footer() {
                 </p>
               </div>
               <div>
-                <p className="text-gray-300">Phone no : 08134408004</p>
+                <p className="text-gray-300">Phone no: 08134408004</p>
               </div>
               <div>
                 <p className="text-gray-300">Address: ACES Secretariat,</p>
