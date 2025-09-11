@@ -87,7 +87,7 @@ export default function Software() {
       <Header />
       <main className="flex flex-col gap-16 md:gap-32 items-center mb-20">
         {/* Hero Section */}
-        <section className="w-[90%] md:w-2/3 text-center flex flex-col gap-3 mt-10 md:mt-20 px-4">
+        <section className="w-full md:w-2/3 text-center flex flex-col gap-3 mt-10 md:mt-20 px-4">
           <h1 className="text-2xl md:text-4xl text-[#2F327D] font-bold leading-tight">
             Association of Computer Engineering{" "}
             <br className="hidden md:block" />
@@ -98,7 +98,7 @@ export default function Software() {
           </p>
         </section>
 
-        {/* Hero Image with Navigation Buttons */}
+        {/* Hero Image */}
         <section className="w-[90%] flex flex-col items-center text-center">
           <div className="relative">
             <div className="hidden md:flex gap-1 md:gap-3 px-2 md:py-0 md:px-5 w-1/2 absolute left-[30%] top-[0%]">
@@ -122,7 +122,7 @@ export default function Software() {
             />
             <Image
               className="md:hidden w-[100%]"
-              src="/mobAdd.png"
+              src="/Hardware-hero-mobile.svg"
               alt="ACES Students"
               width={600}
               height={215}
@@ -131,19 +131,19 @@ export default function Software() {
         </section>
 
         {/* About the Club Section */}
-        <section className="flex flex-col-reverse md:flex-row gap-5 md:gap-0 justify-between md:justify-evenly items-center px-4">
-          <div className="flex flex-col gap-8 relative w-[90%] md:w-2/5 items-start justify-evenly">
+        <section className="flex flex-col-reverse md:flex-row gap-5 md:gap-0 justify-between md:justify-evenly items-center px-4 w-full">
+          <div className="flex flex-col gap-8 relative w-[100%] md:w-2/5 items-start justify-evenly">
             <Image
               src="/pointers.svg"
               width={474.67}
               height={64.99}
               alt="pointers illustration"
-              className="absolute -top-3 left-7 md:-top-8 md:-left-2 -z-0"
+              className="absolute -top-1 left-0 md:-top-8 md:-left-2 -z-0"
             />
             <h2 className="text-[#2F327D] font-bold text-2xl md:text-4xl relative">
               About the<span className="text-[#0FACAC] z-10"> Club</span>
             </h2>
-            <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+            <p className="text-sm mt-3 md:text-base text-gray-600 leading-relaxed">
               The ACES Hardware Club was introduced by the{" "}
               <span className="text-[#0FACAC]">New Age Executives 22/23</span>.
               Then it was inaugurated by{" "}
@@ -158,9 +158,9 @@ export default function Software() {
               and Technical) Governors.
             </p>
           </div>
-          <div className="w-[90%] md:w-2/5">
+          <div className="w-[100%] md:w-2/5">
             <Image
-              src="/softGroup.png"
+              src="/Hardware-about-mob.svg"
               height={359.33}
               width={498.67}
               alt="Picture of students listening to their teacher in their classroom"
@@ -307,7 +307,7 @@ export default function Software() {
             </div>
           </div>
 
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end mt-6 md:mt-0">
+          <div className="w-full md:w-1/2 flex justify-center md:justify-end md:mt-0">
             <Image
               src="/location-hardware.png"
               alt="Student with curly hair and glasses"
@@ -319,16 +319,16 @@ export default function Software() {
         </section>
 
         {/* Network with ACES Hardware Community Section */}
-        <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
+        <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16 w-full">
+          <div className="max-w-6xl mx-auto w-full">
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 ">
               <div className="w-full md:w-1/2 flex justify-center">
                 <Image
                   src="/network-hardware.png"
                   alt="Network with ACES Hardware Community"
                   width={500}
                   height={400}
-                  className="max-w-full h-auto rounded-lg w-[280px] md:w-[500px]"
+                  className="w-full h-auto rounded-lg w-[280px] md:w-[500px]"
                 />
               </div>
 
@@ -347,7 +347,13 @@ export default function Software() {
                 </p>
 
                 <button className="bg-[#166D86] hover:bg-[#0e9999] text-white font-semibold px-6 py-2 md:px-8 md:py-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl text-sm md:text-base">
-                  Join the Group Chat
+                  <a
+                    href="https://chat.whatsapp.com/GliXHiPO8qVItPKcypQOjl?mode=ems_copy_t"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Join the Group Chat
+                  </a>
                 </button>
               </div>
             </div>
@@ -355,7 +361,7 @@ export default function Software() {
         </section>
 
         {/* Mobile App Promotion Section */}
-        <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
+        <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16 w-full">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
               <div className="w-full md:w-2/5 flex justify-center">
@@ -388,13 +394,6 @@ export default function Software() {
                   >
                     Download Now
                   </Link>
-                  <Image
-                    src="/Arrow.png"
-                    alt="Arrow Icon"
-                    width={60}
-                    height={48}
-                    className="w-12 h-10 md:w-16 md:h-12"
-                  />
                 </div>
               </div>
             </div>
@@ -413,7 +412,7 @@ export default function Software() {
               activities of the hardware club. Curious? Look below.
             </p>
 
-            <div className="space-y-6 md:space-y-10">
+            <div className="space-y-6 md:space-y-10 ">
               {/* First two governors - Stack on mobile, side by side on desktop */}
               <div className="flex flex-col md:flex-row gap-6 md:gap-10 justify-center">
                 {governors.slice(0, 2).map((governor) => (
@@ -432,22 +431,22 @@ export default function Software() {
                           " " +
                           governor.name
                         }
-                        className="w-24 h-24 md:w-32 md:h-32 rounded-lg object-cover"
+                        className="w-64 h-64 rounded-lg object-cover"
                       />
                     </div>
                     <div className="flex flex-col justify-between text-center md:text-left flex-1">
                       <div className="mb-3 md:mb-4">
-                        <h3 className="text-base md:text-lg font-semibold text-[#2F327D] mb-1">
+                        <h3 className="text-base md:text-lg font-semibold text-[#2F327D] mb-1 text-center">
                           {governor.name}
                         </h3>
-                        <h4 className="text-sm md:text-base font-semibold text-[#0FACAC]">
+                        <h4 className="text-sm md:text-base font-semibold text-[#0FACAC] text-center">
                           {governor.role}
                         </h4>
                       </div>
-                      <p className="text-xs md:text-sm text-gray-600 mb-3 md:mb-4 flex-1">
+                      <p className="text-xs md:text-sm text-gray-600 mb-3 md:mb-4 flex-1 text-center">
                         {governor.description}
                       </p>
-                      <div className="flex gap-3 md:gap-4 justify-center md:justify-start">
+                      <div className="flex gap-3 md:gap-4 justify-center items-center text-center">
                         <a
                           href={governor.facebook}
                           className="hover:opacity-70 transition-opacity"
@@ -457,7 +456,7 @@ export default function Software() {
                             width={18}
                             height={18}
                             alt="Facebook Icon"
-                            className="w-4 h-4 md:w-5 md:h-5"
+                            className="w-4 h-4 md:w-5 md:h-5 "
                           />
                         </a>
                         <a
@@ -496,22 +495,22 @@ export default function Software() {
                           " " +
                           governor.name
                         }
-                        className="w-24 h-24 md:w-32 md:h-32 rounded-lg object-cover"
+                        className="w-64 h-64 rounded-lg object-cover"
                       />
                     </div>
                     <div className="flex flex-col justify-between text-center md:text-left flex-1">
                       <div className="mb-3 md:mb-4">
-                        <h3 className="text-base md:text-lg font-semibold text-[#2F327D] mb-1">
+                        <h3 className="text-base md:text-lg font-semibold text-[#2F327D] mb-1 text-center">
                           {governor.name}
                         </h3>
-                        <h4 className="text-sm md:text-base font-semibold text-[#0FACAC]">
+                        <h4 className="text-sm md:text-base font-semibold text-[#0FACAC] text-center">
                           {governor.role}
                         </h4>
                       </div>
-                      <p className="text-xs md:text-sm text-gray-600 mb-3 md:mb-4 flex-1">
+                      <p className="text-xs md:text-sm text-gray-600 mb-3 md:mb-4 flex-1 text-center">
                         {governor.description}
                       </p>
-                      <div className="flex gap-3 md:gap-4 justify-center md:justify-start">
+                      <div className="flex gap-3 md:gap-4 justify-center items-center text-center">
                         <a
                           href={governor.facebook}
                           className="hover:opacity-70 transition-opacity"
@@ -521,7 +520,7 @@ export default function Software() {
                             width={18}
                             height={18}
                             alt="Facebook Icon"
-                            className="w-4 h-4 md:w-5 md:h-5"
+                            className="w-6 h-4 md:w-5 md:h-5"
                           />
                         </a>
                         <a
@@ -626,35 +625,35 @@ export default function Software() {
         </section>
 
         {/* Software Club CTA Section */}
-        <section className="w-full flex justify-center items-center px-4 md:px-0">
-          <div className="relative w-full md:w-[90%]">
+        <section className="w-full flex justify-center items-center">
+          <div className="relative w-[90%]">
             <Image
-              src="/cta-software.png"
-              height={234.135}
-              width={1016.67}
-              alt="Newsletter sign-up background"
-              className="w-full"
+              src="/subscribe.svg"
+              height={712.5}
+              width={1525}
+              alt=""
+              className="hidden md:block w-full"
             />
-            <div className="absolute inset-0 flex items-center justify-center md:top-[30%] md:left-[20%] md:justify-start">
-              <div className="flex flex-col md:flex-row gap-4 md:gap-20 items-center md:items-start w-full md:w-[60%] p-4 md:p-0">
-                <div className="w-full md:w-2/3 flex flex-col gap-4 md:gap-10 items-center md:items-start text-center md:text-left">
-                  <p className="text-[#2F327D] text-lg md:text-3xl font-bold">
-                    Interested in{" "}
-                    <span className="text-[#0FACAC]">Software?</span> The
-                    Software Club is Available for you. Check it out.
-                  </p>
-                  <div className="text-white bg-[#166D86] px-4 py-2 md:px-6 md:py-2 rounded-3xl">
-                    <Link href="/software">Software Club</Link>
-                  </div>
+            <Image
+              src="/mobSub2.svg"
+              height={528}
+              width={356}
+              alt=""
+              className=" md:hidden w-full"
+            />
+            <div className="px-5 py-2 md:p-0 absolute top-[25%] md:top-[30%] md:left-[20%] m-auto flex flex-col md:flex-row gap-5 md:gap-20 items-center md:items-start w-[100%] md:w-[60%] h-full">
+              <div className="w-auto md:w-2/3 flex flex-col gap-5 md:gap-10 items-start">
+                <p className="text-[#2F327D] text-xl md:text-3xl font-bold ">
+                  Interested in{" "}
+                  <span className="text-[#0FACAC]">Software?</span> The Software
+                  Club is Available for you. Check it out.
+                </p>
+                <div className="text-white  bg-[#166D86] text-md md:text-lg px-4 py-2 md:px-4 md:py-2 rounded-3xl">
+                  <Link href="/software">Software Club</Link>
                 </div>
-                <div className="hidden md:block">
-                  <Image
-                    src="/board.svg"
-                    width={174.31}
-                    height={227.61}
-                    alt=""
-                  />
-                </div>
+              </div>
+              <div>
+                <Image src="/type.png" width={174.31} height={227.61} alt="" />
               </div>
             </div>
           </div>
