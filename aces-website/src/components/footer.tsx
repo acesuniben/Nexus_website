@@ -194,7 +194,7 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-gray-300">Address: ACES Secretariat,</p>
-                <p className="text-gray-300">Faculty of Engineering, Uniben</p>
+                <p className="text-gray-300">Faculty of Engineering, UNiben</p>
               </div>
             </div>
           </div>
