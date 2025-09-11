@@ -66,7 +66,7 @@ export default function DuesPage() {
             <section className="w-[90%] md:w-[100%] flex flex-col gap-10 md:gap-15 justify-between items-center">
                 <div className="flex flex-col items-center gap-2 text-center">
                     <h2 className="text-[#2F327D] font-bold text-2xl md:text-4xl relative">Where to pay your<span className="text-[#0FACAC] z-10"> ACES Dues</span></h2>
-                    <p className="text-[#696984] w-[60%]">Don’t know the departmental bank account? Transfer to the account below to make a deposit or pay with cash</p>
+                    <p className="text-[#696984] w-[80%] md:w-[60%]">Don’t know the departmental bank account? Transfer to the account below to make a deposit or pay with cash</p>
                 </div>
                 <div className="w-[100%] md:w-[60%] flex flex-col gap-6 md:gap-10 shadow-xl p-10">
                     <div className="flex justify-between"><p className="text-[#2F327D] md:text-xl font-semibold">Account Number :</p><p className="text-[#0FACAC] md:text-xl font-semibold">0023455177</p></div>
