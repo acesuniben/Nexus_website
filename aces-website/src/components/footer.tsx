@@ -169,12 +169,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/mhs"
+                <a
+                  href="https://mhs.acesuniben.org"
+                  target="_blank"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   MHS
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
