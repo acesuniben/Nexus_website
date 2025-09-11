@@ -14,7 +14,7 @@ export default function Header() {
     { name: "Department", href: "/department" },
     { name: "Hardware Club", href: "/hardware" },
     { name: "Software Club", href: "/software" },
-    { name: "MHS", href: "https://acesuniben.github.io/mhs/" },
+    { name: "MHS", href: "https://mhs.acesuniben.org", target: "_blank" },
     { name: "Blog", href: "/blog" },
     { name: "Contact Us", href: "/contact" },
   ];

@@ -18,7 +18,7 @@ export default function About() {
     { name: "About Us", href: "/about" },
     { name: "Hardware Club", href: "/hardware" },
     { name: "Software Club", href: "/software" },
-    { name: "MHS", href: "https://acesuniben.github.io/mhs/" },
+    { name: "MHS", href: "https://mhs.acesuniben.org", target: "_blank" },
     { name: "Blog", href: "/blog" },
     { name: "Contact Us", href: "/contact" },
   ];
@@ -614,53 +614,59 @@ export default function About() {
                         </p>
                         <div className="flex justify-center gap-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg
-                              className="w-4 h-4 text-gray-600"
-                              fill="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                            </svg>
-                          </div>
-                          <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg
-                              className="w-4 h-4 text-gray-600"
-                              fill="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                            </svg>
-                          </div>
-                          <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                            <svg
-                              className="w-4 h-4 text-gray-600"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <rect
-                                width="18"
-                                height="18"
-                                x="3"
-                                y="3"
-                                rx="5"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                              />
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="4"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                              />
-                              <circle
-                                cx="17"
-                                cy="7"
-                                r="1.5"
+                            <a href="https://x.com/Neche_Sylvia_?t=E7NZ0pTJ0kd-_gjUtZO17A&s=08">
+                              <svg
+                                className="w-4 h-4 text-gray-600"
                                 fill="currentColor"
-                              />
-                            </svg>
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                              </svg>
+                            </a>
+                          </div>
+                          <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                            <a href="https://www.linkedin.com/in/chinaecherem-ilo-53409223b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                              </svg>
+                            </a>
+                          </div>
+                          <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                            <a href="https://www.instagram.com/neche_sylvia?igsh=MTFoY240cmo2ajI1cA==">
+                              <svg
+                                className="w-4 h-4 text-gray-600"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <rect
+                                  width="18"
+                                  height="18"
+                                  x="3"
+                                  y="3"
+                                  rx="5"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                />
+                                <circle
+                                  cx="12"
+                                  cy="12"
+                                  r="4"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                />
+                                <circle
+                                  cx="17"
+                                  cy="7"
+                                  r="1.5"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -1266,7 +1272,7 @@ export default function About() {
             </h2>
             <p className="text-center text-gray-600 mb-8 md:mb-16 max-w-2xl mx-auto text-sm md:text-lg px-2 md:px-0">
               Get to know what ACES and the Department of Computer Engineering
-              offers to the students of this great department
+              offers to her students
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 max-w-5xl mx-auto">
               {/* Past Questions Service */}
@@ -1284,7 +1290,7 @@ export default function About() {
                   Past Questions
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-                  There are different categories of past questions in different
+                  There are different categories of past questions for different
                   courses from 100L to 500L that you can study from and prepare
                   for exams
                 </p>
@@ -1305,9 +1311,9 @@ export default function About() {
                   Software Club
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-                  There are different categories of past questions in different
-                  courses from 100L to 500L that you can study from and prepare
-                  for exams
+                  The Software Club is a vibrant community for students
+                  passionate about coding, app development, and software
+                  engineering.
                 </p>
               </div>
 
@@ -1326,9 +1332,10 @@ export default function About() {
                   Hardware Club
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-                  There are different categories of past questions in different
-                  courses from 100L to 500L that you can study from and prepare
-                  for exams
+                  The Hardware Club is dedicated to hands-on learning,
+                  electronics, robotics, and embedded systems. We provide a
+                  platform for students to collaborate on projects and enhance
+                  their skills.
                 </p>
               </div>
             </div>
@@ -1346,20 +1353,14 @@ export default function About() {
                 </h2>
                 <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
                   <p className="text-gray-600 leading-relaxed text-sm md:text-base text-left">
-                    To improve the department and to ensure activities like
-                    fresher's welcome, HOD's Cup and others are able to be
-                    achieved.
-                  </p>
-                  <p className="text-gray-600 leading-relaxed text-sm md:text-base text-left">
-                    paying your ELA Dues shows how important this department is
-                    to you.
+                    The department recognizes the importance of mental health
+                    and well-being for every student. Through various
+                    initiatives, workshops, and support systems, we strive to
+                    create a safe and supportive environment for students.
                   </p>
                 </div>
                 <div className="text-left">
-                  <Link
-                    href="https://acesuniben.github.io/mhs/"
-                    target="_blank"
-                  >
+                  <Link href="https://mhs.acesuniben.org" target="_blank">
                     <button className="bg-[#166D86] text-white px-6 md:px-8 py-2 md:py-3 rounded-full font-medium hover:bg-[#0FACAC] transition-colors text-sm md:text-base">
                       Explore
                     </button>
@@ -1399,8 +1400,8 @@ export default function About() {
                 Meet the <span className="text-[#0FACAC]">Developers</span>
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base px-2 md:px-0">
-                Get to know the people responsible for creating and developing
-                both the mobile and web apps
+                Get to know the people responsible for developing both the
+                mobile and web apps
               </p>
             </div>
 
@@ -1772,76 +1773,46 @@ export default function About() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-8 md:py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="relative max-w-6xl mx-auto">
-              {/* Desktop Layout - Original design */}
-              <div className="hidden md:block">
-                <Image
-                  src="/GirlSittingWithPen.png"
-                  height={234.135}
-                  width={1016.67}
-                  alt="Newsletter sign-up background"
-                  className="w-full"
-                />
-                <div className="absolute top-[25%] left-[20%] flex flex-col gap-6 items-left w-[60%]">
-                  <h2 className="text-[#2F327D] font-bold text-3xl text-left w-[75%]">
-                    Get <span className=" text-[#0FACAC]">Past Questions</span>{" "}
-                    with ease and ensure you use them efficiently and
-                    consistently
-                  </h2>
-                  <div>
-                    <button
-                      type="submit"
-                      className="bg-[#166D86] text-white rounded-4xl py-2 px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium"
-                    >
-                      Get Past Questions
-                    </button>
-                  </div>
+        <section className="w-full flex justify-center items-center">
+          <div className="relative w-[90%]">
+            <Image
+              src="/subscribe.svg"
+              height={712.5}
+              width={1525}
+              alt=""
+              className="hidden md:block w-full"
+            />
+            <Image
+              src="/mobSub2.svg"
+              height={528}
+              width={356}
+              alt=""
+              className=" md:hidden w-full"
+            />
+            <div className="px-5 py-2 md:p-0 absolute top-[25%] md:top-[30%] md:left-[20%] m-auto flex flex-col md:flex-row gap-5 md:gap-20 items-center md:items-start w-[100%] md:w-[60%] h-full">
+              <div className="w-auto md:w-2/3 flex flex-col gap-5 md:gap-10 items-start">
+                <p className="text-[#2F327D] text-xl md:text-3xl font-bold ">
+                  Get <span className="text-[#0FACAC]">Past Questions</span>{" "}
+                  with ease and ensure you use them efficiently and
+                  consistently.
+                </p>
+                <div className="text-white  bg-[#166D86] text-md md:text-lg px-4 py-2 md:px-4 md:py-2 rounded-3xl">
+                  <a href="https://drive.google.com/drive/folders/1lOYE5bFrw7srXhODcYV8siD25I0GPSJA?usp=sharing" target="_blank" rel="noopener noreferrer">Get Past Questions</a>
                 </div>
               </div>
-
-              {/* Mobile Layout - Image background like desktop */}
-              <div className="md:hidden">
-                <div className="relative rounded-2xl overflow-hidden">
-                  {/* Background Image */}
-                  <Image
-                    src="/GirlSittingWithPen.png"
-                    alt="Newsletter sign-up background"
-                    width={1000}
-                    height={234}
-                    className="w-full h-full object-cover"
-                  />
-
-                  {/* Content Overlay */}
-                  <div className="absolute inset-0 p-6 flex flex-col justify-center">
-                    <div className="max-w-[60%]">
-                      <h2 className="text-[#2F327D] font-bold text-xs leading-tight mb-4">
-                        Get{" "}
-                        <span className="text-[#0FACAC]">Past Questions</span>{" "}
-                        with ease and ensure you use them efficiently and
-                        consistently
-                      </h2>
-                      <button
-                        type="submit"
-                        className="bg-[#166D86] text-white rounded-full py-3 px-6 hover:bg-[#0FACAC] transition-colors duration-200 font-medium text-sm whitespace-nowrap"
-                      >
-                        Get Past Questions
-                      </button>
-                    </div>
-                  </div>
-                </div>
+              <div>
+                <Image src="/girll.svg" width={174.31} height={227.61} alt="" />
               </div>
             </div>
           </div>
         </section>
 
         {/* ACES Secretariat Section */}
-        <section className="py-8 md:py-16 bg-white">
+        <section className="py-8 md:py-16 bg-white w-full">
           <div className="container mx-auto px-4">
             {/* Mobile Layout */}
             <div className="md:hidden">
-              <div className="bg-white p-6 rounded-lg max-w-sm mx-auto">
+              <div className="bg-white p-6 w-full">
                 {/* Title */}
                 <h2 className="text-2xl md:text-3xl font-bold mb-4 text-left">
                   <span className="text-[#2F327D]">ACES </span>
@@ -1851,9 +1822,24 @@ export default function About() {
                 {/* Description */}
                 <p className="text-gray-600 text-sm leading-relaxed mb-6 text-left">
                   To improve the department and to ensure activities like
-                  fresher's welcome, HOD's Cup and others are able to be
-                  achieved.
+                  fresher's welcome, HOD's Cup and others.
                 </p>
+
+                {/* Map Section for Mobile */}
+                <div className="mb-6">
+                  <div className="bg-gray-100 h-48 rounded-lg overflow-hidden">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.7857842896586!2d5.626827814683795!3d6.399267925756586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1040d7dabf8a4ca1%3A0x6d9b2d4c4b4b4b4b!2sFaculty%20of%20Engineering%2C%20University%20of%20Benin!5e0!3m2!1sen!2sng!4v1640000000000!5m2!1sen!2sng"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="ACES Secretariat Location - Faculty of Engineering, University of Benin"
+                    ></iframe>
+                  </div>
+                </div>
 
                 {/* Location */}
                 <div className="flex items-start gap-3 mb-4">
@@ -1875,7 +1861,7 @@ export default function About() {
                 </div>
 
                 {/* Phone Numbers */}
-                <div className="space-y-3">
+                <div className="flex flex-col gap-8 items-left">
                   <a href="tel:+2348054287652">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 bg-[#0FACAC] rounded-full flex items-center justify-center">
@@ -1914,7 +1900,7 @@ export default function About() {
             </div>
 
             {/* Desktop Layout */}
-            <div className="hidden md:flex flex-row gap-8 md:gap-12 items-center max-w-7xl mx-auto">
+            <div className="hidden md:flex flex-row gap-8 md:gap-12 items-center w-full">
               {/* Map Section */}
               <div className="w-full md:w-1/2">
                 <div className="bg-gray-100 h-60 md:h-80 rounded-lg overflow-hidden">
