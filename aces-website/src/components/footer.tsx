@@ -192,7 +192,7 @@ export default function Footer() {
                 <p className="text-gray-300">Phone no : 08134408004</p>
               </div>
               <div>
-                <p className="text-gray-300">Address : ACES Secretariat,</p>
+                <p className="text-gray-300">Address: ACES Secretariat,</p>
                 <p className="text-gray-300">Faculty of Engineering, Uniben</p>
               </div>
             </div>
