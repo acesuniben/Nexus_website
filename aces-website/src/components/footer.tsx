@@ -181,7 +181,7 @@ export default function Footer() {
 
           {/* Contact Us Section */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Contact us</h3>
+            <h3 className="text-lg font-semibold mb-6">Contact Us</h3>
             <div className="space-y-4 text-sm">
               <div>
                 <p className="text-gray-300">
