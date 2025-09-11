@@ -141,11 +141,6 @@ export default function BlogPage() {
         const imageFormData = new FormData();
         imageFormData.append("image", formData.image);
 
-        // Log FormData contents
-        for (let pair of imageFormData.entries()) {
-          console.log(pair[0], pair[1]);
-        }
-
         const imageResponse = await fetch(
           "https://aces-utky.onrender.com/api/upload2cloud",
           {
