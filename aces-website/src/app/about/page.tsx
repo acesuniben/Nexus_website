@@ -381,7 +381,7 @@ export default function About() {
         </section>
 
         {/* Meet the Next Wave Executives */}
-        <section className="py-8 md:py-16 bg-white w-full">
+        <section id="executives" className="py-8 md:py-16 bg-white w-full">
           <div className="container mx-auto px-4">
             <div className="text-center mb-8 md:mb-12">
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#2F327D]">
@@ -1797,7 +1797,13 @@ export default function About() {
                   consistently.
                 </p>
                 <div className="text-white  bg-[#166D86] text-md md:text-lg px-4 py-2 md:px-4 md:py-2 rounded-3xl">
-                  <a href="https://drive.google.com/drive/folders/1lOYE5bFrw7srXhODcYV8siD25I0GPSJA?usp=sharing" target="_blank" rel="noopener noreferrer">Get Past Questions</a>
+                  <a
+                    href="https://drive.google.com/drive/folders/1lOYE5bFrw7srXhODcYV8siD25I0GPSJA?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Get Past Questions
+                  </a>
                 </div>
               </div>
               <div>
