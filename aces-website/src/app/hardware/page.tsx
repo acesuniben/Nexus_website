@@ -36,7 +36,7 @@ export default function Software() {
       role: "Hardware Governor",
       description:
         "400L CPE Student. A hardware Enthusiast and Robotics lover. Builds, designs and create innovative tech solutions",
-      picture: "/maro.png",
+      picture: "/questionMark.png",
       facebook: "#",
       github: "#",
       linkedIn: "#",
@@ -48,8 +48,8 @@ export default function Software() {
         "300L CPE Student. Passionate about Electronics, IOT, hardware design and programming. Enjoys building practical solutions.",
       picture: "/OghosaDerick.png",
       facebook: "#",
-      github: "#",
-      linkedIn: "#",
+      github: "https://github.com/Deriboss",
+      linkedIn: "https://www.linkedin.com/in/oghosa-derick-osarobo-92a4a820b",
     },
     {
       name: "Efeteyan E. Miracle",
@@ -460,6 +460,18 @@ export default function Software() {
                           />
                         </a>
                         <a
+                          href={governor.linkedIn}
+                          className="hover:opacity-70 transition-opacity"
+                        >
+                          <Image
+                            src="linkedin-svg.svg"
+                            width={18}
+                            height={18}
+                            alt="LinkedIn Icon"
+                            className="w-4 h-4 md:w-5 md:h-5"
+                          />
+                        </a>
+                        <a
                           href={governor.github}
                           className="hover:opacity-70 transition-opacity"
                         >
@@ -521,6 +533,18 @@ export default function Software() {
                             height={18}
                             alt="Facebook Icon"
                             className="w-6 h-4 md:w-5 md:h-5"
+                          />
+                        </a>
+                        <a
+                          href={governor.linkedIn}
+                          className="hover:opacity-70 transition-opacity"
+                        >
+                          <Image
+                            src="linkedin-svg.svg"
+                            width={18}
+                            height={18}
+                            alt="LinkedIn Icon"
+                            className="w-4 h-4 md:w-5 md:h-5"
                           />
                         </a>
                         <a
