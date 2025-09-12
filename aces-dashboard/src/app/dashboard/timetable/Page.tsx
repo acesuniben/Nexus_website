@@ -47,7 +47,6 @@ export default function TimetablePage() {
   // Fetch timetable data from API
   const fetchTimetableData = async () => {
     try {
-      // Ensure we're on the client side
       if (typeof window === "undefined") return;
 
       const token = localStorage.getItem("adminToken");
