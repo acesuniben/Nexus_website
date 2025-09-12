@@ -44,6 +44,8 @@ export default function Sidebar() {
 
   const handleLogout = async () => {
     if (typeof window !== "undefined") {
+      const confirmLogout = window.confirm("Are you sure you want to log out?");
+      if (!confirmLogout) return;
       const token = localStorage.getItem("adminToken");
       try {
         await fetch("https://aces-utky.onrender.com/api/admin/auth/logout", {
