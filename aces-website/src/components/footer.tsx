@@ -106,7 +106,7 @@ export default function Footer() {
                     </li>
                     <li>
                     <Link
-                        href="/mhs"
+                        href="https://mhs.acesuniben.org"
                         className="text-gray-300 hover:text-white transition-colors"
                     >
                         MHS
@@ -136,35 +136,35 @@ export default function Footer() {
                 <h3 className="text-lg font-semibold mb-6">Services</h3>
                 <ul className="space-y-3 text-sm">
                     <li>
-                    <Link
-                        href="/past-questions"
+                    <a
+                        href="https://drive.google.com/drive/folders/1lOYE5bFrw7srXhODcYV8siD25I0GPSJA?usp=sharing"
                         className="text-gray-300 hover:text-white transition-colors"
                     >
                         Past Questions
+                    </a>
+                    </li>
+                    <li>
+                    <Link
+                        href="/timetable"
+                        className="text-gray-300 hover:text-white transition-colors"
+                    >
+                        Timetable
                     </Link>
                     </li>
                     <li>
                     <Link
-                        href="/software"
+                        href="/dues"
                         className="text-gray-300 hover:text-white transition-colors"
                     >
-                        Software Club
+                        Dues
                     </Link>
                     </li>
                     <li>
                     <Link
-                        href="/hardware"
+                        href="https://download.acesuniben.org"
                         className="text-gray-300 hover:text-white transition-colors"
                     >
-                        Hardware Club
-                    </Link>
-                    </li>
-                    <li>
-                    <Link
-                        href="/mhs"
-                        className="text-gray-300 hover:text-white transition-colors"
-                    >
-                        MHS
+                        Download
                     </Link>
                     </li>
                 </ul>
@@ -175,10 +175,10 @@ export default function Footer() {
                 <h3 className="text-lg font-semibold mb-6">Contact us</h3>
                 <div className="space-y-4 text-sm">
                     <div>
-                    <p className="text-gray-300">Email : acesuniben2425@gmail.com</p>
+                    <p className="text-gray-300"><a href="mailto:acesuniben24@gmail.com">Email : acesuniben24@gmail.com</a></p>
                     </div>
                     <div>
-                    <p className="text-gray-300">Phone no : 08026255242</p>
+                    <p className="text-gray-300"><a href="tel:08134408004">Phone no : 08134408004</a></p>
                     </div>
                     <div>
                     <p className="text-gray-300">Address : ACES Secretariat,</p>
