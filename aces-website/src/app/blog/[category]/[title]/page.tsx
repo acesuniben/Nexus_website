@@ -86,11 +86,13 @@ export default function ItemDetailPage() {
               <span className="text-sm font-semibold text-[#2F327D]">{category}</span>
             </div>
             {/* Image full width */}
-            <div className="w-full flex justify-center mb-4">
-              <Image src={item.imageUrl || item.image} width={700} height={400} alt={item.title} className="object-cover w-full h-auto" />
-            </div>
+            {item.imageUrl ? (
+              <div className="w-full flex justify-center mb-4">
+                <Image src={item.imageUrl as string} width={700} height={400} alt={item.title} className="object-cover w-full h-auto" />
+              </div>
+            ) : null}
             {/* Text */}
-            <div className="text-[#565886] text-md whitespace-pre-line mb-4 text-left">{item.Description || item.content}</div>
+            <div className="text-[#565886] text-md whitespace-pre-line mb-4 text-left">{item.Description}</div>
             {/* Final black line */}
             <hr className="border-black border mt-4" />
           </div>

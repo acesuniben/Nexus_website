@@ -26,7 +26,11 @@ export default function BlogPage() {
         {latest && (
           <section className="w-[90%] flex flex-col md:flex-row gap-10 md:gap-20">
             <div className="flex items-center justify-center w-full md:w-1/2 max-h-[433px] bg-gray-100 rounded-xl overflow-hidden">
-              <Image src={latest.image} height={443} width={553} alt={latest.title} className="object-cover w-full h-full rounded-xl" />
+              {latest.image ? (
+                <Image src={latest.image as string} height={443} width={553} alt={latest.title} className="object-cover w-full h-full rounded-xl" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-400">No image available</div>
+              )}
             </div>
             <div className="flex flex-col justify-between flex-1">
               <div>
@@ -60,7 +64,11 @@ export default function BlogPage() {
           {!loading && !error && rest.slice(0, 24).map(item => (
             <div key={item.id} className="flex flex-col shadow-xl rounded-xl bg-white overflow-hidden min-h-[420px] max-h-[420px]">
               <div className="flex items-center justify-center  max-h-[255px] bg-gray-100 overflow-hidden">
-                <Image src={item.image} height={254.67} width={351.33} alt={item.title} className="object-cover w-full h-full rounded-t-xl" />
+                {item.image ? (
+                  <Image src={item.image as string} height={254.67} width={351.33} alt={item.title} className="object-cover w-full h-full rounded-t-xl" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-gray-400">No image</div>
+                )}
               </div>
               <div className="flex flex-col gap-4 p-4 flex-1">
                 <div className="flex gap-2 items-center mb-2">
