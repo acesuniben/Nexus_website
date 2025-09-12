@@ -45,7 +45,7 @@ export default function Department() {
 
           {/* Hero Image with Navigation Buttons */}
           <section className="flex flex-col items-center text-center w-[90%]">
-            <div className="relative w-full md:w-auto px-5 md:px-0">
+            <div className="relative w-full md:w-auto  md:px-0">
               <div className="hidden md:flex gap-1 md:gap-3 px-2 md:py-0 md:px-5 w-1/2 absolute left-[30%] top-[0%]">
                 <div className="bg-[#166D86] text-white w-2/5 rounded-4xl md:px-10 md:py-4 text-xs md:text-xl font-bold p-0.5"><Link key='about' href='/about'>About Us </Link></div>
                 <div className="text-[#166D86] border-2  w-2/5 border-[#166D86] bg-white rounded-4xl p-0.5 md:px-10 md:py-4 text-xs md:text-xl font-bold"><Link key='blog' href='/blog'> Blog </Link></div>
