@@ -388,12 +388,12 @@ export default function Software() {
                   Download now and enjoy the benefits that come with it.
                 </p>
                 <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center justify-center md:justify-start">
-                  <Link
-                    href="/download"
+                  <a
+                    href="https://download.acesuniben.org"
                     className="bg-[#166D86] hover:bg-[#0e4a5a] text-white rounded-full px-6 md:px-8 py-3 text-base md:text-xl font-semibold transition-colors duration-300"
                   >
                     Download Now
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

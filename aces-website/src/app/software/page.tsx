@@ -81,7 +81,7 @@ export default function Software() {
                 <p className="text-[#565886]">Login to the mobile app and have access to more resources that will help in your <span className="text-[#0FACAC]">software</span> journey. It is important so that grow in knowledge based on your niche. </p>
                 <p className="text-[#565886]">Download now and enjoy the benefits that come with it.</p>
                 <div className="flex gap-8 items-center">
-                  <div className="bg-[#166D86] text-white rounded-4xl px-4 py-2 text-xl"><Link key='download' href='/download'>Download Now</Link></div>
+                  <div className="bg-[#166D86] text-white rounded-4xl px-4 py-2 text-xl"><a key='download' href='https://download.acesuniben.org'>Download Now</a></div>
                   <Image src='/Arrow.png' alt="Arrow Icon" width={84} height={67} />
                 </div>
               </div>

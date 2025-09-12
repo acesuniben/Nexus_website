@@ -54,7 +54,7 @@ export default function Home() {
                 <h3 className="text-2xl md:text-3xl font-bold text-[#2F327D]">Download the <span className="text-[#0FACAC]">ACES</span> Mobile App</h3>
                 <p className="text-[#565886]">Want have a better experience? Check out the ACES Mobile app and have access to resources, tools that will really help you as a student.</p>
                 <div className="flex gap-8 items-center">
-                  <div className="bg-[#166D86] text-white rounded-4xl px-4 py-2 text-md"><Link key='download' href='/download'>Download</Link></div>
+                  <div className="bg-[#166D86] text-white rounded-4xl px-4 py-2 text-md"><a key='download' href='https://download.acesuniben.org'>Download</a></div>
                   <Image src='/Arrow.png' alt="Arrow Icon" width={42} height={44} />
                 </div>
               </div>
@@ -78,7 +78,7 @@ export default function Home() {
                   <div className="text-white  bg-[#166D86] px-4 py-2 rounded-3xl"><a href="https://www.elaborate.com.ng">Visit Now</a></div>
                 </div>
             </div>
-            <div>
+            <div className="w-[90%] md:w-full">
                 <Image src='/elaborate.png' width={596.85} height={513.33} alt="A screenshot of the Elaborate platform" className=""/>
             </div>
           </section>
