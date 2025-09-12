@@ -1,7 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import LecturerModal from "@/components/LecturerModal";
 
 export default function Department() {
   const activities = [
@@ -12,20 +16,23 @@ export default function Department() {
       {image: "/number-five.png", paragraph: "To prepare the next generation of graduates as highly skilled and ethical professionals who can compete in a global competitive skilled market"},
   ]
   const lecturers = [
-      {image:"/isi.png", name: "Engr. Dr. Isi Edeoghon", title: "Head of Department"},
-      {image:"/apeh.png", name: "Prof. S. T. Apeh", title: ""},
-      {image:"/question.png", name: "Engr. Dr. Omoifo Osemekhian", title: ""},
-      {image:"/okosun.png", name: "Engr. Dr. Mrs. Okosun", title: ""},
-      {image:"/olaye.png", name: "Engr. Dr. Edoghogho Olaye", title: ""},
-      {image:"/obayuwana.png", name: "Engr. Dr. A. Obayuwana", title: ""},
-      {image:"/question.png", name: "Dr. Prudence Ehizuenlen", title: ""},
-      {image:"/eguagie.png", name: "Engr. Eguagie Evbuomwan", title: ""},
-      {image:"/sly.png", name: "Engr. Slyvester Akinbohun", title: ""},
-      {image:"/okoye.png", name: "Engr. James Okoye", title: ""},
-      {image:"/omosigho.png", name: "Engr. Moses Omosigho", title: ""},
-      {image:"/solomon.png", name: "Engr. Solomon", title: ""},
-      {image:"/osas.png", name: "Engr. Osas", title: "ELA Coordinator"},
-  ]
+    {image:"/isi.png", name: "Engr. Dr. Isi Edeoghon", title: "Head of Department", bio:"Engr. Dr. Isi Edeoghon is a Senior Lecturer with a Doctor of Philosophy degree in the Department of Computer Engineering at the University of Benin in Benin City, Nigeria. He specializes in Information and Communication Technology (ICT) and software development, with a focus on areas like energy management and network deployment. His research interests and publications cover topics such as: Telecommunications,  including cellular and microwave communication, LTE, and GSM. Software Engineering, with work on agile software development and web-based software for network deployment. Network Communication, including research on LoRaWAN, low-power wide area networks (LPWAN), and DVB-T2 signals. IoT (Internet of Things), having worked on projects like an intelligent IoT-based solar inverter and a wireless fingerprint attendance management system. Dr. Isi Edeoghon has co-authored numerous academic papers on these subjects. He is listed on Google Scholar and ResearchGate, where his research profile and publications are available."}, 
+    {image:"/apeh.png", name: "Prof. S. T. Apeh", title: "Professor", bio:"Meet Professor S. T. Apeh, he is one of the professors in the department of computer engineering, he specializes in aspects of Microcontrollers, Digital Signal Processing, Hardware Designs, Microprocessors, Computer Architecture etc. He was the first Head of Department (HOD) in the Department of Computer Engineering. He is known for his Dedication in lecturing the students of this amazing department. He teaches few 400L and 500L Courses like CPE 522, CPE 512, CPE 575, CPE 475 etc.. and also post-graduate courses."},
+    {image:"/question.png", name: "Engr. Dr. Omoifo Osemekhian", title: "", bio:""},
+    {image:"/okosun.png", name: "Engr. Dr. Mrs. Okosun", title: "", bio:""},
+    {image:"/olaye.png", name: "Engr. Dr. Edoghogho Olaye", title: "", bio:"Dr. Edoghogho Olaye lectures at the University of Benin and leads the Whitewater Research Group (WWRG). His passion lies in leveraging technology to modernize manual processes, particularly through embedded systems, intelligent systems, and software engineering. He is actively involved in teaching and supervision at both undergraduate and postgraduate (Masters and PhD) levels. His commitment to education and impactful industry collaborations is further exemplified by his success in securing research grants for projects focused on AI-driven healthcare and mobile communication network quality."},
+    {image:"/obayuwana.png", name: "Engr. Dr. A. Obayuwana", title: "", bio: "Engr. Dr. A. Obayuwana is a seasoned researcher and computer engineer with over eight years of comprehensive experience spanning both industry and academia. He has worked as a technical consultant at Atiode Solar Systems Ltd and with the Nigerian Navy, where he was trained in Warships Engine Room Simulation by experts from New Delhi, India in 2013. Currently, Dr. Obayuwana is a senior lecturer in the Department of Computer Engineering at the University of Benin, a role he's held since November 2014. His research focus includes cutting-edge areas such as Geospatial Intelligence, Artificial Intelligence (AI), Wireless communication systems, Internet of Things (IoT), and Automation systems. His contribution extends beyond research, as he played a vital role in curriculum development and review, notably serves as the curriculum review coordinator and has developed the latest edition of the computer Engineering Handbook, encompassing BMAS and CCMAS curricula. Dr. Obayuwana contributes significantly to both undergraduate and postgraduate instruction, teaching courses in embedded systems, system programming, wireless communication, and artificial intelligence.His dedication to academic excellence, collaborative research, and mentorship has made him a valued member of the Department of Computer Engineering and the Faculty of Engineering as a whole. Dr. Obayuwana has also engaged in recent international collaborations in research with institutions outside Nigeria, further enhancing his expertise and contributions to the field. With his wealth of experience and expertise, Dr. Obayuwana continues to make a meaningful impact in academia and industry.",},
+    {image:"/question.png", name: "Dr. Prudence Ehizuenlen", title: "",bio:""},
+    {image:"/eguagie.png", name: "Engr. Eguagie Evbuomwan", title: "", bio:""},
+    {image:"/sly.png", name: "Engr. Slyvester Akinbohun", title: "", bio:""},
+    {image:"/okoye.png", name: "Engr. James Okoye", title: "", bio:""},
+    {image:"/omosigho.png", name: "Engr. Moses Omosigho", title: "", bio:"Meet Engr Moses omoshigo, one of the lecturers in computer engineering. He spealizes in Cybersecurity, web development, software development, Internet Of Things (iot), Information Management etc. He's the current exam officer for 24/25 academic session. He is also a researcher that have written papers which include: The Future of Cyber Security: Examining the Security Challenges and Trends in Smart Technology. IoT Device Security, Privacy, and Risks in Smart City Environments etc."},
+    {image:"/solomon.png", name: "Engr. Solomon", title: "", bio:""},
+    {image:"/osas.png", name: "Engr. Osas", title: "ELA Coordinator", bio: ""},
+  ];
+
+  const [selected, setSelected] = useState(null as null | any);
+  const [open, setOpen] = useState(false);
   return ( 
     <div className="">
         <Header/>
@@ -37,7 +44,7 @@ export default function Department() {
           </section>
 
           {/* Hero Image with Navigation Buttons */}
-          <section className="w-full flex flex-col items-center text-center w-[90%]">
+          <section className="flex flex-col items-center text-center w-[90%]">
             <div className="relative w-full md:w-auto px-5 md:px-0">
               <div className="hidden md:flex gap-1 md:gap-3 px-2 md:py-0 md:px-5 w-1/2 absolute left-[30%] top-[0%]">
                 <div className="bg-[#166D86] text-white w-2/5 rounded-4xl md:px-10 md:py-4 text-xs md:text-xl font-bold p-0.5"><Link key='about' href='/about'>About Us </Link></div>
@@ -69,7 +76,7 @@ export default function Department() {
               {activities.map(activity => (
                 <div key={activity.image} className="text-center rounded-xl shadow-xl relative flex flex-col justify-end gap-5 px-8 py-10">
                   <Image className="absolute -top-[15%] left-[40%]" src={activity.image} width={60} height={60} alt="icon"/>
-                  <p className="text-md mt-5 font-bold text-[#2F327D]">{activity.paragraph}</p>
+                  <p className="text-md mt-10 font-bold text-[#2F327D]">{activity.paragraph}</p>
                 </div>
               ))
               }
@@ -84,17 +91,18 @@ export default function Department() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-15 w-[90%] md:w-[80%]">
                 {lecturers.map(lecturer => (
                 <div key={lecturer.name} className="w-full rounded-xl">
-                  <Link href="/" key={lecturer.image} className="text-center rounded-xl shadow-xl relative flex flex-col justify-end gap-2">
-                    <Image className="w-[100%]" src={lecturer.image} width={346} height={434} alt="icon"/>
+                  <div onClick={() => { setSelected(lecturer); setOpen(true); }} className="cursor-pointer text-center rounded-xl shadow-xl relative flex flex-col justify-end gap-2">
+                    <Image className="w-[100%]" src={lecturer.image} width={346} height={434} alt={lecturer.name} />
                     <div className="self-start p-4 text-left h-20">
                       <p className="text-md font-bold text-[#2F327D]">{lecturer.name}</p>
                       <p className="text-[#0FACAC]">{lecturer.title}</p>
                     </div>
-                  </Link>
+                  </div>
                 </div>
               ))
               }
             </div>
+            <LecturerModal lecturer={selected} open={open} onClose={() => setOpen(false)} />
           </section>
         
         </main>
