@@ -23,8 +23,8 @@ export default function ItemDetailPage() {
 
   // Normalize category for API endpoint
   let apiCategory = category?.toString().trim().toLowerCase();
-  if (apiCategory === 'mhs') apiCategory = 'acesmhs';
-  if (apiCategory === 'news') apiCategory = 'blog';
+  if (apiCategory === "mhs") apiCategory = "acesmhs";
+  if (apiCategory === "news") apiCategory = "blog";
 
   useEffect(() => {
     async function fetchItem() {
@@ -35,29 +35,33 @@ export default function ItemDetailPage() {
       let totalPages = 1;
       try {
         do {
-          const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${apiCategory}/read?page=${page}&limit=50`);
+          const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_BASE_URL}/${apiCategory}/read?page=${page}&limit=50`
+          );
           const data = await res.json();
           const entries = data.entries || [];
-            allEntries = allEntries.concat(entries);
-            totalPages = data.pages || 1;
-            page++;
-          } while (page <= totalPages);
+          allEntries = allEntries.concat(entries);
+          totalPages = data.pages || 1;
+          page++;
+        } while (page <= totalPages);
 
-          // Find the entry by title using a robust slug function (normalize, remove punctuation, hyphens)
-          const slugify = (s?: string) =>
-            (s || '')
-              .toString()
-              .trim()
-              .toLowerCase()
-              .replace(/[^\u0000-\x7F]/g, '') // strip non-ascii (keep basic ASCII)
-              .replace(/[^\w\s-]/g, '') // remove punctuation except spaces and hyphens
-              .replace(/\s+/g, '-')
-              .replace(/-+/g, '-')
-              .replace(/^-+|-+$/g, '');
+        // Find the entry by title using a robust slug function (normalize, remove punctuation, hyphens)
+        const slugify = (s?: string) =>
+          (s || "")
+            .toString()
+            .trim()
+            .toLowerCase()
+            .replace(/[^\u0000-\x7F]/g, "") // strip non-ascii (keep basic ASCII)
+            .replace(/[^\w\s-]/g, "") // remove punctuation except spaces and hyphens
+            .replace(/\s+/g, "-")
+            .replace(/-+/g, "-")
+            .replace(/^-+|-+$/g, "");
 
-    const normalizedTitle = slugify(title?.toString());
-    const found = allEntries.find((entry: Item) => slugify(entry.title) === normalizedTitle);
-    setItem(found || null);
+        const normalizedTitle = slugify(title?.toString());
+        const found = allEntries.find(
+          (entry: Item) => slugify(entry.title) === normalizedTitle
+        );
+        setItem(found || null);
       } catch {
         setError("Could not fetch item");
       } finally {
@@ -76,21 +80,40 @@ export default function ItemDetailPage() {
         {item && (
           <div className="w-full md:w-[80%] bg-white p-6 flex flex-col gap-6">
             {/* Title */}
-            <h1 className="text-3xl md:text-4xl font-bold text-[#2F327D] mb-4 text-left">{item.title}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#2F327D] mb-4 text-left">
+              {item.title}
+            </h1>
             {/* Black line */}
             <hr className="border-black border mb-4" />
             {/* Date, blue dot, category */}
             <div className="flex items-center gap-3 mb-4 text-left">
-              <span className="text-sm text-[#2F327D]">Published: {new Date(item.createdAt).toLocaleDateString("en", {year: "numeric", month: "short", day: "numeric"})}</span>
+              <span className="text-sm text-[#2F327D]">
+                Published:{" "}
+                {new Date(item.createdAt).toLocaleDateString("en", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </span>
               <span className="w-3 h-3 rounded-full bg-[#166D86] inline-block"></span>
-              <span className="text-sm font-semibold text-[#2F327D]">{category}</span>
+              <span className="text-sm font-semibold text-[#2F327D]">
+                {category}
+              </span>
             </div>
             {/* Image full width */}
             <div className="w-full flex justify-center mb-4">
-              <Image src={item.imageUrl || item.image} width={700} height={400} alt={item.title} className="object-cover w-full h-auto" />
+              <Image
+                src={item.imageUrl || item.image || ""}
+                width={700}
+                height={400}
+                alt={item.title}
+                className="object-cover w-full h-auto"
+              />
             </div>
             {/* Text */}
-            <div className="text-[#565886] text-md whitespace-pre-line mb-4 text-left">{item.Description || item.content}</div>
+            <div className="text-[#565886] text-md whitespace-pre-line mb-4 text-left">
+              {item.Description || item.content}
+            </div>
             {/* Final black line */}
             <hr className="border-black border mt-4" />
           </div>
