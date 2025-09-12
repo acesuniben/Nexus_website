@@ -1,4 +1,6 @@
 "use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/header";
@@ -10,6 +12,10 @@ import { slugify } from '@/lib/slugify';
 
 export default function BlogPage() {
   const { items, loading, error, hasMore, loadMore } = useItems();
+  const [subscribeEmail, setSubscribeEmail] = useState("");
+  const [subscribeLoading, setSubscribeLoading] = useState(false);
+  const [subscribeError, setSubscribeError] = useState<string | null>(null);
+  const [subscribeSuccess, setSubscribeSuccess] = useState<string | null>(null);
   const latest = items[0];
   const rest = items.slice(1);
 
@@ -107,22 +113,65 @@ export default function BlogPage() {
             <div className="absolute pt-1 top-[25%] left-[5%] md:left-[20%] flex flex-col gap-2 md:gap-6 items-center w-[90%] md:w-[60%]">
               <h2 className="text-[#2F327D] font-bold text-md md:text-3xl text-center w-[60%]">Register to stay up to date with <span className=" text-[#0FACAC]">ACES</span> Blog</h2>          
               <div className="bg-white text-sm md:text-lg rounded-4xl px-1 py-1 md:py-2 md:px-4 w-full md:w-[70%]">
-                <form className="flex justify-between text-sm md:text-lg items-center w-full">
-                  <input 
-                    type="email" 
-                    placeholder="Your Email"
-                    name="email"
-                    className="text-xs md:text-lg px-1 py-0 md:px-2 md:py-1 w-focus:outline-none focus:ring-2 focus:ring-[#0FACAC] focus:border-transparent w-[80%]"
-                    required
-                  />
-                  <button 
-                    type="submit"
-                    className="text-xs bg-[#166D86] text-white rounded-4xl p-1 md:py-2 md:px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium"
-                  >
-                    Subscribe
-                  </button>
-                </form>
-              </div>
+                        <form
+                            className="flex justify-between text-sm md:text-lg items-center w-full relative"
+                            onSubmit={async (e) => {
+                                e.preventDefault();
+                                setSubscribeError(null);
+                                setSubscribeSuccess(null);
+                                if (!subscribeEmail.trim()) {
+                                    setSubscribeError('Please provide an email to subscribe.');
+                                    return;
+                                }
+                                setSubscribeLoading(true);
+                                try {
+                                    const res = await fetch('https://aces-utky.onrender.com/api/newsletters', {
+                                        method: 'POST',
+                                        headers: {
+                                            Accept: '*/*',
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({ email: subscribeEmail.trim() }),
+                                    });
+
+                                    if (res.status === 201) {
+                                        setSubscribeSuccess('Thank you for subscribing!');
+                                        setSubscribeEmail('');
+                                    } else if (res.status === 400) {
+                                        const data = await res.json().catch(() => ({}));
+                                        const errs = data?.errors || data?.message || 'Validation error';
+                                        setSubscribeError(Array.isArray(errs) ? errs.join('; ') : String(errs));
+                                    } else {
+                                        const txt = await res.text().catch(() => '');
+                                        setSubscribeError(`Server error: ${res.status} ${res.statusText}${txt ? ': ' + txt : ''}`);
+                                    }
+                                } catch (err) {
+                                    setSubscribeError(err instanceof Error ? err.message : String(err));
+                                } finally {
+                                    setSubscribeLoading(false);
+                                }
+                            }}
+                        >
+                            <input
+                                type="email"
+                                placeholder="Your Email"
+                                name="email"
+                                value={subscribeEmail}
+                                onChange={(e) => setSubscribeEmail(e.target.value)}
+                                className="text-xs md:text-lg px-1 py-0 md:px-4 rounded-4xl md:py-2 focus:outline-none focus:ring-2 focus:ring-[#0FACAC] focus:border-transparent w-[80%]"
+                                required
+                            />
+                            <button
+                                type="submit"
+                                disabled={subscribeLoading}
+                                className="text-xs bg-[#166D86] text-white rounded-4xl p-1 md:py-2 md:px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium disabled:opacity-60"
+                            >
+                                {subscribeLoading ? 'Subscribing...' : 'Subscribe'}
+                            </button>
+                        </form>
+                        {subscribeError && <div className="text-red-500 text-sm mt-2 absolute">{subscribeError}</div>}
+                        {subscribeSuccess && <div className="text-green-600 text-sm mt-2 absolute">{subscribeSuccess}</div>}
+                        </div>
             </div>
             
           </div>

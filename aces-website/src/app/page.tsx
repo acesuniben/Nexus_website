@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/header";
@@ -5,6 +8,10 @@ import Footer from "@/components/footer";
 import EventSection from "@/components/EventSection";
 
 export default function Home() {
+  const [subscribeEmail, setSubscribeEmail] = useState("");
+  const [subscribeLoading, setSubscribeLoading] = useState(false);
+  const [subscribeError, setSubscribeError] = useState<string | null>(null);
+  const [subscribeSuccess, setSubscribeSuccess] = useState<string | null>(null);
   return (
     <div className="">
       <Header/>
@@ -13,7 +20,7 @@ export default function Home() {
             <h1 className="text-3xl md:text-5xl text-[#2F327D] font-bold">Association of <span className="text-[#0FACAC] ">Computer <br/>Engineering</span> Students</h1>
             <p className="w-[80%] mx-auto text-[#696984]">Making a difference and inspiring Students so that they develop themselves and make impact in world at large.</p>
           </section>
-          <section className="w-full flex flex-col items-center text-center w-[90%]">
+          <section className="flex flex-col items-center text-center w-[90%]">
             <div className="relative px-5 md:px-0">
               <div className="hidden md:flex gap-1 md:gap-3 px-2 md:py-0 md:px-5 w-1/2 absolute left-[30%] top-[0%]">
                 <div className="bg-[#166D86] text-white w-2/5 rounded-4xl md:px-10 md:py-4 text-xs md:text-xl font-bold p-0.5"><Link key='about' href='/about'>About Us </Link></div>
@@ -78,7 +85,7 @@ export default function Home() {
                   <div className="text-white  bg-[#166D86] px-4 py-2 rounded-3xl"><a href="https://www.elaborate.com.ng">Visit Now</a></div>
                 </div>
             </div>
-            <div className="w-[90%] md:w-full">
+            <div className="w-[90%] md:w-auto">
                 <Image src='/elaborate.png' width={596.85} height={513.33} alt="A screenshot of the Elaborate platform" className=""/>
             </div>
           </section>
@@ -146,22 +153,65 @@ export default function Home() {
               <div className="absolute pt-1 top-[25%] md:top-[25%] left-[5%] md:left-[20%] flex flex-col gap-2 md:gap-6 items-center w-[90%] md:w-[60%]">
                 <h2 className="text-[#2F327D] font-bold text-md md:text-3xl text-center w-[75%]">Subscribe to stay up to date with <span className=" text-[#0FACAC]">ACES</span> Uniben</h2>          
                 <div className="bg-white text-sm md:text-lg rounded-4xl px-1 py-1 md:py-2 md:px-4 w-full md:w-[70%]">
-                  <form className="flex justify-between text-sm md:text-lg items-center w-full">
-                    <input 
-                      type="email" 
-                      placeholder="Enter your email address"
-                      name="email"
-                      className="text-xs px-1 py-0 md:px-2 md:py-1 w-focus:outline-none focus:ring-2 focus:ring-[#0FACAC] focus:border-transparent w-[80%]"
-                      required
-                    />
-                    <button 
-                      type="submit"
-                      className="text-xs bg-[#166D86] text-white rounded-4xl p-1 md:py-2 md:px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium"
-                    >
-                      Subscribe
-                    </button>
-                  </form>
-                </div>
+                        <form
+                            className="flex justify-between text-sm md:text-lg items-center w-full relative"
+                            onSubmit={async (e) => {
+                                e.preventDefault();
+                                setSubscribeError(null);
+                                setSubscribeSuccess(null);
+                                if (!subscribeEmail.trim()) {
+                                    setSubscribeError('Please provide an email to subscribe.');
+                                    return;
+                                }
+                                setSubscribeLoading(true);
+                                try {
+                                    const res = await fetch('https://aces-utky.onrender.com/api/newsletters', {
+                                        method: 'POST',
+                                        headers: {
+                                            Accept: '*/*',
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({ email: subscribeEmail.trim() }),
+                                    });
+
+                                    if (res.status === 201) {
+                                        setSubscribeSuccess('Thank you for subscribing!');
+                                        setSubscribeEmail('');
+                                    } else if (res.status === 400) {
+                                        const data = await res.json().catch(() => ({}));
+                                        const errs = data?.errors || data?.message || 'Validation error';
+                                        setSubscribeError(Array.isArray(errs) ? errs.join('; ') : String(errs));
+                                    } else {
+                                        const txt = await res.text().catch(() => '');
+                                        setSubscribeError(`Server error: ${res.status} ${res.statusText}${txt ? ': ' + txt : ''}`);
+                                    }
+                                } catch (err) {
+                                    setSubscribeError(err instanceof Error ? err.message : String(err));
+                                } finally {
+                                    setSubscribeLoading(false);
+                                }
+                            }}
+                        >
+                            <input
+                                type="email"
+                                placeholder="Your Email"
+                                name="email"
+                                value={subscribeEmail}
+                                onChange={(e) => setSubscribeEmail(e.target.value)}
+                                className="text-xs md:text-lg px-1 py-0 md:px-4 rounded-4xl md:py-2 focus:outline-none focus:ring-2 focus:ring-[#0FACAC] focus:border-transparent w-[80%]"
+                                required
+                            />
+                            <button
+                                type="submit"
+                                disabled={subscribeLoading}
+                                className="text-xs bg-[#166D86] text-white rounded-4xl p-1 md:py-2 md:px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium disabled:opacity-60"
+                            >
+                                {subscribeLoading ? 'Subscribing...' : 'Subscribe'}
+                            </button>
+                        </form>
+                        {subscribeError && <div className="text-red-500 text-sm mt-2 absolute">{subscribeError}</div>}
+                        {subscribeSuccess && <div className="text-green-600 text-sm mt-2 absolute">{subscribeSuccess}</div>}
+                        </div>
               </div>    
             </div>
           </section>

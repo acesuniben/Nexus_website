@@ -1,7 +1,22 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"    
-import Image from "next/image" 
+"use client";
+
+import { useState } from "react";
+import Header from "@/components/header";
+import Footer from "@/components/footer";    
+import Image from "next/image"; 
+
 export default function ContactPage() {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState<string | null>(null);
+    const [subscribeEmail, setSubscribeEmail] = useState("");
+    const [subscribeLoading, setSubscribeLoading] = useState(false);
+    const [subscribeError, setSubscribeError] = useState<string | null>(null);
+    const [subscribeSuccess, setSubscribeSuccess] = useState<string | null>(null);
     return (
         <div>
             <Header />
@@ -24,32 +39,82 @@ export default function ContactPage() {
                         </div>
                         <div className="flex justify-between items-center">
                             <div className="flex gap-5">
-                                <a href="#"><Image src="/twitter-icon.svg" width={30} height={30} alt=""/></a>
-                                <a href="#"><Image src="/instagram.svg" width={30} height={30} alt=""/></a>
-                                <a href="#"><Image src="/linkedIn-icon.svg" width={30} height={30} alt=""/></a>
+                                <a href="https://x.com/acesuniben?t=dJ_iZ82TGagkbnwWfTi-0w&s=09"><Image src="/twitter-icon.svg" width={50} height={50} alt=""/></a>
+                                <a href="https://www.instagram.com/aces_uniben23?igsh=bWIycGkzbHp4OGVj"><Image src="/instagram.svg" width={50} height={50} alt=""/></a>
+                                <a href="https://www.linkedin.com/company/aces-uniben-chapter/"><Image src="/linkedIn-icon.svg" width={50} height={50} alt=""/></a>
                             </div>
                             <Image src="/Ellipse.svg" width={230} height={215.33} alt=""/>
                         </div>
                     </div>
-                    <div className="w-[90%] md:w-[2/3]">
-                        <form className="flex flex-col gap-5 md:gap-10 p-1 md:p-5 w-full">
-                            <div className="flex gap-5 w-full">
-                                <label htmlFor="firstname" className="text-[#2F327D] flex flex-col gap-1 w-full font-bold">First Name
-                                    <input type="text" id="firstname" placeholder="Your First Name" className="p-1 font-light text-[#BDBDBD] border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#0FACAC]" />
-                                </label>
-                                <label htmlFor="lastname" className="text-[#2F327D] flex flex-col gap-1 w-full font-bold">Last Name  
-                                    <input type="text" id="lastname" placeholder="Your Last Name" className="p-1 font-light text-[#BDBDBD] border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#0FACAC]" />
-                                </label>
-                            </div>
-                            <label htmlFor="email" className="text-[#2F327D] flex flex-col gap-1 font-bold">Email
-                                <input type="email" id="email" placeholder="Your Email - johndoe@gmail.com" className="p-1 font-light text-[#BDBDBD] border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#0FACAC]" />
-                            </label>
-                            <label htmlFor="message" className="text-[#2F327D] flex flex-col gap-1 font-bold">Message
-                                <textarea id="message" placeholder="What’s on your mind? Talk to us." className="p-1 font-light text-[#BDBDBD] border border-gray-300 rounded-lg p-2 w-full h-40 resize-none focus:outline-none focus:ring-2 focus:ring-[#0FACAC]"></textarea>
-                            </label>
-                            <button type="submit" className="bg-[#166D86] self-start text-white font-semibold py-2 px-4 hover:bg-[#0FACAC] transition-colors duration-300 rounded-3xl">Get In Touch</button>
-                        </form>
+                                                    <div className="w-[90%] md:w-[2/3]">
+                                                            <form
+                                                                className="flex flex-col gap-5 md:gap-10 p-2 md:p-5 w-full"
+                                            onSubmit={async (e) => {
+                                                e.preventDefault();
+                                                setError(null);
+                                                setSuccess(null);
+                                                // simple client-side validation
+                                                if (!firstName.trim() || !email.trim() || !message.trim()) {
+                                                    setError('Please provide your first name, email and a message.');
+                                                    return;
+                                                }
+                                                setLoading(true);
+                                                try {
+                                                    const res = await fetch('https://aces-utky.onrender.com/api/contact', {
+                                                        method: 'POST',
+                                                        headers: {
+                                                            Accept: '*/*',
+                                                            'Content-Type': 'application/json',
+                                                        },
+                                                        body: JSON.stringify({
+                                                            firstName: firstName.trim(),
+                                                            lastName: lastName.trim(),
+                                                            email: email.trim(),
+                                                            message: message.trim(),
+                                                        }),
+                                                    });
+
+                                                    if (res.status === 201) {
+                                                        setSuccess('Message sent — thank you!');
+                                                        setFirstName(''); setLastName(''); setEmail(''); setMessage('');
+                                                    } else if (res.status === 400) {
+                                                        const data = await res.json().catch(() => ({}));
+                                                        const errs = data?.errors || data?.message || 'Validation error';
+                                                        setError(Array.isArray(errs) ? errs.join('; ') : String(errs));
+                                                    } else {
+                                                        const txt = await res.text().catch(() => '');
+                                                        setError(`Server error: ${res.status} ${res.statusText}${txt ? ': ' + txt : ''}`);
+                                                    }
+                                                } catch (err) {
+                                                    setError(err instanceof Error ? err.message : String(err));
+                                                } finally {
+                                                    setLoading(false);
+                                                }
+                                            }}
+                                        >
+                    <div className="flex gap-5 w-full">
+                        <label htmlFor="firstname" className="text-[#2F327D] flex flex-col gap-1 w-full font-bold">First Name
+                            <input value={firstName} onChange={(e) => setFirstName(e.target.value)} type="text" id="firstname" placeholder="Your First Name" className="font-light text-[#2F327D] border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#0FACAC]" />
+                        </label>
+                        <label htmlFor="lastname" className="text-[#2F327D] flex flex-col gap-1 w-full font-bold">Last Name  
+                            <input value={lastName} onChange={(e) => setLastName(e.target.value)} type="text" id="lastname" placeholder="Your Last Name" className="font-light text-[#2F327D] border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#0FACAC]" />
+                        </label>
                     </div>
+                    <label htmlFor="email" className="text-[#2F327D] flex flex-col gap-1 font-bold">Email
+                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" id="email" placeholder="Your Email - johndoe@gmail.com" className="font-light text-[#2F327D] border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#0FACAC]" />
+                    </label>
+                    <label htmlFor="message" className="text-[#2F327D] flex flex-col gap-1 font-bold">Message
+                        <textarea value={message} onChange={(e) => setMessage(e.target.value)} id="message" placeholder="What’s on your mind? Talk to us." className="font-light text-[#2F327D] border border-gray-300 rounded-lg p-2 w-full h-40 resize-none focus:outline-none focus:ring-2 focus:ring-[#0FACAC]"></textarea>
+                    </label>
+
+                                                {error && <div className="text-red-500">{error}</div>}
+                                                {success && <div className="text-green-600">{success}</div>}
+
+                                                <button type="submit" disabled={loading} className="bg-[#166D86] self-start text-white font-semibold py-2 px-4 hover:bg-[#0FACAC] transition-colors duration-300 rounded-3xl">
+                                                    {loading ? 'Sending...' : 'Get In Touch'}
+                                                </button>
+                                        </form>
+                                </div>
                 </section>
 
                 <section className="w-[90%] h-[300px] md:h-[500px]">
@@ -77,21 +142,64 @@ export default function ContactPage() {
                     <div className="absolute pt-1 top-[25%] left-[5%] md:left-[20%] flex flex-col gap-2 md:gap-6 items-center w-[90%] md:w-[60%]">
                         <h2 className="text-[#2F327D] font-bold text-md md:text-3xl text-center w-[60%]">Subscribe to stay up to date with <span className=" text-[#0FACAC]">ACES</span> Uniben</h2>          
                         <div className="bg-white text-sm md:text-lg rounded-4xl px-1 py-1 md:py-2 md:px-4 w-full md:w-[70%]">
-                        <form className="flex justify-between text-sm md:text-lg items-center w-full">
-                            <input 
-                            type="email" 
-                            placeholder="Your Email"
-                            name="email"
-                            className="text-xs md:text-lg px-1 py-0 md:px-2 md:py-1 w-focus:outline-none focus:ring-2 focus:ring-[#0FACAC] focus:border-transparent w-[80%]"
-                            required
+                        <form
+                            className="flex justify-between text-sm md:text-lg items-center w-full"
+                            onSubmit={async (e) => {
+                                e.preventDefault();
+                                setSubscribeError(null);
+                                setSubscribeSuccess(null);
+                                if (!subscribeEmail.trim()) {
+                                    setSubscribeError('Please provide an email to subscribe.');
+                                    return;
+                                }
+                                setSubscribeLoading(true);
+                                try {
+                                    const res = await fetch('https://aces-utky.onrender.com/api/newsletters', {
+                                        method: 'POST',
+                                        headers: {
+                                            Accept: '*/*',
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({ email: subscribeEmail.trim() }),
+                                    });
+
+                                    if (res.status === 201) {
+                                        setSubscribeSuccess('Thank you for subscribing!');
+                                        setSubscribeEmail('');
+                                    } else if (res.status === 400) {
+                                        const data = await res.json().catch(() => ({}));
+                                        const errs = data?.errors || data?.message || 'Validation error';
+                                        setSubscribeError(Array.isArray(errs) ? errs.join('; ') : String(errs));
+                                    } else {
+                                        const txt = await res.text().catch(() => '');
+                                        setSubscribeError(`Server error: ${res.status} ${res.statusText}${txt ? ': ' + txt : ''}`);
+                                    }
+                                } catch (err) {
+                                    setSubscribeError(err instanceof Error ? err.message : String(err));
+                                } finally {
+                                    setSubscribeLoading(false);
+                                }
+                            }}
+                        >
+                            <input
+                                type="email"
+                                placeholder="Your Email"
+                                name="email"
+                                value={subscribeEmail}
+                                onChange={(e) => setSubscribeEmail(e.target.value)}
+                                className="text-xs md:text-lg px-1 py-0 md:px-4 rounded-4xl md:py-2 focus:outline-none focus:ring-2 focus:ring-[#0FACAC] focus:border-transparent w-[80%]"
+                                required
                             />
-                            <button 
-                            type="submit"
-                            className="text-xs bg-[#166D86] text-white rounded-4xl p-1 md:py-2 md:px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium"
+                            <button
+                                type="submit"
+                                disabled={subscribeLoading}
+                                className="text-xs bg-[#166D86] text-white rounded-4xl p-1 md:py-2 md:px-4 hover:bg-[#0FACAC] transition-colors duration-200 font-medium disabled:opacity-60"
                             >
-                            Subscribe
+                                {subscribeLoading ? 'Subscribing...' : 'Subscribe'}
                             </button>
                         </form>
+                        {subscribeError && <div className="text-red-500 text-sm mt-2">{subscribeError}</div>}
+                        {subscribeSuccess && <div className="text-green-600 text-sm mt-2">{subscribeSuccess}</div>}
                         </div>
                     </div>
                     
