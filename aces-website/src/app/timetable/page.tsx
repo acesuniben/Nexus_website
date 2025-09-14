@@ -209,7 +209,7 @@ export default function Timetable() {
                 currentDayClasses.map((classItem: ClassItem, index: number) => (
                 <div key={index} className="flex w-full gap-2">
                   {/* Time */}
-                  <div className="flex w-1/5 justify-between items-start mb-3">
+                  <div className="flex md:w-1/5 justify-between items-start mb-3">
                     <div className="text-sm font-medium">
                       <div className={'text-[#2F327D]'}>
                         {classItem.time}
@@ -376,7 +376,7 @@ export default function Timetable() {
                       Each timetable block displays:
                     </p>
                     <ul className="text-[#2F327D] font-semibold text-sm md:text-base leading-relaxed mt-2 ml-4 space-y-1">
-                      <li>• Course Code (e.g., CPE 451)</li>
+                      <li>• Course Code (e.g., CPE 461)</li>
                       <li>• Course Title (e.g., Software Engineering II)</li>
                       <li>• Lecturers (e.g., Engr. Dr. Isi, Engr. Dr. Olaye)</li>
                       <li>• Time Slot (e.g., 9:00 AM – 10:00 AM)</li>
@@ -466,7 +466,7 @@ export default function Timetable() {
               <div className="px-5 py-2 md:p-0 absolute top-[20%] md:top-[15%] md:left-[20%] m-auto flex flex-col md:flex-row gap-5 md:gap-20 items-center md:items-start w-[100%] md:w-[60%] h-full">
                   <div className="w-auto md:w-2/3 flex flex-col gap-5 md:gap-10 items-start">
                     <p className="text-[#2F327D] text-xl md:text-3xl font-bold ">Get <span className="text-[#0FACAC]">Past Questions</span> with ease and ensure you use them efficiently and consistently</p>
-                    <div className="text-white  bg-[#166D86] text-md md:text-lg px-4 py-2 md:px-4 md:py-2 rounded-3xl"><Link href="/questions">Get Past Questions</Link></div>
+                    <div className="text-white  bg-[#166D86] text-sm md:text-lg px-2 py-1 md:px-4 md:py-2 rounded-3xl"><a href="https://drive.google.com/drive/folders/1lOYE5bFrw7srXhODcYV8siD25I0GPSJA?usp=sharing">Get Past Questions</a></div>
                   </div>
                   <div>
                     <Image src="/laptopGirl.svg" width={174.31} height={227.61} alt=""/>

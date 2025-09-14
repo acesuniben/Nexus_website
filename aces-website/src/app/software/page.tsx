@@ -27,7 +27,7 @@ export default function Software() {
         <main className="flex flex-col gap-20 md:gap-25 items-center mb-20">
           <section className="md:w-2/3 text-center flex flex-col gap-3 mt-10 md:mt-20">
             <h1 className="text-2xl md:text-5xl text-[#2F327D] font-bold">Association of Computer Engineering <br/>Students <span className="text-[#0FACAC] ">Software Club</span></h1>
-            <p className="w-[80%] mx-auto text-[#696984] font-bold">Making a difference and inspiring new wave of Engineers in tech</p>
+            <p className="w-[80%] mx-auto text-[#696984]">Making a difference and inspiring new wave of Engineers in tech</p>
           </section>
           
           <section className="w-[90%] flex flex-col items-center text-center">
@@ -87,8 +87,8 @@ export default function Software() {
               </div>
           </section>
 
-          <section className="text-center flex flex-col items-center gap-20 w-full">
-            <div className="w-full flex flex-col gap-8 items-center">
+          <section className="text-center flex flex-col items-center gap-10 md:gap-20 w-full">
+            <div className="w-full flex flex-col gap-6 items-center">
               <h2 className="text-2xl md:text-3xl font-bold text-[#2F327D]">ACES Software Club <span className="text-[#0FACAC]">Governors</span></h2>
               <p className="w-[80%] md:w-1/2 text-[#696984]">These are the people that are in charge and also run the activities of the Software club. Curious? Look below.</p>
             </div>
@@ -121,7 +121,7 @@ export default function Software() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-15 w-[90%] md:w-[80%]">
               {activities.map(activity => (
-                <div key={activity.title} className="text-center rounded-xl shadow-lg relative flex flex-col gap-5 px-8 py-4">
+                <div key={activity.title} className="text-center rounded-xl shadow-lg relative flex flex-col gap-5 px-8 py-6">
                   <Image className="absolute -top-[20%] left-[35%]" src={activity.picture} width={100} height={100} alt={activity.title + " icon"}/>
                   <h4 className="mt-10 text-xl text-[#2F327D] font-semibold">{activity.title}</h4>
                   <p className="text-sm text-[#565886]">{activity.paragraph}</p>
@@ -135,7 +135,7 @@ export default function Software() {
             <div className="relative w-[90%]">
               <Image src="/subscribe.svg" height={712.5} width={1525} alt="" className="hidden md:block w-full"/>
               <Image src="/mobSub2.svg" height={528} width={356} alt="" className=" md:hidden w-full"/>
-              <div className="px-5 py-2 md:p-0 absolute top-[25%] md:top-[30%] md:left-[20%] m-auto flex flex-col md:flex-row gap-5 md:gap-20 items-center md:items-start w-[100%] md:w-[60%] h-full">
+              <div className="px-5 py-2 md:p-0 absolute top-[15%] md:top-[30%] md:left-[20%] m-auto flex flex-col md:flex-row gap-5 md:gap-20 items-center md:items-start w-[100%] md:w-[60%] h-full">
                   <div className="w-auto md:w-2/3 flex flex-col gap-5 md:gap-10 items-start">
                     <p className="text-[#2F327D] text-xl md:text-3xl font-bold ">Interested in <span className="text-[#0FACAC]">Hardware?</span> The Hardware Club is Available for you. Check it out.</p>
                     <div className="text-white  bg-[#166D86] text-md md:text-lg px-4 py-2 md:px-4 md:py-2 rounded-3xl"><Link href="/hardware">Hardware Club</Link></div>

@@ -36,7 +36,7 @@ export default function Department() {
   return ( 
     <div className="">
         <Header/>
-        <main className="flex flex-col gap-16 md:gap-30 items-center mb-20">
+        <main className="flex flex-col gap-10 md:gap-30 items-center mb-20">
           {/* Hero Section */}
           <section className="w-[90%] md:w-2/3 text-center flex flex-col gap-3 mt-10 md:mt-20 px-4">
             <h1 className="text-2xl md:text-4xl text-[#2F327D] font-bold leading-tight">Know more about the <span className="text-[#0FACAC]">Lecturers</span><br className="hidden md:block"/> and the <span className="text-[#0FACAC]">department</span> as a whole.</h1>
@@ -83,7 +83,7 @@ export default function Department() {
             </div>
           </section>
 
-          <section className="text-center flex flex-col items-center gap-20 w-[100%] md:w-full">
+          <section className="text-center flex flex-col items-center gap-10 md;gap-20 w-[100%] md:w-full">
             <div className="w-[90%] md:w-full flex flex-col gap-5 items-center">
               <h2 className="md:w-[50%] text-xl md:text-3xl font-bold text-[#2F327D]">Know More About Your <span className="text-[#0FACAC]">Lecturers</span> and staff in the <span className="text-[#0FACAC]">Department</span></h2>
               <p className="w-[90%] md:w-1/2 text-[#696984]">Meet the people responsible for making impact not only in the department, but in the lives of students in the department</p>
@@ -97,6 +97,7 @@ export default function Department() {
                       <p className="text-md font-bold text-[#2F327D]">{lecturer.name}</p>
                       <p className="text-[#0FACAC]">{lecturer.title}</p>
                     </div>
+                    <div className="text-xs text-[#C9C9C9] self-end opacity-[0.5] font-bold mr-4 mb-4">CLICK</div>
                   </div>
                 </div>
               ))

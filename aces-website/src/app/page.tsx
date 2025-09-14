@@ -21,7 +21,7 @@ export default function Home() {
             <p className="w-[80%] mx-auto text-[#696984]">Making a difference and inspiring Students so that they develop themselves and make impact in world at large.</p>
           </section>
           <section className="flex flex-col items-center text-center w-[90%]">
-            <div className="relative px-5 md:px-0">
+            <div className="relative">
               <div className="hidden md:flex gap-1 md:gap-3 px-2 md:py-0 md:px-5 w-1/2 absolute left-[30%] top-[0%]">
                 <div className="bg-[#166D86] text-white w-2/5 rounded-4xl md:px-10 md:py-4 text-xs md:text-xl font-bold p-0.5"><Link key='about' href='/about'>About Us </Link></div>
                 <div className="text-[#166D86] border-2  w-2/5 border-[#166D86] bg-white rounded-4xl p-0.5 md:px-10 md:py-4 text-xs md:text-xl font-bold"><Link key='contact' href='/contact'>Contact Us </Link></div>
@@ -40,14 +40,14 @@ export default function Home() {
                 <Image src="/hardware.png" alt='Printed Circuit Board' height={267} width={476} />
                 <div className="absolute left-[12.5%] top-[25%] flex flex-col items-center justify-evenly h-1/2 w-3/4">
                   <p className="text-white text-xl md:text-2xl">Interested in Hardware?</p>
-                  <div className="bg-[#166D86] text-white rounded-4xl px-4 py-2 text-xl"><Link key='about' href='/about'>Hardware Club </Link></div>
+                  <div className="bg-[#166D86] text-white rounded-4xl px-4 py-2 text-xl"><Link key='hardware' href='/hardware'>Hardware Club </Link></div>
                 </div>
               </div>
               <div className="relative">
                 <Image src="/software.png" alt='Printed Circuit Board' height={267} width={476} />
                 <div className="absolute left-[12.5%] top-[25%] flex flex-col items-center justify-evenly h-1/2 w-3/4">
                   <p className="text-white text-xl md:text-2xl">Interested in Software?</p>
-                  <div className="text-[#166D86] border-2 border-[#166D86] bg-white rounded-4xl px-4 py-2 text-xl"><Link key='about' href='/about'>Software Club </Link></div>
+                  <div className="text-[#166D86] border-2 border-[#166D86] bg-white rounded-4xl px-4 py-2 text-xl"><Link key='software' href='/software'>Software Club </Link></div>
                 </div>
               </div>
             </div>
@@ -91,7 +91,7 @@ export default function Home() {
           </section>
           <section className="flex flex-col md:flex-row justify-center gap-20 items-center w-full mb-10">
             <div className="w-[90%] md:w-1/3 flex flex-col gap-6">
-              <h2 className="text-[#2F327D] text-5xl font-bold">Pay your <span className="text-[#0FACAC]">ACES</span> and <span className="text-[#0FACAC]">ELA</span> Dues</h2>
+              <h2 className="text-[#2F327D] text-3xl md:text-5xl font-bold">Pay your <span className="text-[#0FACAC]">ACES</span> and <span className="text-[#0FACAC]">ELA</span> Dues</h2>
               <p className="text-md text-[#565886]">To improve the department and to ensure activities like fresher’s welcome, HOD’s Cup and others activities are able to be achieved.</p>
               <p className="text-md text-[#565886]">Paying your ELA Dues shows how important this department is to you.</p>
               <div className="text-white  bg-[#166D86] px-4 py-2 rounded-3xl self-start"><Link href="/dues">Know How</Link></div>
@@ -107,13 +107,13 @@ export default function Home() {
                 </div>
                 <div className="flex gap-4 md:gap-0 md:justify-between">
                   <a href="tel:08134408004">
-                    <div className="flex gap-1 md:gap-4 items-center text-sm">
+                    <div className="flex gap-1 md:gap-4 items-center text-xs md:text-sm">
                       <Image src="/call.svg" width={40} height={40} alt="Call Icon"/>
                       <p>08134408004</p>
                     </div>
                   </a>
                   <a href="tel:09134971826">
-                    <div className="flex gap-1 md:gap-4 items-center text-sm">
+                    <div className="flex gap-1 md:gap-4 items-center text-xs md:text-sm">
                       <Image src="/call.svg" width={40} height={40} alt="Call Icon"/>
                       <p>09134971826</p>
                     </div>
@@ -124,7 +124,7 @@ export default function Home() {
           </section>
           <section className="w-[90%] md:w-full mx-auto flex flex-col md:flex-row justify-between md:justify-around mt-15">
             <div className="flex flex-col gap-8 w-[100%] md:w-1/5 items-start">
-              <h2 className=" text-[#2F327D] text-4xl font-bold">Departmental <span className="text-[#0FACAC] ">Timetable</span></h2>
+              <h2 className=" text-[#2F327D] text-3xl md:text-4xl font-bold">Departmental <span className="text-[#0FACAC] ">Timetable</span></h2>
               <p className="text-[#565886]">Get used to your timetable and familiarize yourself with it so you don’t miss lectures and so you can plan your time effectively.</p>
               <div className="px-4 py-2 bg-[#166D86] text-white rounded-4xl"><Link href="/timetable">Check it out</Link></div>
             </div>

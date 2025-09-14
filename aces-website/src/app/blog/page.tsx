@@ -81,7 +81,7 @@ export default function BlogPage() {
                   <div className="text-xs py-2 px-4 rounded-2xl bg-[#98FF98] text-[#166D86]">{item.category}</div>
                 </div>
                 <h2 className="text-base font-bold text-[#2F327D]">{item.title}</h2>
-                <p className="text-[#2F327D] font-semibold line-clamp-3">{item.content.length > 120 ? item.content.slice(0, 120) + '...' : item.content}</p>
+                <p className="text-[#565886] line-clamp-3">{item.content.length > 120 ? item.content.slice(0, 120) + '...' : item.content}</p>
                 <div className="flex justify-between">
                   <p className="text-xs text-[#696984]">{new Date(item.createdAt).toLocaleDateString("en", {year: "numeric", month: "short", day: "numeric"})}</p>
                   <div className="flex justify-end items-center mt-auto">

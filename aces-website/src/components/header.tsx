@@ -43,10 +43,10 @@ export default function Header() {
               <Link
                 href={link.href}
                 className={clsx(
-                  "text-sm font-medium transition-colors duration-200",
+                  "text-md transition-colors duration-200",
                   pathname === link.href
-                    ? "text-[#166D86]"
-                    : "text-black hover:text-[#166D86]"
+                    ? "text-[#0FACAC] font-bold"
+                    : "text-black hover:text-[#0FACAC] font-semibold"
                 )}
               >
                 {link.name}
@@ -88,10 +88,10 @@ export default function Header() {
                 <Link
                   href={link.href}
                   className={clsx(
-                    "text-lg w-full font-medium py-2 px-4",
+                    "text-sm w-full font-medium py-2 px-4",
                     pathname === link.href
-                      ? "text-[#166D86]"
-                      : "text-black hover:text-[#166D86]"
+                      ? "text-[#0FACAC] font-bold"
+                      : "text-black hover:text-[#0FACAC] font-semibold"
                   )}
                   onClick={() => setMenuOpen(false)}
                 >
