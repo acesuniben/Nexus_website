@@ -425,7 +425,7 @@ export default function Students() {
         )}
 
         {/* Students Table */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100">
           {/* Table Header */}
           <div
             className="px-8 py-4 border-b border-gray-100"
@@ -514,7 +514,7 @@ export default function Students() {
               filteredStudents.map((student, index) => (
                 <div
                   key={student.id}
-                  className="bg-white px-8 py-4 hover:bg-gray-50 transition-colors duration-200 group rounded-xl border border-gray-100 shadow-sm"
+                  className="bg-white px-8 py-4 hover:bg-gray-50 transition-colors duration-200 group rounded-xl border border-gray-100 shadow-sm overflow-visible"
                 >
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center space-x-6">
@@ -616,7 +616,7 @@ export default function Students() {
 
                         {/* Dropdown Menu */}
                         {activeDropdown === student.id && (
-                          <div className="absolute right-0 top-8 w-36 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-15">
+                          <div className="absolute right-0 top-8 w-36 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-50">
                             <button
                               onClick={() => handleUpdateStudent(student.id)}
                               className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors flex items-center space-x-3"
