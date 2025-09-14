@@ -616,7 +616,7 @@ export default function Students() {
 
                         {/* Dropdown Menu */}
                         {activeDropdown === student.id && (
-                          <div className="absolute right-0 top-8 w-36 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-10">
+                          <div className="absolute right-0 top-8 w-36 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-15">
                             <button
                               onClick={() => handleUpdateStudent(student.id)}
                               className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors flex items-center space-x-3"
