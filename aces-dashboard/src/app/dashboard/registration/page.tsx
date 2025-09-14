@@ -273,7 +273,7 @@ export default function Registration() {
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
             {/* Profile Image Section */}
             <div className="flex flex-col items-center lg:w-1/3 xl:w-1/4">
-              <div className="relative mb-6">
+              {/* <div className="relative mb-6">
                 <div className="w-36 h-36 lg:w-40 lg:h-40 rounded-full overflow-hidden bg-gradient-to-br from-blue-100 to-blue-200 border-4 border-white shadow-2xl">
                   {profileImage ? (
                     <Image
@@ -337,7 +337,15 @@ export default function Registration() {
                 style={{ color: "#2F327D" }}
               >
                 Click the edit button to upload your profile picture
-              </p>
+              </p> */}
+
+              <div className="w-36 h-36 lg:w-40 lg:h-40 rounded-full overflow-hidden bg-gradient-to-br from-blue-100 to-blue-200 border-4 border-white shadow-2xl flex items-center justify-center">
+                <span className="text-white text-3xl lg:text-4xl font-bold drop-shadow-lg">
+                  {formData.fullName
+                    ? formData.fullName.charAt(0).toUpperCase()
+                    : "?"}
+                </span>
+              </div>
             </div>
 
             {/* Form Fields */}

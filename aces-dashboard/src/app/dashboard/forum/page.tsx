@@ -434,7 +434,7 @@ export default function ForumPage() {
         </div>
 
         {/* Forum Table */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100">
           {/* Table Header */}
           <div
             className="px-8 py-4 border-b border-gray-100"
@@ -608,7 +608,7 @@ export default function ForumPage() {
 
                         {/* Dropdown Menu */}
                         {activeDropdown === forum.id && (
-                          <div className="absolute right-0 top-8 w-36 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-10">
+                          <div className="absolute right-0 top-8 w-36 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-50">
                             <button
                               onClick={() => handleUpdateForum(forum.id)}
                               className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors flex items-center space-x-3"
