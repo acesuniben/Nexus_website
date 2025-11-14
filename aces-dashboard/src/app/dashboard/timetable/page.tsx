@@ -397,11 +397,20 @@ export default function TimetablePage() {
     }
   };
 
-  const filteredTimetable = timetableItems.filter(
-    (item) =>
+  const filteredTimetable = timetableItems.filter((item) => {
+    // Normalize semester format for comparison
+    const normalizedSelectedSemester = selectedSemester.includes("First")
+      ? "First"
+      : selectedSemester.includes("Second")
+      ? "Second"
+      : selectedSemester;
+
+    return (
       item.level === selectedLevel &&
+      item.semester === normalizedSelectedSemester &&
       item.days.some((day) => day.day === selectedDay)
-  );
+    );
+  });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 lg:p-6">
