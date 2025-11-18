@@ -14,12 +14,12 @@ import {
 
 export default function Timetable() {
   const [selectedDay, setSelectedDay] = useState("Monday");
-  const [selectedSession, setSelectedSession] = useState("2024/2025");
+  const [selectedSession, setSelectedSession] = useState("2025/2026");
   const [selectedSemester, setSelectedSemester] = useState("First Semester");
   const [selectedLevel, setSelectedLevel] = useState("500L");
 
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  const sessions = ["2024/2025", "2023/2024"];
+  const sessions = ["2025/2026" ,"2024/2025", "2023/2024"];
   const semesters = ["First Semester", "Second Semester"];
   const levels = ["100L", "200L", "300L", "400L", "500L"];
   const [rawEntries, setRawEntries] = useState<TimetableEntry[]>([]);
