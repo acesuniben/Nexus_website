@@ -27,16 +27,9 @@ export default function Department() {
     {image:"/sly.png", name: "Engr. Slyvester Akinbohun", title: "", bio:""},
     {image:"/okoye.png", name: "Engr. James Okoye", title: "", bio:""},
     {image:"/omosigho.png", name: "Engr. Moses Omosigho", title: "", bio:"Meet Engr Moses omoshigo, one of the lecturers in computer engineering. He spealizes in Cybersecurity, web development, software development, Internet Of Things (iot), Information Management etc. He's the current exam officer for 24/25 academic session. He is also a researcher that have written papers which include: The Future of Cyber Security: Examining the Security Challenges and Trends in Smart Technology. IoT Device Security, Privacy, and Risks in Smart City Environments etc."},
-    {image:"/solomon.png", name: "Engr. Solomon Ogiobadan", title: "Technology Leader & Computing Expert", bio:"Solomon Ogiobadan, widely known as Engr. Solomon, is a distinguished Technology Leader and Computer Engineer with over two decades of pioneering experience. He currently serves as a Lecturer in the Department of Computer Engineering at the University of Benin, where he is renowned for his student-centered teaching and dedicated mentorship.
-
-His professional journey includes a foundational 13-year tenure as a Computer Engineer in an ICT Department, where he engineered solutions for over 150 complex hardware and peripheral issues. This extensive hands-on experience forms the bedrock of his practical, solution-oriented approach to both engineering and education.
-
-Engr. Ogiobadan is a recognized thought leader in the Nigerian tech scene. He is a regular technology analyst on ITV Benin, where he breaks down the latest tech trends for a mass audience, expanding his influence to a global viewership.
-
+    {image:"/solomon.png", name: "Engr. Solomon Ogiobadan", title: "Technology Leader & Computing Expert", bio:"Solomon Ogiobadan, widely known as Engr. Solomon, is a distinguished Technology Leader and Computer Engineer with over two decades of pioneering experience. He currently serves as a Lecturer in the Department of Computer Engineering at the University of Benin, where he is renowned for his student-centered teaching and dedicated mentorship. His professional journey includes a foundational 13-year tenure as a Computer Engineer in an ICT Department, where he engineered solutions for over 150 complex hardware and peripheral issues. This extensive hands-on experience forms the bedrock of his practical, solution-oriented approach to both engineering and education. Engr. Ogiobadan is a recognized thought leader in the Nigerian tech scene. He is a regular technology analyst on ITV Benin, where he breaks down the latest tech trends for a mass audience, expanding his influence to a global viewership.
 His expertise is further validated by his academic recognition; he was awarded the prestigious Nelson Mandela Scholarship for Technology Leadership at the Canford Institute of Technology in Alberta, Canada, as the first Nigerian recipient of this need-based award.
-
 Key Highlights:
-
 · Expertise: Computer Architecture, Hardware Troubleshooting, and Systems Solutions.
 · Award: \"Most Loved Lecturer of the Year\" by the Association of Computer Engineering Students (ACES), University of Benin.
 · Scholarship: First Nigerian awardee of the Nelson Mandela Scholarship for Technology Leadership.
