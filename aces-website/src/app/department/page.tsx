@@ -40,7 +40,7 @@ His expertise is further validated by his academic recognition; he was awarded t
 Key Highlights:
 
 · Expertise: Computer Architecture, Hardware Troubleshooting, and Systems Solutions.
-· Award: "Most Loved Lecturer of the Year" by the Association of Computer Engineering Students (ACES), University of Benin.
+· Award: \"Most Loved Lecturer of the Year\" by the Association of Computer Engineering Students (ACES), University of Benin.
 · Scholarship: First Nigerian awardee of the Nelson Mandela Scholarship for Technology Leadership.
 · Media Presence: Regular Technology Expert on ITV Benin."},
     {image:"/osas.png", name: "Engr. Osas", title: "ELA Coordinator", bio: ""},
