@@ -78,7 +78,7 @@ export default function Header() {
       </button>
       {/* Mobile Menu */}
       {menuOpen && (
-        <nav className="absolute top-full left-0 w-full bg-white shadow-lg z-50 md:hidden">
+        <nav className="absolute top-full left-0 w-full bg-white shadow-lg z-50 md:hidden text-[#2F327D]">
           <ul className="w-full flex flex-col items-center gap-3 py-4 pb-6 px-6">
             {links.map((link) => (
               <li
@@ -91,7 +91,7 @@ export default function Header() {
                     "text-sm w-full font-medium py-2 px-4",
                     pathname === link.href
                       ? "text-[#0FACAC] font-bold"
-                      : "text-black hover:text-[#0FACAC] font-semibold"
+                      : "text-[#2F327D] hover:text-[#0FACAC] font-semibold"
                   )}
                   onClick={() => setMenuOpen(false)}
                 >
